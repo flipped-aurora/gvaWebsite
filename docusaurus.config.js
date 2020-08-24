@@ -18,60 +18,66 @@ module.exports = {
                     to: 'docs/',
                     activeBasePath: 'docs',
                     label: 'Docs',
-                    position: 'left',
+                    position: 'right',
                 },
-                { to: 'blog', label: 'Blog', position: 'left' },
+                { to: 'blog', label: 'Blog', position: 'right' },
                 {
                     href: 'https://github.com/flipped-aurora/gin-vue-admin',
                     label: 'GitHub',
                     position: 'right',
                 },
             ],
+
         },
         footer: {
             style: 'dark',
             links: [{
                     title: '团队项目',
                     items: [{
-                            label: 'Style Guide',
-                            to: 'docs/',
+                            label: 'gf-vue-admin',
+                            to: 'https://github.com/flipped-aurora/gf-vue-admin',
                         },
                         {
-                            label: 'Second Doc',
-                            to: 'docs/doc2/',
+                            label: 'gin-vue-admin',
+                            to: 'https://github.com/flipped-aurora/gin-vue-admin',
                         },
+                        {
+                            label: 'melody',
+                            to: 'https://github.com/flipped-aurora/melody',
+                        },
+
                     ],
                 },
                 {
                     title: '社区',
                     items: [{
-                            label: 'Stack Overflow',
-                            href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                            label: '语雀博客',
+                            href: 'https://www.yuque.com/flipped-aurora/gqbcfk',
                         },
                         {
-                            label: 'Discord',
-                            href: 'https://discordapp.com/invite/docusaurus',
+                            label: '视频教程',
+                            href: 'https://space.bilibili.com/322210472',
                         },
                         {
-                            label: 'Twitter',
-                            href: 'https://twitter.com/docusaurus',
+                            label: '问题反馈',
+                            href: 'https://www.yuque.com/flipped-aurora/tdxq8z',
                         },
                     ],
                 },
                 {
                     title: '更多',
                     items: [{
-                            label: 'Blog',
-                            to: 'blog',
-                        },
-                        {
-                            label: 'GitHub',
-                            href: 'https://github.com/facebook/docusaurus',
-                        },
-                    ],
+                        label: '团队教程博客',
+                        to: 'https://blog.henrongyi.top/',
+                    }],
                 },
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} flipped-aurora | Powered by gin-vue-admin Copyright`,
+            // logo: {
+            //     alt: 'Facebook Open Source Logo',
+            //     src: 'img/fa.png',
+            //     href: 'https://github.com/flipped-aurora/',
+            // },
+            copyright: `Copyright © ${new Date().getFullYear()} flipped-aurora`,
         },
     },
     presets: [
@@ -80,10 +86,8 @@ module.exports = {
             {
                 docs: {
                     // It is recommended to set document id as docs home page (`docs/` path).
-                    homePageId: 'doc1',
+                    homePageId: 'base',
                     sidebarPath: require.resolve('./sidebars.js'),
-                    // Please change this to your repo.
-                    editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
                 },
                 blog: {
                     showReadingTime: true,

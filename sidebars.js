@@ -1,6 +1,8 @@
 module.exports = {
-  someSidebar: {
-    Docusaurus: ['doc1', 'doc2', 'doc3'],
-    Features: ['mdx'],
-  },
+    firstSidebar: {
+        '简介': ['introduce'],
+        '基础使用': ['base', 'env', 'public'],
+        '详细教程': ['help', 'new'],
+        '捐赠': ['coffee']
+    },
 };
