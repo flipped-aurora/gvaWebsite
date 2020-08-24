@@ -3,7 +3,6 @@ id: help
 title: 详细教程
 ---
 
-
 ## 可以先看一遍视频
 
 - [【开源项目教学】gin-vue-admin 2.0目录介绍和自动化开发模式（1010工作室出品）](https://www.bilibili.com/video/av413011289)

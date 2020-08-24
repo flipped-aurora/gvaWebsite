@@ -17,13 +17,32 @@ module.exports = {
             items: [{
                     to: 'docs/',
                     activeBasePath: 'docs',
-                    label: 'Docs',
+                    label: '在线文档',
                     position: 'right',
                 },
-                { to: 'blog', label: 'Blog', position: 'right' },
+                {
+                    href: 'https://www.yuque.com/flipped-aurora/',
+                    label: '知识库',
+                    position: 'right',
+                },
+                {
+                    href: 'https://space.bilibili.com/322210472',
+                    label: '教学视频',
+                    position: 'right',
+                },
+                {
+                    href: 'http://demo.gin-vue-admin.com/',
+                    label: '在线体验',
+                    position: 'right',
+                },
                 {
                     href: 'https://github.com/flipped-aurora/gin-vue-admin',
                     label: 'GitHub',
+                    position: 'right',
+                },
+                {
+                    href: 'https://www.aliyun.com/minisite/goods?userCode=xqe01uob',
+                    label: '特惠服务器',
                     position: 'right',
                 },
             ],
@@ -86,7 +105,7 @@ module.exports = {
             {
                 docs: {
                     // It is recommended to set document id as docs home page (`docs/` path).
-                    homePageId: 'base',
+                    homePageId: 'introduce',
                     sidebarPath: require.resolve('./sidebars.js'),
                 },
                 blog: {

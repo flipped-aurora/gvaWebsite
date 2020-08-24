@@ -2,7 +2,6 @@
 id: new
 title: 特性&技巧
 ---
-# GVA-TIPS&FEATURES（GVA使用技巧和最新特性）
 
 整理并持续更新使用技巧[Tips.]和最新特性[Feat.]
 
