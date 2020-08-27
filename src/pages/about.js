@@ -164,6 +164,33 @@ function Hello() {
                         </div>
                     </div>
                 </Row>
+
+                <Row align="left" justify="start" style={{ background: "#f2f2f2", marginTop: "10px", borderRadius: "10px", paddingLeft: "10px" }}>
+                    <div style={{ display: "inline-block", paddingTop: "20px" }}>
+                        <Image
+                            width={140}
+                            src="http://qmplusimg.henrongyi.top/guanwang/lw.jpg"
+                        />
+                    </div>
+                    <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
+                        <div>
+                            <Title level={5}>**LeonardWang**</Title>
+                        </div>
+                        <Text type="secondary">开发 · 杭州</Text>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>个人介绍：跟着gva大佬们打怪升级，喜欢搞一些底层骚操作，乐于“折腾”的垃圾佬。</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要职责： 负责gin-vue-admin的静态文件打包功能开发，搬砖工程师。</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要技能：</Text>
+                            <Tag color="#25c2a0">Golang</Tag>
+                            <Tag color="#25c2a0">C++</Tag>
+                            <Tag color="volcano">闪现</Tag>
+                        </div>
+                    </div>
+                </Row>
                 <Row gutter={16} style={{ marginTop: "30px" }}>
                     <Title level={3}>未来展望</Title>
                 </Row>
