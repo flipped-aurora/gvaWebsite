@@ -21,6 +21,12 @@ module.exports = {
                     position: 'right',
                 },
                 {
+                    to: 'about/',
+                    activeBasePath: 'about',
+                    label: '关于我们',
+                    position: 'right',
+                },
+                {
                     href: 'https://www.yuque.com/flipped-aurora/',
                     label: '知识库',
                     position: 'right',
@@ -79,7 +85,7 @@ module.exports = {
                         },
                         {
                             label: '问题反馈',
-                            href: 'https://www.yuque.com/flipped-aurora/tdxq8z',
+                            href: 'https://github.com/flipped-aurora/gin-vue-admin/issues',
                         },
                     ],
                 },
@@ -107,11 +113,6 @@ module.exports = {
                     // It is recommended to set document id as docs home page (`docs/` path).
                     homePageId: 'introduce',
                     sidebarPath: require.resolve('./sidebars.js'),
-                },
-                blog: {
-                    showReadingTime: true,
-                    // Please change this to your repo.
-                    editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/blog/',
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
