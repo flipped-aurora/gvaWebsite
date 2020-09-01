@@ -5,7 +5,8 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
-
+import { Typography } from 'antd';
+const { Title, Text } = Typography;
 const features = [
   {
     title: <>简单易用</>,
@@ -30,7 +31,7 @@ const features = [
     imageUrl: 'img/logistics_isometric.svg',
     description: (
       <>
-        项目目录分层清晰，项目模式结构何理，包名语义化，让你更加容易理解目录结构，读懂代码更加方便！
+        项目目录分层清晰，项目模式结构清晰，包名语义化，让你更加容易理解目录结构，读懂代码更加方便！
       </>
     ),
   },
@@ -75,8 +76,8 @@ function Feature({ imageUrl, title, description }) {
           <img className={styles.featureImage} src={imgUrl} alt={title} />
         </div>
       )}
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <Title level={3}>{title}</Title>
+      <Text>{description}</Text>
     </div>
   );
 }
@@ -88,8 +89,8 @@ function Home() {
   const urlright = useBaseUrl("/img/right.svg");
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`自动化全站后台管理系统`}
+      description="gin+vue编写的自动化代码开发脚手架，是gin+vue全栈学习最好的项目，腾讯阿里开发均有采用gin-vue-admin为模型进行相关业务开发，代码自动化，加快开发速度，权限系统齐全，减少重复工作">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
 
         <div className="container">
@@ -100,7 +101,7 @@ function Home() {
             <img className={styles.featureImage} src={urlright} />
           </div>
 
-          <h1 className="hero__title" style={{ zIndex: "9999" }}>{siteConfig.title}</h1>
+          <div className="hero__title" style={{ zIndex: "9999",fontWeight:700,marginBottom:"20px" }}>{siteConfig.title}</div>
           <p className="hero__subtitle" style={{ zIndex: "9999" }}>{siteConfig.tagline}</p>
           <div className={styles.buttons} style={{ zIndex: "9999" }}>
             <Link

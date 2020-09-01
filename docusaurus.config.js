@@ -1,6 +1,6 @@
 module.exports = {
     title: 'Gin-Vue-Admin',
-    tagline: 'gin+vue极速开发的全栈后台管理系统',
+    tagline: '使用gin+vue进行极速开发的全栈后台管理系统',
     url: 'http://demo.henrongyi.com',
     baseUrl: '/',
     onBrokenLinks: 'throw',
@@ -22,7 +22,6 @@ module.exports = {
                 },
                 {
                     to: 'about/',
-                    activeBasePath: 'about',
                     label: '关于我们',
                     position: 'right',
                 },

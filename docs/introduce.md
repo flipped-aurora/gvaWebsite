@@ -8,13 +8,17 @@ title: 项目介绍
 </div>
 <div align="center">
 <img src="https://img.shields.io/badge/vue-2.6.10-brightgreen"/>
+&nbsp;
 <img src="https://img.shields.io/badge/element--ui-2.12.0-green"/>
+&nbsp;
 <img src="https://img.shields.io/badge/golang-1.12-blue"/>
+&nbsp;
 <img src="https://img.shields.io/badge/gin-1.4.0-lightBlue"/>
+&nbsp;
 <img src="https://img.shields.io/badge/gorm-1.9.10-red"/>
 </div>
 
-
+<p></p>
 
 :::tip 缘起
 在平时的开发工作中，无论做什么项目，都需要搭建一套后台管理系统，其中鉴权，动态路由，角色等等功能都是大同小异的，并且有大量的重复curd代码，因此下定决心，搞出了现在的gin-vue-admin

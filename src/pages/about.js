@@ -3,7 +3,6 @@ import Layout from '@theme/Layout';
 import { Row, Typography, Divider, Image, Col, Tag, Popover } from 'antd';
 import { BarcodeOutlined } from "@ant-design/icons"
 const { Title, Text } = Typography;
-
 import "antd/dist/antd.css";
 
 function Hello() {
@@ -57,14 +56,14 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/sc2.jpg"
+                            src="http://qmplusimg.henrongyi.top/guanwang/jjz.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
                         <div>
                             <Title level={5}>**奇淼**</Title>
                         </div>
-                        <Text type="secondary">项目发起者 · 北京</Text>
+                        <Text type="secondary">全栈开发 · 北京</Text>
                         <div style={{ paddingTop: "5px" }}>
                             <Text>个人介绍: 用魔法打败魔法，用代码打败代码，一个普普通通的IT从业者，一台<del>se</del>无情的编码机器。</Text>
                         </div>
@@ -207,7 +206,7 @@ function Hello() {
                     <Title level={3}>广告赞助</Title>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
-                    <Text>目前<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin</span>Github已经拥有<span style={{ color: "#25c2a0", fontWeight: 800 }}>4.3K+</span>的sta，项目官网以及github页面每天都有大量的访问量，您可以成为Gin-Vue-Admin的赞助商，我们会在适当的位置，悬挂您的推广内容</Text>
+                    <Text>目前<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin</span>Github已经拥有<span style={{ color: "#25c2a0", fontWeight: 800 }}>4.3K+</span>的star，项目官网以及github页面每天都有大量的访问量，您可以成为Gin-Vue-Admin的赞助商，我们会在适当的位置，悬挂您的推广内容</Text>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
                     <Text>赞助请加微信：<span style={{ color: "#25c2a0", fontWeight: 800 }}>shouzi_1994</span>标明<span style={{ color: "#25c2a0", fontWeight: 800 }}>广告赞助</span></Text>
