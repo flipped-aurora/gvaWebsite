@@ -162,9 +162,34 @@ function Hello() {
                             <Tag color="#ffcc33">千年杀</Tag>
                         </div>
                     </div>
-                </Row>
-
-                <Row align="left" justify="start" style={{ background: "#f2f2f2", marginTop: "10px", borderRadius: "10px", paddingLeft: "10px" }}>
+                    </Row>
+                    <Row align="left" justify="start" style={{ background: "#f2f2f2", marginTop: "10px", borderRadius: "10px", paddingLeft: "10px" }}>
+                    <div style={{ display: "inline-block", paddingTop: "20px" }}>
+                        <Image
+                            width={140}
+                            src="http://qmplusimg.henrongyi.top/guanwang/djl.jpg"
+                        />
+                    </div>
+                    <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
+                        <div>
+                            <Title level={5}>**djl**</Title>
+                        </div>
+                        <Text type="secondary">前端研发 · 北京</Text>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>个人介绍：vue使用者，go学习者，前端开发。</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要职责：负责gin-vue-admin的前端页面开发，UI样式维护</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要技能：</Text>
+                            <Tag color="#25c2a0">VUE</Tag>
+                            <Tag color="#25c2a0">GOLANG</Tag>
+                            <Tag color="#25c2a0">UNI</Tag>
+                        </div>
+                    </div>
+                    </Row>
+                    <Row align="left" justify="start" style={{ background: "#f2f2f2", marginTop: "10px", borderRadius: "10px", paddingLeft: "10px" }}>
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
@@ -190,6 +215,114 @@ function Hello() {
                         </div>
                     </div>
                 </Row>
+                <Row>
+                <div style={{ display: "inline-block", paddingTop: "20px" }}>
+                        <Image
+                            width={140}
+                            src="http://qmplusimg.henrongyi.top/guanwang/YR.jpg"
+                        />
+                    </div>
+                    <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
+                        <div>
+                            <Title level={5}>**rainyan**</Title>
+                        </div>
+                        <Text type="secondary">架构师 · 深圳</Text>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>个人介绍：武大本硕，鹅厂员工，单身没颜缺钱。善于人际交往，有领导能力，喜欢体验新鲜的事物，喜欢旅游，口才很好。雅思7.5，喜欢学习各种语言和各种方言。</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要职责：架构设计，前沿技术探索，技术应用</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要技能：</Text>
+                            <Tag color="#25c2a0">项目管理</Tag>
+                            <Tag color="#25c2a0">全栈开发</Tag>
+                            <Tag color="#25c2a0">投资理财</Tag>
+                            <Tag color="#ffcca0">知心哥哥</Tag>
+                        </div>
+                    </div>
+                <Row>
+                </Row>
+                <div style={{ display: "inline-block", paddingTop: "20px" }}>
+                        <Image
+                            width={140}
+                            src="http://qmplusimg.henrongyi.top/guanwang/GL.jpg"
+                        />
+                    </div>
+                    <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
+                        <div>
+                            <Title level={5}>**Granty1**</Title>
+                        </div>
+                        <Text type="secondary">服务器开发·上海</Text>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>个人介绍：萌新一枚，带带弟弟。</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要职责：编写部分服务端代码。</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要技能：</Text>
+                            <Tag color="#25c2a0">Golang</Tag>
+                            <Tag color="#25c2a0">java</Tag>
+                            <Tag color="#25c2a0">js</Tag>
+                            <Tag color="#25c2a0">database</Tag>
+                            <Tag color="#25c2a0">c++</Tag>
+                        </div>
+                    </div>
+                <Row>
+                </Row>
+                <div style={{ display: "inline-block", paddingTop: "20px" }}>
+                        <Image
+                            width={140}
+                            src="http://qmplusimg.henrongyi.top/guanwang/sj.jpg"
+                        />
+                    </div>
+                    <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
+                        <div>
+                            <Title level={5}>**千里默默**</Title>
+                        </div>
+                        <Text type="secondary">UI设计•北京</Text>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>个人介绍：生活在帝都的设计师，认知的意义在于理解世界，下定决心别放弃，坚持，机会就在眼前</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要职责：负责用户界面设计，视觉设计，把握产品最终界面实现效果</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要技能：</Text>
+                            <Tag color="#25c2a0">AI</Tag>
+                            <Tag color="#25c2a0">AE</Tag>
+                            <Tag color="#25c2a0">PS</Tag>
+                            <Tag color="#25c2a0">PR</Tag>
+                            <Tag color="#25c2a0">SKETCH</Tag>
+                        </div>
+                    </div>
+                </Row>
+
+                <Row>
+                <div style={{ display: "inline-block", paddingTop: "20px" }}>
+                        <Image
+                            width={140}
+                            src="http://qmplusimg.henrongyi.top/guanwang/zbsh.jpg"
+                        />
+                    </div>
+                    <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
+                        <div>
+                            <Title level={5}>**知白守黑**</Title>
+                        </div>
+                        <Text type="secondary">萌新开发•合肥</Text>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>个人介绍：00后，安徽大学信息技术英才班学生，热爱计算机学科。爱好广泛，美食、旅行、摄影、游戏、聊天。希望能够成为独挡一面的工程师，也想和志同道合的大佬们交朋友。</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要技能：</Text>
+                            <Tag color="#25c2a0">JS</Tag>
+                            <Tag color="#25c2a0">C</Tag>
+                        </div>
+                    </div>
+                </Row>
+
+                
                 <Row gutter={16} style={{ marginTop: "30px" }}>
                     <Title level={3}>未来展望</Title>
                 </Row>

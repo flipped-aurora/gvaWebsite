@@ -37,6 +37,11 @@
     width: 200px;
 }
 
+@media (max-width: 870px) {
+    .featureImageA {
+        display: none;
+    }
+}
 
 /*给父元素添加类clearfix*/
 

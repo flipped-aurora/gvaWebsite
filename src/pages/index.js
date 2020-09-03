@@ -87,24 +87,25 @@ function Home() {
   const { siteConfig = {} } = context;
   const urlLeft = useBaseUrl("/img/left.svg");
   const urlright = useBaseUrl("/img/right.svg");
-  return (
+ return (
     <Layout
       title={`自动化全站后台管理系统`}
       description="gin+vue编写的自动化代码开发脚手架，是gin+vue全栈学习最好的项目，腾讯阿里开发均有采用gin-vue-admin为模型进行相关业务开发，代码自动化，加快开发速度，权限系统齐全，减少重复工作">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
-
         <div className="container">
-          <div className="text--center" style={{float:"left"}}>
+          <div className={styles.featureImageA} style={{ float: "left" }}>
             <img className={styles.featureImage} src={urlLeft} />
           </div>
-          <div className="text--center" style={{float:"right"}}>
+
+          <div className={styles.featureImageA} style={{ float: "right" }}>
             <img className={styles.featureImage} src={urlright} />
           </div>
 
-          <div className="hero__title" style={{ zIndex: "9999",fontWeight:700,marginBottom:"20px" }}>{siteConfig.title}</div>
+          <div className="hero__title" style={{ zIndex: "9999", fontWeight: 700, marginBottom: "20px" }}>{siteConfig.title}</div>
           <p className="hero__subtitle" style={{ zIndex: "9999" }}>{siteConfig.tagline}</p>
           <div className={styles.buttons} style={{ zIndex: "9999" }}>
             <Link
+              style={{ border: "2px solid #fff" }}
               className={clsx(
                 'button button--outline button--lg',
                 styles.getStarted,
