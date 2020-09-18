@@ -215,7 +215,7 @@ function Hello() {
                         </div>
                     </div>
                 </Row>
-                <Row>
+                <Row align="left" justify="start" style={{ background: "#f2f2f2", marginTop: "10px", borderRadius: "10px", paddingLeft: "10px" }}>
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
@@ -241,8 +241,8 @@ function Hello() {
                             <Tag color="#ffcca0">知心哥哥</Tag>
                         </div>
                     </div>
-                <Row>
                 </Row>
+                <Row align="left" justify="start" style={{ background: "#f2f2f2", marginTop: "10px", borderRadius: "10px", paddingLeft: "10px" }}>
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
@@ -269,8 +269,8 @@ function Hello() {
                             <Tag color="#25c2a0">c++</Tag>
                         </div>
                     </div>
-                <Row>
                 </Row>
+                <Row align="left" justify="start" style={{ background: "#f2f2f2", marginTop: "10px", borderRadius: "10px", paddingLeft: "10px" }}>
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
@@ -299,7 +299,7 @@ function Hello() {
                     </div>
                 </Row>
 
-                <Row>
+                <Row align="left" justify="start" style={{ background: "#f2f2f2", marginTop: "10px", borderRadius: "10px", paddingLeft: "10px" }}>
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
@@ -339,7 +339,7 @@ function Hello() {
                     <Title level={3}>广告赞助</Title>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
-                    <Text>目前<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin</span>Github已经拥有<span style={{ color: "#25c2a0", fontWeight: 800 }}>4.3K+</span>的star，项目官网以及github页面每天都有大量的访问量，您可以成为Gin-Vue-Admin的赞助商，我们会在适当的位置，悬挂您的推广内容</Text>
+                    <Text>目前<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin</span>Github已经拥有<span style={{ color: "#25c2a0", fontWeight: 800 }}>4.6K+</span>的star，项目官网以及github页面每天都有大量的访问量，您可以成为Gin-Vue-Admin的赞助商，我们会在适当的位置，悬挂您的推广内容</Text>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
                     <Text>赞助请加微信：<span style={{ color: "#25c2a0", fontWeight: 800 }}>shouzi_1994</span>标明<span style={{ color: "#25c2a0", fontWeight: 800 }}>广告赞助</span></Text>
