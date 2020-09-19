@@ -8,6 +8,9 @@ module.exports = {
     organizationName: 'flipped-aurora', // Usually your GitHub org/user name.
     projectName: 'gin-vue-admin', // Usually your repo name.
     themeConfig: {
+        colorMode:{
+            disableSwitch: true,
+        },
         navbar: {
             title: 'Gin-Vue-Admin',
             logo: {
@@ -25,6 +28,7 @@ module.exports = {
                     label: '关于我们',
                     position: 'right',
                 },
+                
                 {
                     href: 'https://www.yuque.com/flipped-aurora/',
                     label: '知识库',
@@ -48,6 +52,11 @@ module.exports = {
                 {
                     href: 'https://www.aliyun.com/minisite/goods?userCode=xqe01uob',
                     label: '特惠服务器',
+                    position: 'right',
+                },
+                {
+                    to: 'eat/',
+                    label: '捐赠&购课',
                     position: 'right',
                 },
             ],

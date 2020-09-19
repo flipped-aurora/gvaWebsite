@@ -2,36 +2,7 @@
 id: public
 title: 开发介绍
 ---
-## 项目目录(1.0)
 
-```
-├─QMPlusServer  	（后端文件夹）
-│  ├─cmd     	（启动文件）
-│  ├─config    	（配置包）
-│  ├─controller  	（api和servers存放位置）
-│  ├─db       	（数据库脚本）
-│  ├─docs  	（swagger文档目录）
-│  ├─init      	（初始化路由 数据库 日志等）
-│  ├─log     	（日志存放地址）
-│  ├─middleware   	（中间件）
-│  ├─model            	（结构体层）
-│  ├─router          	（路层）
-│  ├─static	（静态文件--配置文件 casbin模型等）
-│  ├─tools  (后端工具包)
-│  └─tpl		（自动化代码模板）
-└─QMPlusVuePage	（前端文件）
-    ├─public	（发布模板）
-    └─src
-        ├─api	（向后台发送ajax的封装层）
-        ├─assets	（静态文件）
-        ├─components（组件）
-        ├─router	（前端路由）
-        ├─store	（vuex 状态管理仓）
-        ├─style	（通用样式文件）
-        ├─utils	（前端工具库）
-        └─view	（前端页面）
-
-```
 
 ## 项目目录(2.0)
 
@@ -64,52 +35,6 @@ title: 开发介绍
 
 ```
 
-## 配置文件(1.0)
-```json
-{
-    "casbinconfig": {
-        "modelPath": "./static/rbacmodel/rbac_model.conf"   // casbin模型地址
-    },
-    "jwt": {
-        "signingKey": "qmPlus"   // jwt签名
-    },
-    "mysqladmin": {               // 数据库配置
-        "username": "root",
-        "password": "Aa@6447985",
-        "path": "127.0.0.1:3306",
-        "dbname": "qmPlus",
-        "config": "charset=utf8\u0026parseTime=True\u0026loc=Local",
-        "maxIdleConns": 10,
-        "maxOpenConns": 100,
-        "logMode": true
-    },
-    "qiniu": {                       // 七牛云密钥管理
-        "accessKey": "25j8dYBZ2w**************62b8xiFguwxzZ",
-        "secretKey": "pgdbqEsf7o****************dZ_VecFXPDeG5JY"
-    },
-    "redisadmin": {             // redis配置
-        "addr": "127.0.0.1:6379",
-        "password": "",
-        "db": 0
-    },
-    "system": {          // 系统配置
-        "useMultipoint": false,   // 是否开启多点登录拦截
-        "env": "develop",       // 环境标识
-        "addr": 8888            // 端口
-    },
-    "captcha": {            //验证码配置
-        "keyLong": 6,
-        "imgWidth": 120,
-        "imgHeight": 40
-    },
-    "log": {                //日志配置
-        "prefix": "[GIN-VUE-ADMIN]",
-        "logFile": false,
-        "stdout": ["DEBUG"],
-        "file": ["WARNING"]
-    }
-}
-```
 
 ## 配置文件(2.0)
 
@@ -156,6 +81,7 @@ system:
     env: 'public'  # Change to "develop" to skip authentication for development mode
     addr: 8888
     db-type: "mysql"  # support mysql/sqlite
+    need-init-data: false # 是否初始化项目
 
 # captcha configuration
 captcha:

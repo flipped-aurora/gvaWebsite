@@ -21,11 +21,8 @@ title: 环境配置
 
 - develop: 2.0 dev code, for test
 
-- [gin-vue-admin_v2.0_dev](https://github.com/flipped-aurora/gin-vue-admin/tree/gin-vue-admin_v2_dev) （v2.0 不再兼容 v1.0）
+- [gin-vue-admin_v2.0_dev](https://github.com/flipped-aurora/gin-vue-admin/tree/gin-vue-admin_v2_dev) (gorm v1版本)
 
-- [gin-vue-admin_v1.0_stable](https://github.com/flipped-aurora/gin-vue-admin/tree/gin-vue-admin_v1_stable) （v1.0 稳定版，会持续更新和维护）
-
-- [gin-vue-admin_v1.0_dev](https://github.com/flipped-aurora/gin-vue-admin/tree/gin-vue-admin_v1_dev) （v1.0 稳定版，会持续更新和维护）
 
 ## 使用说明
 
@@ -101,8 +98,9 @@ swag init
 
 1. 前往[https://github.com/piexlmax/gin-vue-admin](https://github.com/piexlmax/gin-vue-admin)clone代码
 2. 打开goland server 打开后 点击左上角 file->setting->GO->Go Modules 为 Enable Go Module(vgo) 打勾 proxy输入 https://goproxy.io
-3. 将 server/db 中的sql文件导入到数据库 默认数据库为 qmplus  密码:Aa@6447985 可自行在 ./config.ymal中配置
-4. 配置完成后，进入到main.go,运行项目，自动安装依赖
+3. 在配置文件中将 need-init-data  打开为true 
+3. 默认数据库为 qmplus  密码:Aa@6447985 可自行在 ./config.ymal中配置
+4. 配置完成后，进入到main.go,运行项目，自动安装依赖 运行main.go 然后 将其need-init-data 设置为false
 5. 进入web目录，运行npm install 安装前端依赖
 6. 运行 npm run serve 开启前端程序
 

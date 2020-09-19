@@ -45,12 +45,8 @@ title: 详细教程
 
 ## Step1：数据库初始化
 
-1. 在本地安装mysql数据库
-2. 将 server  → db → qmplus.sql 导入
-
-### gormv2版本（最新版）
-1. gormv2版本初始化数据库可以利用批量创建功能，这里已经写好初始化代码，需要在main.go内打开 initialize.Data() 的注释即可初始化数据
-2. 第一次运行过后记得关闭此代码
+1. gormv2版本初始化数据库可以利用批量创建功能，需要在配置文件内开启初始化，在根目录的config.yaml中的system下存在一行 need-init-data: false
+2. 第一次运行过后记得将此关闭
 
 ## Step2：启动项目
 

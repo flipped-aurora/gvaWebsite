@@ -50,7 +50,6 @@ function Footer() {
   if (!footer) {
     return null;
   }
-
   return (
     <footer
       className={clsx('footer', {
@@ -116,7 +115,9 @@ function Footer() {
           </div>
         )}
       </div>
-      <div onClick={()=>{window.open("https://beian.miit.gov.cn/")}} style={{textAlign:"center",cursor:"pointer"}}>鲁ICP备17040210号-2</div>
+      <div onClick={() => { window.open("https://beian.miit.gov.cn/") }} style={{ textAlign: "center", cursor: "pointer" }}>鲁ICP备17040210号-2</div>
+      <script type="text/javascript" src="https://s4.cnzz.com/z_stat.php?id=1279266757&web_id=1279266757"></script>
+     
     </footer>
   );
 }

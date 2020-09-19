@@ -89,7 +89,7 @@ function Home() {
   const urlright = useBaseUrl("/img/right.svg");
  return (
     <Layout
-      title={`自动化全站后台管理系统`}
+      title={`自动化全栈后台管理系统`}
       description="gin+vue编写的自动化代码开发脚手架，是gin+vue全栈学习最好的项目，腾讯阿里开发均有采用gin-vue-admin为模型进行相关业务开发，代码自动化，加快开发速度，权限系统齐全，减少重复工作">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
