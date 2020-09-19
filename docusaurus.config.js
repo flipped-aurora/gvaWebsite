@@ -55,8 +55,8 @@ module.exports = {
                     position: 'right',
                 },
                 {
-                    to: 'eat/',
-                    label: '捐赠&购课',
+                    to: 'docs/coffee',
+                    label: '捐赠入口',
                     position: 'right',
                 },
             ],
