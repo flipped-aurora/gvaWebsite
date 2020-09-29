@@ -100,8 +100,6 @@ sqlite:
 | max-open-conns | int    | 设置打开到数据库的最大连接数                                 |
 | logger         | bool   | 是否开启Gorm全局日志                                         |
 
-
-
 ## sqlserver
 
 ```yaml
@@ -179,15 +177,19 @@ system:
   addr: 8888
   db-type: "mysql" 
   need-init-data: false
+  error-to-email: false
+  config-env: "GVA_CONFIG"
 ```
 
 | 配置名         | 类型   | 说明                                                         |
 | -------------- | ------ | ------------------------------------------------------------ |
-| use-multipoint | bool   |                                                              |
+| use-multipoint | bool   | 单点登录,默认为关闭                                          |
 | env            | string | 更改为“develop”以跳过开发模式的身份验证                      |
 | addr           | int    | 后端端口,默认8888                                            |
 | db-type        | string | 可以使用mysql/postgresql/sqlite/sqlserver,<br />mysql: 完美支持<br />postgresql:可以自行配置,但有代码不兼容,需自行测试并修改<br />sqlite:sqlite需要gcc支持 windows用户需要自行安装gcc,<br />还需要在server/core/gorm.go把注册的初始化sqlite的方法<br />sqlserver:可以自行配置,可能有代码不兼容,需自行测试并修改 |
 | need-init-data | bool   | 是否需要初始化数据                                           |
+| error-to-email | bool   | 错误是否发送邮件,要使用此功能需要配置好 [email](#email) ,还需把ErrorToEmail()中间件在 [router.go](https://github.com/flipped-aurora/gin-vue-admin/blob/gva_gormv2_dev/server/initialize/router.go) 中启用中间件,方可生效,默认不开启 |
+| config-env     | string | config.yaml文件的系统变量名称                                |
 
 ## captcha
 
@@ -254,7 +256,7 @@ email:
   email-to: 'xxx@qq.com'
   email-host: 'smtp.163.com'
   email-port: 465
-  email-isSSL: true
+  email-is-ssl: true
 ```
 
 | 配置名         | 类型   | 说明                                                         |
@@ -262,7 +264,7 @@ email:
 | email-from     | string | 用户名                                                       |
 | email-nickname | string | 对方收到的昵称                                               |
 | email-secret   | string | 密码                                                         |
-| email-to       | string | 邮件接收者,可以是多个,<br />以英文逗号(,)进行区分,最好别带空格 |
+| email-to       | string | 邮件接收者,可以是多个,<br />以英文逗号(,)进行区分,最好别带空格,如果是一个邮箱最后请不要加英文逗号(,) |
 | email-host     | string | 邮箱的主服务器地址                                           |
 | email-is-ssl   | bool   | 是否使用ssl                                                  |
 
