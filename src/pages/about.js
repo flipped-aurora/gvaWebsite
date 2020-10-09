@@ -24,7 +24,7 @@ function Hello() {
                 <Row gutter={16}>
                     <Popover content={<Image
                         width={200}
-                        src="http://qmplusimg.henrongyi.top/guanwang/weixin.jpg"
+                        src="../static/guanwang/weixin.jpg"
                     />} title="加群备注（加入gin-vue-admin交流群）" trigger="hover">
                         <Text style={{ color: "#25c2a0", fontWeight: 800,cursor:"pointer" }}>点我获取微信加群二维码 <BarcodeOutlined /></Text>
                     </Popover>
@@ -56,7 +56,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/jjz.jpg"
+                            src="../static/guanwang/jjz.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -84,7 +84,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/sc2.jpg"
+                            src="../static/guanwang/sc2.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -112,7 +112,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/sh.jpg"
+                            src="../static/guanwang/sh.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -140,7 +140,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/LL.jpg"
+                            src="../static/guanwang/LL.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -167,7 +167,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/djl.jpg"
+                            src="../static/guanwang/djl.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -193,7 +193,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/lw.jpg"
+                            src="../static/guanwang/lw.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -219,7 +219,7 @@ function Hello() {
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/YR.jpg"
+                            src="../static/guanwang/YR.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -246,7 +246,7 @@ function Hello() {
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/GL.jpg"
+                            src="../static/guanwang/GL.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -274,7 +274,7 @@ function Hello() {
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/sj.jpg"
+                            src="../static/guanwang/sj.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -303,7 +303,7 @@ function Hello() {
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="http://qmplusimg.henrongyi.top/guanwang/zbsh.jpg"
+                            src="../static/guanwang/zbsh.jpg"
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
