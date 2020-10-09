@@ -1,11 +1,11 @@
 ---
 id: server
-title: server
+title: server项目
 ---
 
-## 视频推荐
+> **server文件夹为Golang后端项目,需要有Golang基础,Gin框架基础**
 
-- server文件夹为Golang后端项目,需要有Golang基础,Gin框架基础
+## 视频推荐
 
 ### Golang教学
 
@@ -39,8 +39,6 @@ title: server
 
 [【gin教学】第二章：gin的get post delete put请求以及获取参数的方式（1010工作室出品）](https://www.bilibili.com/video/BV1Be411p7Jf)
 
-[【开源项目教学】gin-vue-admin 2.0目录介绍和自动化开发模式（1010工作室出品）](https://www.bilibili.com/video/BV1aV411d7Gm)
-
 [【gin教学】第三章：使用bind绑定参数和参数验证（1010工作室出品）](https://www.bilibili.com/video/BV1gt4y1173C)
 
 [【gin教学】第四章：gin对于文件的上传和返回（1010工作室出品）](https://www.bilibili.com/video/BV1GA411t7BR)
@@ -49,17 +47,21 @@ title: server
 
 [【gin教学】第六章：日志介绍以及工具推荐（1010工作室出品）](https://www.bilibili.com/video/BV1Bf4y1y7yh)
 
-[【gin教学】第七章：初识GROM使用GORM进行数据库操作（1010工作室出品）](https://www.bilibili.com/video/BV1Bf4y1y7yh)
+[【gin教学】第七章：初识GROM使用GORM进行数据库操作（1010工作室出品）](https://www.bilibili.com/video/BV1Bz411v78U)
 
 [【gin教学】第八章：gorm结构体的创建技巧和结合gin使用（1010工作室出品）](https://www.bilibili.com/video/BV1kC4y1t7Qi)
 
 ### gin-vue-admin版本更新说明
 
-[【gin-vue-admin】V2.2.0更新：增加日志功能,增加v-auth指令,增加一键打包二进制，增加菜单参数，增加令牌续期（1010工作室出品）](https://www.bilibili.com/video/BV1jk4y127yg)
+[【开源项目教学】gin-vue-admin 2.0目录介绍和自动化开发模式（1010工作室出品）](https://www.bilibili.com/video/BV1aV411d7Gm)
+
+[【gin-vue-admin】06/07更新：UI美化，插件功能，自动化代码增加搜索条件 字段描述 结构体中文描述（1010工作室出品）](https://www.bilibili.com/video/BV1wa4y1Y7oX)
 
 [【gin-vue-admin】V2.1.0大更新：增加字典管理，用户操作日志，从数据库一键创建CURD让自动化更加完善（1010工作室出品）](https://www.bilibili.com/video/BV1hC4y1h7PT)
 
-[【gin-vue-admin】06/07更新：UI美化，插件功能，自动化代码增加搜索条件 字段描述 结构体中文描述（1010工作室出品）](https://www.bilibili.com/video/BV1wa4y1Y7oX)
+[【gin-vue-admin】V2.2.0更新：增加日志功能,增加v-auth指令,增加一键打包二进制，增加菜单参数，增加令牌续期（1010工作室出品）](https://www.bilibili.com/video/BV1jk4y127yg)
+
+[【gin-vue-admin】09/20更新：大版本2.3.1发布，gorm更新为v2，项目初始化更加便捷，更多通用功能加入（1010工作室出品）](https://www.bilibili.com/video/BV1Jy4y1k75Z)
 
 ## server项目结构
 
@@ -72,7 +74,6 @@ title: server
 ├── global
 │   └── response
 ├── initialize
-├── log
 ├── middleware
 ├── model
 │   ├── request
@@ -82,25 +83,28 @@ title: server
 ├── router
 ├── service
 └── utils
+    └── upload
 ```
 
 | 文件夹       | 说明                    | 描述                        |
 | ------------ | ----------------------- | --------------------------- |
-| `api`        | api层                   |                             |
+| `api`        | api层                   | api层 |
 | `--v1`       | v1版本接口              | v1版本接口                  |
 | `config`     | 配置包                  | config.yaml对应的配置结构体 |
-| `core`       | 核心文件                |                             |
-| `docs`       | swagger文档目录         |                             |
-| `global`     | 全局对象                |                             |
+| `core`       | 核心文件                | 核心组件的初始化 |
+| `docs`       | swagger文档目录         | swagger文档目录 |
+| `global`     | 全局对象                | 全局对象 |
 | `--response` | json返回web端的统一封装 | json返回web端的统一封装     |
+| `initialize` | 初始化 | 路由,redis,gorm,验证器的初始化 |
 | `model`      | 模型层                  | 模型对应数据表              |
 | `--request`  | 入参结构体              | 接收前端发送到后端的数据。  |
 | `--response` | 出参结构体              | 返回给前端的数据结构体      |
-| `packfile`   | 静态文件打包            |                             |
+| `packfile`   | 静态文件打包            | 静态文件打包 |
 | `resource`   | 静态资源文件夹          | 负责存放                    |
-| `router`     | 路由层                  |                             |
-| `service`    | service层               |                             |
-| `utils`      | 工具包                  | 一些重复的问题              |
+| `router`     | 路由层                  | 路由层 |
+| `service`    | service层               | 存放业务逻辑问题 |
+| `utils`      | 工具包                  | 工具函数封装            |
+| `--upload`      | oss                  | oss接口封装        |
 
 ## 本文使用的环境
 
@@ -108,7 +112,7 @@ title: server
 
 - Goland(2020.2)
 
-## 1.初始化server项目
+## 1. 初始化server项目
 
 - Goland打开server文件夹
 - 设置GOPROXY
@@ -117,22 +121,65 @@ title: server
 - 打开go.mod文件,在文件空白处鼠标右键点击`Go Mod Tidy`
 - ![](../static/img/GoModTidy.png)
 
-## 2.config.yaml
+## 2. config.yaml
 
 - 按照 [config的详细说明](./config) 按需修改,
 
-## 3.数据库初始化
+## 3. 数据库初始化
 
 - `comfig.yaml`的mysql的配置自行修改
 
 - `config.yaml`中的`system`下存在一行`need-init-data: false`将此参数设定为true则会执行初始化数据
 	切记初次开启后 记得关闭
-- 如果哪天你看到不存在`need-init-data`这个参数,就说明使用gva的命令行工具进行初始化了
+	
+- 使用gva终端工具进行初始化数据,请按照版本对应使用终端工具
+```shell script
+# 获取gva终端工具
+go get github.com/flipped-aurora/gva
+# 进入server项目
+cd server
+# 初始化数据
+gva initdb
+```
 
-## 4.启动server项目
+## 4. 启动server项目
 
 - 完成后打开main.go, 在文件空白处鼠标右键点击`运行'go build main.go'`,或者使用图中红色框的右边的快捷键组合进行启动项目或者打开goland的终端,输入命令`go run main.go`
 - ![](../static/img/GoRunMain.png)
 
+## 5. 生成swagger自动化API文档
 
+### 5.1 安装 swagger
 
+- 可以翻墙
+````
+go get -u github.com/swaggo/swag/cmd/swag
+````
+
+- 无法翻墙
+由于国内没法安装 go.org/x 包下面的东西，推荐使用 [goproxy.io](https://goproxy.io/zh/) 或者 [goproxy.cn/](https://goproxy.cn/)
+
+```bash
+# 如果您使用的 Go 版本是 1.13 及以上(推荐)
+# 启用 Go Modules 功能
+go env -w GO111MODULE=on 
+# 配置 GOPROXY 环境变量
+go env -w GOPROXY=https://goproxy.io,direct
+
+# 使用如下命令下载swag
+go get -u github.com/swaggo/swag/cmd/swag
+```
+
+### 5.2 生成API文档
+
+````
+cd server
+swag init
+````
+执行上面的命令后，server目录下会出现docs文件夹，打开浏览器输入 [http://localhost:8888/swagger/index.html](http://localhost:8888/swagger/index.html)，即可查看swagger文档
+
+::: danger 您可能遇到的问题
+1. 启动时报数据库启动失败，请检查是否创建qmsql数据库，或者是否是您自行配置的数据库
+2. 登录时用户名密码错误，请检查数据库文件是否导入
+3. 前端 npm 下载失败，请安装cnpm 使用淘宝镜像下载 [cnpm安装方法](https://developer.aliyun.com/mirror/NPM?from=tnpm)
+:::

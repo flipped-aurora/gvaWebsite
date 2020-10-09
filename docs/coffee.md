@@ -7,9 +7,11 @@ title: 捐赠列表
 
 |  支付宝   | 微信  |
 |  :---:  | :---: |
-| ![markdown](http://qmplusimg.henrongyi.top/zfb.png "支付宝") |  ![markdown](http://qmplusimg.henrongyi.top/wxzf.png "微信") |
+| ![markdown](../static/guanwang/zfb.png "支付宝") |  ![markdown](../static/guanwang/wxzf.png "微信") |
 
 捐赠过后免费加入vip群，群内优先解答问题，提供框架搭建指导等，后期付费视频群内将免费赠送。
+
+付费支持：生产环境用户版本升级远程支持  388￥/版本 后买自动成为vip 解决更多开发中的烦恼
 
 ## 捐赠列表
 

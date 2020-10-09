@@ -52,8 +52,8 @@ GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的后台管�
 
 ### 系统架构图
 
-![系统架构图](http://qmplusimg.henrongyi.top/gin-vue-admin.png)
+![系统架构图](../static/guanwang/gin-vue-admin.png)
 
 ### 前端详细设计图 （提供者:<a href="https://github.com/baobeisuper">baobeisuper</a>）
 
-![前端详细设计图](http://qmplusimg.henrongyi.top/naotu.png)
+![前端详细设计图](../static/guanwang/naotu.png)

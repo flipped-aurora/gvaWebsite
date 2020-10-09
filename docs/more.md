@@ -11,7 +11,7 @@ gin-vue-admin 定制化开发
 ## 付费渠道
 |  支付宝   | 微信  |
 |  :---:  | :---: |
-| ![markdown](http://qmplusimg.henrongyi.top/zfb.png "支付宝") |  ![markdown](http://qmplusimg.henrongyi.top/wxzf.png "微信") |
+| ![markdown](../static/guanwang/zfb.png "支付宝") |  ![markdown](../static/guanwang/wxzf.png "微信") |
 
 支付过后，请添加微信shouzi_1994发送记录即可
 
