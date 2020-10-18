@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import { Row, Typography, Divider, Image, Col, Tag, Popover } from 'antd';
 import { BarcodeOutlined } from "@ant-design/icons"
+import useBaseUrl from '@docusaurus/useBaseUrl';
 const { Title, Text } = Typography;
 import "antd/dist/antd.css";
 
@@ -24,7 +25,7 @@ function Hello() {
                 <Row gutter={16}>
                     <Popover content={<Image
                         width={200}
-                        src="../static/guanwang/weixin.jpg"
+                        src={useBaseUrl('guanwang/weixin.jpg')}
                     />} title="加群备注（加入gin-vue-admin交流群）" trigger="hover">
                         <Text style={{ color: "#25c2a0", fontWeight: 800,cursor:"pointer" }}>点我获取微信加群二维码 <BarcodeOutlined /></Text>
                     </Popover>
@@ -56,7 +57,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="../static/guanwang/jjz.jpg"
+                            src={useBaseUrl('guanwang/jjz.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -84,7 +85,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="../static/guanwang/sc2.jpg"
+                            src={useBaseUrl('guanwang/sc2.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -112,7 +113,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="../static/guanwang/sh.jpg"
+                            src={useBaseUrl('guanwang/sh.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -140,7 +141,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="../static/guanwang/LL.jpg"
+                            src={useBaseUrl('guanwang/LL.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -167,7 +168,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="../static/guanwang/djl.jpg"
+                            src={useBaseUrl('guanwang/djl.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -193,7 +194,7 @@ function Hello() {
                     <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="../static/guanwang/lw.jpg"
+                            src={useBaseUrl('guanwang/lw.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -219,7 +220,7 @@ function Hello() {
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="../static/guanwang/YR.jpg"
+                            src={useBaseUrl('guanwang/YR.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -246,7 +247,7 @@ function Hello() {
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="../static/guanwang/GL.jpg"
+                            src={useBaseUrl('guanwang/GL.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -274,7 +275,7 @@ function Hello() {
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="../static/guanwang/sj.jpg"
+                            src={useBaseUrl('guanwang/sj.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
@@ -303,7 +304,7 @@ function Hello() {
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src="../static/guanwang/zbsh.jpg"
+                            src={useBaseUrl('guanwang/zbsh.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>

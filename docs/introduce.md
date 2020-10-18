@@ -2,9 +2,10 @@
 id: introduce
 title: 项目介绍
 ---
-
 <div align="center">
-<img src="../static/guanwang/gvalogo.jpg" width="300" height="300" />
+
+![markdown](../static/guanwang/gvalogo.jpg)
+
 </div>
 <div align="center">
 <img src="https://img.shields.io/badge/vue-2.6.10-brightgreen"/>
