@@ -2,7 +2,6 @@
 id: introduce
 title: 项目介绍
 ---
-
 <div align="center">
 
 ![logo](../static/guanwang/gvalogo.jpg "logo")
