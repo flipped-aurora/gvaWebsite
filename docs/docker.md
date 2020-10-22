@@ -11,7 +11,7 @@ title: docker
 
  ```shell
 server {
-    listen       8000;
+    listen       8080;
     server_name localhost;
 
     #charset koi8-r;

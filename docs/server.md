@@ -178,8 +178,7 @@ swag init
 ````
 执行上面的命令后，server目录下会出现docs文件夹，打开浏览器输入 [http://localhost:8888/swagger/index.html](http://localhost:8888/swagger/index.html)，即可查看swagger文档
 
-::: danger 您可能遇到的问题
+:::danger 您可能遇到的问题
 1. 启动时报数据库启动失败，请检查是否创建qmsql数据库，或者是否是您自行配置的数据库
 2. 登录时用户名密码错误，请检查数据库文件是否导入
-3. 前端 npm 下载失败，请安装cnpm 使用淘宝镜像下载 [cnpm安装方法](https://developer.aliyun.com/mirror/NPM?from=tnpm)
 :::
