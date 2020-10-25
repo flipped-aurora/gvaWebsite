@@ -25,7 +25,7 @@ GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的后台管�
 - 缓存：使用`Redis`实现记录当前活跃用户的`jwt`令牌并实现多点登录限制。
 - API文档：使用`Swagger`构建自动化文档。
 - 配置文件：使用`fsnotify`和`viper`实现`yaml`格式的配置文件。
-- 日志：使用`go-logging`实现日志记录。
+- 日志：使用`zap`实现日志记录。
 
 ## 主要功能
 - 权限管理：基于`jwt`和`casbin`实现的权限管理 

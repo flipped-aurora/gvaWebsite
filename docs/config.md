@@ -193,7 +193,6 @@ system:
   addr: 8888
   db-type: 'mysql'
   oss-type: 'local'
-  config-env: 'GVA_CONFIG'
   need-init-data: false
   use-multipoint: false
 ```
@@ -206,7 +205,6 @@ type System struct {
 	Addr          int    `mapstructure:"addr" json:"addr" yaml:"addr"`
 	DbType        string `mapstructure:"db-type" json:"dbType" yaml:"db-type"`
 	OssType       string `mapstructure:"oss-type" json:"ossType" yaml:"oss-type"`
-	ConfigEnv     string `mapstructure:"config-env" json:"configEnv" yaml:"config-env"`
 	NeedInitData  bool   `mapstructure:"need-init-data" json:"needInitData" yaml:"need-init-data"`
 	UseMultipoint bool   `mapstructure:"use-multipoint" json:"useMultipoint" yaml:"use-multipoint"`
 }
@@ -220,7 +218,6 @@ type System struct {
 | addr           | int    | 后端端口,默认8888                                            |
 | db-type        | string | 可以使用mysql/postgresql/sqlite/sqlserver,<br />mysql: 完美支持<br />postgresql:可以自行配置,但有代码不兼容,需自行测试并修改<br />sqlite:sqlite需要gcc支持 windows用户需要自行安装gcc,<br />还需要在server/core/gorm.go把注册的初始化sqlite的方法<br />sqlserver:可以自行配置,可能有代码不兼容,需自行测试并修改 |
 | oss-type       | string | 可以指定上传头像的oss为local/qiniu/aliyun/minio<br />local:本地的 `local.path` 目录<br />qiniu:七牛云<br />aliyun与minio可能框架不会集成,需自己添加,或者参考 [额外功能](oss) |
-| config-env     | string | config.yaml文件的系统变量名称                                |
 | need-init-data | bool   | 是否需要初始化数据,v2.3.1版本起支持 [gva](https://github.com/flipped-aurora/gva-ctl) 终端进行数据的初始化 |
 | use-multipoint | bool   | 单点登录,默认为关闭                                          |
 

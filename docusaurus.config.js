@@ -100,9 +100,6 @@ module.exports = {
                 {
                     title: '友情链接',
                     items: [{
-                        label: '内置强大代码生成器的高性能微服务框架 go-zero',
-                        to: 'https://github.com/tal-tech/go-zero',
-                    }, {
                         label: 'golang 开发工具包，json、sql 转 struct',
                         to: 'http://www.golangs.cn/',
                     }],

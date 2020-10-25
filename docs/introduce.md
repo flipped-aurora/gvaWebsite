@@ -4,7 +4,7 @@ title: 项目介绍
 ---
 <div align="center">
 
-![markdown](../static/guanwang/gvalogo.jpg)
+![logo](../static/guanwang/gvalogo.jpg "logo")
 
 </div>
 <div align="center">
