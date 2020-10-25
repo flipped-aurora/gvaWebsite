@@ -45,8 +45,13 @@ title: 详细教程
 
 ## Step1：数据库初始化
 
-1. gormv2版本初始化数据库可以利用批量创建功能，需要在配置文件内开启初始化，在根目录的config.yaml中的system下存在一行 need-init-data: false
-2. 第一次运行过后记得将此关闭
+（所有用户需要先创建配置文件中对应的数据库）
+
+1.windows用户直接运行server目录下的initdb.bat (双击)
+
+2.linux,mac用户运行server目录下makefile的initdb 此前需要先获取gva工具 （先make gva 再 make initdb）
+
+3.gva工具在server目录的cmd中，可以自行编译研究 （go build 或者 go install）
 
 ## Step2：启动项目
 
