@@ -127,20 +127,43 @@ title: server项目
 
 ## 3. 数据库初始化
 
-- `comfig.yaml`的mysql的配置自行修改
+### 请对应版本进行观看初始化数据的方式
 
-- `config.yaml`中的`system`下存在一行`need-init-data: false`将此参数设定为true则会执行初始化数据
-	切记初次开启后 记得关闭
-	
-- 使用gva终端工具进行初始化数据,请按照版本对应使用终端工具
-```shell script
-# 获取gva终端工具
-go get github.com/flipped-aurora/gva
-# 进入server项目
+#### V2.0.0~V2.2.0
+
+- 自行新建数据库，并导入server/db的qmPlus.sql
+
+#### V2.3.0~V2.3.31
+
+- `comfig.yaml` 的mysql的账号密码配置自行修改
+- `config.yaml` 中的 `system` 下存在一行 `need-init-data: false` 将此参数设定为 `true` 
+- 启动项目就自动通过代码方式进行初始化数据 
+
+:::danger 注意
+
+重启项目一定一定一定要记得  `need-init-data: false` 将此参数设定为 false 
+:::
+
+#### V2.3.4~master
+
+配置好 `server/config.yaml` 的 `mysql` 中的 `path` , `db-name`, `username ` ,`password`,其他的按需修改,我们 [flipped-aurora](https://github.com/flipped-aurora) 团队为各位使用者准备好了脚本
+
+`windows` 用户
+
+- 直接运行 `server` 目录下的 `initdb.bat` (双击)
+
+`linux`, `mac` 用户
+
+```shell
 cd server
-# 初始化数据
-gva initdb
+make gva
+make initdb
 ```
+
+> 说明-今后都会使用gva终端工具进行初始化数据,理由如下:
+- V2.3.0~V2.3.31所使用的方式，有人只会改成 `true` ,第二次启动就忘了改为 `false`, 导致server项目启动失败
+- 方便新增数据，而不需要跟以前一样修改 `.sql` 文件
+- gva终端初始化数据是通过代码+gorm的事务进行添加数据，大概率不同版本的mysql之间一些问题的，规避了字符集的问题问题而导致数据的导入失败，或者乱码问题
 
 ## 4. 启动server项目
 

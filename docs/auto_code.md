@@ -1,30 +1,107 @@
 ---
-id: help20200915
-title: 开发教程
+id: auto_code
+title: 使用指南
 ---
 
 ## 1. 生成一步到位代码包
 
-### 参数说明
+### 参数界面说明
 
-- Struct名称：即后台代码中 model 文件夹下的结构体文件中，结构体的名称，首字母大写。
-- tableName：数据库中生成的与结构体对应的数据表名。
-- Struct简称：用于结构体作为参数时的名称，以及路由 group 名称。这里一般与**Stuct名称**对应，但是首字母小写。
-- Struct中文名称：作为自动api描述，也是左侧菜单显示时的默认菜单名。
-- 文件名称：使用 xxx_xxx 形式命名。生成后端代码时，model下的文件名会用这里的命名。
-- 自动创建api：选中，如果不选则不会自动创建api表，需要自己去api管理里面手动增加对应路由。
+![image-20201026165650624](../static/img/image-20201026165650624.png)
 
-### 字段说明
+#### `StructName`
 
-- Field名称：struct结构体中的字段名称，首字母大写
-- Field中文名：对应struct结构体tag中的comment字段值，也是数据列表展示表格的表头名称。
-- FieldJSON：对应struct结构体tag中的json字段值。在使用struct对象调用某个字段时，使用“对象.json字段值”
-- 数据库字段名：对应数据库中的字段名称
-- 数据库字段描述：对应数据库中的列Comment值
-- Field数据类型：对应struct结构体中的字段类型
-- 数据库字段类型：对应生成的数据表中的字段类型
-- 数据库字段长度：对应生成的数据表中的字段长度
-- Field查询条件：用于实现该对象数据列表的条件查询
+- `Struct名称`
+
+- `server/model` 文件夹下的结构体文件中，结构体的名称，首字母必须**大写**。
+
+#### `TableName` 
+
+- `数据库表名`
+
+- 数据库中生成的与结构体对应的数据表名。
+
+#### `PackageName` 
+
+- `Struct简称`
+
+- 用于结构体作为参数时的名称，以及路由 group 名称。这里一般与**Stuct名称**对应，但是首字母小写。
+
+#### `Abbreviation` 
+
+- `Struct中文名称`
+
+- 作为自动api描述，也是左侧菜单显示时的默认菜单名。
+
+#### `Description` 
+
+- `文件名称`
+
+- 使用 xxx_xxx 形式命名。生成后端代码时，model下的文件名会用这里的命名。
+
+#### `AutoCreateApiToSql` 
+
+- `自动创建api`
+
+- 选中，如果不选则不会自动创建api表，需要自己去api管理里面手动增加对应路由。
+
+### 字段界面说明
+
+![image-20201026165813881](../static/img/image-20201026165813881.png)
+
+#### `FieldName`
+
+- `Field名称`
+
+- struct结构体中的字段名称，首字母**大写**
+
+#### `FieldDesc`
+
+- `Field中文名`
+
+- 对应struct结构体tag中的comment字段值，也是数据列表展示表格的表头名称。
+
+#### `FieldJson` 
+
+- `Field Json名`
+
+- 对应struct结构体tag中的json字段值。在使用struct对象调用某个字段时，使用“对象.json字段值”
+
+#### `ColumnName`
+
+- `数据库字段名`
+
+- 对应数据库中的字段名称
+
+#### `ColumnName` 
+
+- `数据库字段描述`
+
+- 对应数据库中的列Comment值
+
+#### `FieldType`
+
+- `Field数据类型`
+
+- 对应struct结构体中的字段类型
+
+#### `DataType` 
+
+- `数据库字段类型`
+
+- 对应生成的数据表中的字段类型
+
+#### `DataTypeLong` 
+
+- `数据库字段长度`
+
+- 对应生成的数据表中的字段长度
+
+#### `FieldSearchType`
+
+- `Field查询条件``
+
+- 用于实现该对象数据列表的条件查询
 
 ### 自行设计业务基础结构体模型
 
@@ -43,8 +120,8 @@ title: 开发教程
 	- router 下的 `.go` 文件放到后端项目中的 router 下。
 	- service 下的 `.go` 文件放到后端项目中的 service 下。
 - fe文件夹 → 前端代码：
-	- api 下的 `.js` 文件放到前端项目中的 src>api 下。
-	- table 下的 `.vue` 文件放到前端项目中的 src → view → struct 简称文件夹（自建）下。
+	- api 下的 `.js` 文件放到前端项目中的 src →api 下。
+	- table 下的 `.vue` 文件放到前端项目中的 src → view → [PackageName](#packagename) (文件夹自建）下。
 
 ### 数据库的表进行选择进行
 
@@ -74,34 +151,32 @@ title: 开发教程
 	- router 下的 `.go` 文件放到后端项目中的 router 下。
 	- service 下的 `.go` 文件放到后端项目中的 service 下。
 - fe文件夹 → 前端代码：
-	- api 下的 `.js` 文件放到 web/src/api 下。
-	- table 下的 `.vue` 文件放到前端项目中的 web/src/api/view/`(PackageName(文件名称)自建)`下。
+	- api 下的 `.js` 文件放到前端项目中的 src →api 下。
+	- table 下的 `.vue` 文件放到前端项目中的 src → view →[PackageName](#packagename) (文件夹自建）下。
 
 ## 2. 注册路由和数据库表
 
-这两个操作都是在后端server项目中。
-
 ### 注册路由
 
-进入 initialize → router.go 文件，在 `global.GVA_LOG.Info("router register success")` 这行代码前插入一行 `router.InitStruct名称Router(ApiGroup)` 。其中 `InitStruct名称Router` 需要与 router 文件夹下对应 struct 结构体（上边step中创建出来的struct结构体）的 `.go` 文件中的方法名保持一致。
+进入 `server/initialize` → `router.go` 文件，在 `global.GVA_LOG.Info("router register success")` 这行代码前插入一行 router.Init[StructName](structname)Router(ApiGroup)
 
 ### 注册数据库表
 
-进入 initialize → gorm.go 文件，在函数`GormDBTables` 给 `db.AutoMigrate` 方法添加 `model.struct名称{}`
+进入 initialize → gorm.go 文件，在函数 `MysqlTables`  或者 ` GormDBTables`给 `db.AutoMigrate` 方法添加 model.[StructName](structname){}
 
 ## 3.配置目录菜单
 
 进入系统 超级管理员 → 菜单管理 菜单，点击 **新增根菜单** 按钮，配置菜单信息。
 
 - 路由name：对应进入列表显示页面时的访问路径
-- 路由path：选中后边的“添加参数”后才可以输入，对应进入列表显示页面时访问路径后的参数*（没用过，目测是酱婶的）*
+- 路由path：选中后边的“添加参数”后才可以输入，对应进入列表显示页面时访问路径后的参数,具体使用方式看[视频](https://www.bilibili.com/video/BV1jk4y127yg)
 - 是否隐藏：是否在系统左侧目录菜单显示时，隐藏掉该目录菜单
 - 父节点Id：该目录菜单的父级目录菜单。这里是自动填充的数据，不需要自己操作
-- 文件路径：对应前端项目中 /view/struct简称文件夹（自建）/struct简称.vue 文件
+- 文件路径：对应前端项目中 /view/ [PackageName](#packagename) (自建)/[StructName](#structname).vue 文件
 - 展示名称：该目录菜单显示在系统左侧目录菜单中的名称
 - 图标：该目录菜单显示在系统左侧目录菜单中的图标
-- 排序标记：用于调整该目录菜单在系统左侧目录菜单中显示的上下位置*（我猜的）*
-- keepAlive：是否使用keepAlive缓存*（太菜了，虽然知道干嘛用但是几行字解释不了，如有需要，请自行百度）*
+- 排序标记：用于调整该目录菜单在系统左侧目录菜单中显示的上下位置
+- keepAlive：是否使用keepAlive缓存
 
 以上配置好后，点击 **确定** 按钮，完成菜单配置。
 
@@ -113,7 +188,7 @@ title: 开发教程
 
 如果是自己写的业务代码，这里需要配置好后端接口。进入系统 超级管理员 → api管理 菜单，点击 **新增api** 按钮，配置接口信息。
 
-- 路径：就是接口路径，比如前端项目中 src → api → struct简称.js 每个方法里的 url
+- 路径：就是接口路径，比如前端项目中 src → api → [PackageName](#packagename) .js 每个方法里的 url
 - 请求：根据接口实际选择即可
 - api分组：对应 struct 简称
 - api简介：对api的简要说明
@@ -137,15 +212,14 @@ title: 开发教程
 - 字段名：对应 Step3 中的 **FieldJSON** 字段
 - 标题：即组件label
 - 占位提示：。。。就是占位提示
-- ……：*剩下的我都没试，按需自行试用*
 
 把所有组件上边几个基本的组件属性填好以后，点击画布上方的 **复制代码** 按钮，会出现一个弹窗，让我们选择 **生成类型** 是 页面 还是 弹窗。我用的时候选的页面，具体内容应该是没差的，这里选择哪个应该不影响我们目前的需求。然后点击 **确定** 按钮，就成功复制到了我们的表单代码。
 
 接下来，
 
 - 随便找个记事本或者地方，把代码复制到里边。
-- 在复制出来的代码中，取出 `<el-form>……</el-form>` 部分代码，覆盖掉前端项目中 src → view → struct 简称文件夹（自建） → struct简称.vue 中 `此处请使用表单生成器生成form填充 表单默认绑定 formData 如手动修改过请自行修改key` 这句话。
-- 在复制出来的代码中，把 js 部分`data`方法里返回的对象复制到前端项目中，上边提及的 .vue 文件的 js 部分 `data` 方法的 `return` 对象里。（*这里表述有点乱。。但是前端一看代码就明白了。。。）*
+- 在复制出来的代码中，取出 `<el-form>……</el-form>` 部分代码，覆盖掉前端项目中 src → view →  [PackageName](#packagename)(自建) → [StructName](#structname).vue 中 `此处请使用表单生成器生成form填充 表单默认绑定 formData 如手动修改过请自行修改key` 这句话。
+- 在复制出来的代码中，把 js 部分`data`方法里返回的对象复制到前端项目中，上边提及的 .vue 文件的 js 部分 `data` 方法的 `return` 对象里
 
 ## Finish
 
