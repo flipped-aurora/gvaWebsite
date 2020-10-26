@@ -158,11 +158,11 @@ title: 使用指南
 
 ### 注册路由
 
-进入 `server/initialize` → `router.go` 文件，在 `global.GVA_LOG.Info("router register success")` 这行代码前插入一行 router.Init[StructName](structname)Router(ApiGroup)
+进入 `server/initialize` → `router.go` 文件，在 `global.GVA_LOG.Info("router register success")` 这行代码前插入一行 router.Init[StructName](#structname)Router(ApiGroup)
 
 ### 注册数据库表
 
-进入 initialize → gorm.go 文件，在函数 `MysqlTables`  或者 ` GormDBTables`给 `db.AutoMigrate` 方法添加 model.[StructName](structname){}
+进入 initialize → gorm.go 文件，在函数 `MysqlTables`  或者 ` GormDBTables`给 `db.AutoMigrate` 方法添加 model.[StructName](#structname){}
 
 ## 3.配置目录菜单
 
