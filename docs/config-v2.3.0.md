@@ -1,6 +1,6 @@
 ---
 id: config-v2.3.0
-title: config-v2.3.0
+title: config配置说明
 ---
 
 # config.yaml详细说明
