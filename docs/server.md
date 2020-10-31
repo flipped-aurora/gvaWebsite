@@ -7,6 +7,10 @@ title: server项目
 
 ## 视频推荐
 
+## 一步到位
+
+[【从环境到部署教学视频】](https://www.bilibili.com/video/BV1fV411y7dT)
+
 ### Golang教学
 
 [【golang教学】第一章：golang的安装和编辑工具安装（1010工作室出品）](https://www.bilibili.com/video/BV1Q7411K7ij)
