@@ -122,6 +122,7 @@ title: 使用指南
 - fe文件夹 → 前端代码：
 	- api 下的 `.js` 文件放到前端项目中的 src →api 下。
 	- table 下的 `.vue` 文件放到前端项目中的 src → view → [PackageName](#packagename) (文件夹自建）下。
+	- form 下的 `.vue` 文件放到前端项目中的 src → view →[PackageName](#packagename) (文件夹自建）下, 文件建议重命名看自己喜欢, 建议在 `.vue` 前加`Form`。
 
 ### 数据库的表进行选择进行
 
@@ -153,6 +154,7 @@ title: 使用指南
 - fe文件夹 → 前端代码：
 	- api 下的 `.js` 文件放到前端项目中的 src →api 下。
 	- table 下的 `.vue` 文件放到前端项目中的 src → view →[PackageName](#packagename) (文件夹自建）下。
+	- form 下的 `.vue` 文件放到前端项目中的 src → view →[PackageName](#packagename) (文件夹自建）下, 文件建议重命名看自己喜欢, 建议在 `.vue` 前加`Form`。
 
 ## 2. 注册路由和数据库表
 
