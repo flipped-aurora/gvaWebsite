@@ -154,13 +154,33 @@ title: server项目
 
 `windows` 用户
 
+方式一(不可见错误报错):
+
+- ```go
+  // 开启 Go Modules模式并设置代理
+  go env -w GO111MODULE=on
+  go env -w GOPROXY=https://goproxy.io,direct
+  ```
+
 - 直接运行 `server` 目录下的 `initdb.bat` (双击)
+
+方式二(可见错误报错):
+
+- 以server为项目打开的,打开Goland的终端
+```shell script
+initdb.bat
+```
 
 `linux`, `mac` 用户
 
 ```shell
-cd server
+# 开启 Go Modules模式并设置代理, 已经设置的用户可跳过
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.io,direct
+
+# 在server项目下,先构建gva终端工具
 make gva
+# 使用gva进行初始化数据, 如果不使用make initdb, 使用./gva initdb也是可以的
 make initdb
 ```
 
