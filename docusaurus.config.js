@@ -50,6 +50,11 @@ module.exports = {
                     position: 'right',
                 },
                 {
+                    href: 'https://gitee.com/pixelmax/gin-vue-admin',
+                    label: 'Gitee',
+                    position: 'right',
+                },
+                {
                     href: 'https://www.aliyun.com/minisite/goods?userCode=xqe01uob',
                     label: '特惠服务器',
                     position: 'right',
