@@ -9,7 +9,9 @@ title: server项目
 
 ## 一步到位
 
-[【从环境到部署教学视频】](https://www.bilibili.com/video/BV1fV411y7dT)
+- [【gin-vue-admin】从部署到发布：手把手带你使用GIN-VUE-ADMIN《2.3.5版本》（1010工作室出品）](https://www.bilibili.com/video/BV1fV411y7dT)
+
+- [【gin-vue-admin】11/28更新：工作流介绍以及简单使用教学（1010工作室出品）](https://www.bilibili.com/video/BV1Ka411F7Ji)
 
 ### Golang教学
 

@@ -5,10 +5,9 @@ title: 配置（使用）教程
 
 ## 可以先看一遍视频
 
-- [【开源项目教学】gin-vue-admin 2.0目录介绍和自动化开发模式（1010工作室出品）](https://www.bilibili.com/video/av413011289)
-- [【gin-vue-admin】06/07更新：UI美化，插件功能，自动化代码增加搜索条件 字段描述 结构体中文描述（1010工作室出品）](https://www.bilibili.com/video/av668469402)
-- [gin-vue-admin-2020-6-13直播分享会](https://www.bilibili.com/video/av328557270)  （这个比较长，快进找重点）
-- [【gin-vue-admin】V2.1.0大更新：增加字典管理，用户操作日志，从数据库一键创建CURD让自动化更加完善（1010工作室出品）](https://www.bilibili.com/video/av796356364)
+- [【gin-vue-admin】从部署到发布：手把手带你使用GIN-VUE-ADMIN《2.3.5版本》（1010工作室出品）](https://www.bilibili.com/video/BV1fV411y7dT)
+
+- [【gin-vue-admin】11/28更新：工作流介绍以及简单使用教学（1010工作室出品）](https://www.bilibili.com/video/BV1Ka411F7Ji)
 
 ## 大致了解项目结构
 

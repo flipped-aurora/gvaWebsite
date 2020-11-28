@@ -17,6 +17,12 @@ GIN-VUE-ADMIN 是一款基于GIN+VUE+ElementUI开发的后台管理系统快速�
 
 GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的后台管理系统，拥有jwt鉴权，动态路由，动态菜单，casbin鉴权，表单生成器，代码生成器等功能，提供了多种示例文件，让大家把更多时间专注在业务开发上。
 
+## 视频教程
+
+- [【gin-vue-admin】从部署到发布：手把手带你使用GIN-VUE-ADMIN《2.3.5版本》（1010工作室出品）](https://www.bilibili.com/video/BV1fV411y7dT)
+
+- [【gin-vue-admin】11/28更新：工作流介绍以及简单使用教学（1010工作室出品）](https://www.bilibili.com/video/BV1Ka411F7Ji)
+
 ## 技术选型
 
 - 前端：用基于`vue`的`Element-UI`构建基础页面。
