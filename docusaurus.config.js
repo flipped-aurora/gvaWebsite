@@ -8,7 +8,7 @@ module.exports = {
     organizationName: 'flipped-aurora', // Usually your GitHub org/user name.
     projectName: 'gin-vue-admin', // Usually your repo name.
     themeConfig: {
-        colorMode:{
+        colorMode: {
             disableSwitch: true,
         },
         navbar: {
@@ -28,7 +28,7 @@ module.exports = {
                     label: '关于我们',
                     position: 'right',
                 },
-                
+
                 {
                     href: 'https://www.yuque.com/flipped-aurora/',
                     label: '知识库',
