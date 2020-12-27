@@ -155,12 +155,13 @@ title: 使用指南
 	- api 下的 `.js` 文件放到前端项目中的 src →api 下。
 	- table 下的 `.vue` 文件放到前端项目中的 src → view →[PackageName](#packagename) (文件夹自建）下。
 	- form 下的 `.vue` 文件放到前端项目中的 src → view →[PackageName](#packagename) (文件夹自建）下, 文件建议重命名看自己喜欢, 建议在 `.vue` 前加`Form`。
+	- form 下的 `workflow****.vue` 文件放到前端项目中的 src → view →[PackageName](#packagename) (文件夹自建）下, 文件建议重命名看自己喜欢, 建议在 `.vue` 前加`Form`。 此文件服务于工作流模板
 
 ## 2. 注册路由和数据库表
 
 ### 注册路由
 
-进入 `server/initialize` → `router.go` 文件，在 `global.GVA_LOG.Info("router register success")` 这行代码前插入一行 router.Init[StructName](#structname)Router(ApiGroup)
+进入 `server/initialize` → `router.go` 文件，在 `global.GVA_LOG.Info("router register success")` 这行代码前插入一行 router.Init[StructName](#structname)Router(PrivateGroup) 或者 router.Init[StructName](#structname)Router(PublicGroup) 其中 PrivateGroup 为鉴权路由常用于后台管理相关权限比较严肃的服务 PublicGroup为开放接口 不走鉴权操作
 
 ### 注册数据库表
 
