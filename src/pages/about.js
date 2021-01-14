@@ -267,7 +267,7 @@ function Hello() {
                             <Tag color="#25c2a0">java</Tag>
                             <Tag color="#25c2a0">js</Tag>
                             <Tag color="#25c2a0">database</Tag>
-                            <Tag color="#25c2a0">c++</Tag>
+                            <Tag color="volcano">c++</Tag>
                         </div>
                     </div>
                 </Row>
@@ -275,27 +275,25 @@ function Hello() {
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src={useBaseUrl('guanwang/sj.jpg')}
+                            src={useBaseUrl('guanwang/bin.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
                         <div>
-                            <Title level={5}>**千里默默**</Title>
+                            <Title level={5}>**彬**</Title>
                         </div>
-                        <Text type="secondary">UI设计•北京</Text>
+                        <Text type="secondary">Go后端开发•深圳</Text>
                         <div style={{ paddingTop: "5px" }}>
-                            <Text>个人介绍：生活在帝都的设计师，认知的意义在于理解世界，下定决心别放弃，坚持，机会就在眼前</Text>
+                            <Text>个人介绍：永远不要高看自己</Text>
                         </div>
                         <div style={{ paddingTop: "5px" }}>
-                            <Text>主要职责：负责用户界面设计，视觉设计，把握产品最终界面实现效果</Text>
+                            <Text>主要职责：负责gin-vue-admin的新功能研发测试与改进</Text>
                         </div>
                         <div style={{ paddingTop: "5px" }}>
                             <Text>主要技能：</Text>
-                            <Tag color="#25c2a0">AI</Tag>
-                            <Tag color="#25c2a0">AE</Tag>
-                            <Tag color="#25c2a0">PS</Tag>
-                            <Tag color="#25c2a0">PR</Tag>
-                            <Tag color="#25c2a0">SKETCH</Tag>
+                            <Tag color="#25c2a0">Golang</Tag>
+                            <Tag color="#25c2a0">Python</Tag>
+                            <Tag color="volcano">嘴遁</Tag>
                         </div>
                     </div>
                 </Row>
@@ -340,7 +338,7 @@ function Hello() {
                     <Title level={3}>广告赞助</Title>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
-                    <Text>目前<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin</span>Github已经拥有<span style={{ color: "#25c2a0", fontWeight: 800 }}>4.6K+</span>的star，项目官网以及github页面每天都有大量的访问量，您可以成为Gin-Vue-Admin的赞助商，我们会在适当的位置，悬挂您的推广内容</Text>
+                    <Text>目前<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin</span>Github已经拥有<span style={{ color: "#25c2a0", fontWeight: 800 }}>6K+</span>的star，项目官网以及github页面每天都有大量的访问量，您可以成为Gin-Vue-Admin的赞助商，我们会在适当的位置，悬挂您的推广内容</Text>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
                     <Text>赞助请加微信：<span style={{ color: "#25c2a0", fontWeight: 800 }}>shouzi_1994</span>标明<span style={{ color: "#25c2a0", fontWeight: 800 }}>广告赞助</span></Text>
