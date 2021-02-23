@@ -74,13 +74,17 @@ GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的后台管�
 
 在 server下 go build 得到一个可执行文件 然后将可执行文件和config.ymal 以及 resource 文件夹上传至服务器 三者最好放在同一路径下 最终服务器目录结构可能如下 
 
-├── breakpointDir  // 后续断点续传自动生成
-├── chunk   // 后续断点续传自动生成
-├── fileDir   // 后续断点续传自动生成
-├── finish   // 后续断点续传自动生成
-├── resource
-│   └── 子目录文件					
-├── dist
-│   └── 子目录文件
-├── gin-vue-admin
-├── config.ymal
+```shell
+
+    ├── breakpointDir  // 后续断点续传自动生成
+    ├── chunk   // 后续断点续传自动生成
+    ├── fileDir   // 后续断点续传自动生成
+    ├── finish   // 后续断点续传自动生成
+    ├── resource
+    │   └── 子目录文件					
+    ├── dist
+    │   └── 子目录文件
+    ├── gin-vue-admin
+    ├── config.ymal
+    
+```

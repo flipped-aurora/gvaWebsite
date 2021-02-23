@@ -113,6 +113,15 @@ function Home() {
               to={useBaseUrl('docs/')}>
               快速开始
             </Link>
+            <Link
+              style={{ border: "2px solid #fff",marginLeft: "30px" }}
+              className={clsx(
+                'button button--outline button--lg',
+                styles.getStarted,
+              )}
+              to={useBaseUrl('docs/coffee')}>
+              捐赠列表
+            </Link>
           </div>
 
         </div>
