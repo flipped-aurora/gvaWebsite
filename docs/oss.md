@@ -124,7 +124,7 @@ import (
 var Oss OSS
 
 type OSS interface {
-	Upload(file *multipart.FileHeader) (string, string, error)
+	UploadFile(file *multipart.FileHeader) (string, string, error)
 	DeleteFile(key string) error
 }
 
@@ -146,6 +146,7 @@ func NewOss() OSS {
 	default:
 		Oss = &Local{}
 	}
+	return Oss
 }
 ```
 
@@ -170,7 +171,7 @@ import (
 type Local struct{}
 
 // Upload 上传文件
-func (l Local) Upload(file *multipart.FileHeader) (string, string, error) {
+func (l Local) UploadFile(file *multipart.FileHeader) (string, string, error) {
 	// 读取文件后缀
 	ext := path.Ext(file.Filename)
 	// 读取文件名并加密
@@ -241,8 +242,8 @@ import (
 
 type Qiniu struct{}
 
-// Upload 上传文件
-func (*Qiniu) Upload(file *multipart.FileHeader) (string, string, error) {
+// UploadFile 上传文件
+func (*Qiniu) UploadFile(file *multipart.FileHeader) (string, string, error) {
 	putPolicy := storage.PutPolicy{Scope: global.GVA_CONFIG.Qiniu.Bucket}
 	mac := qbox.NewMac(global.GVA_CONFIG.Qiniu.AccessKey, global.GVA_CONFIG.Qiniu.SecretKey)
 	upToken := putPolicy.UploadToken(mac)
@@ -319,8 +320,8 @@ import (
 
 type Minio struct{}
 
-// Upload 上传文件
-func (*Minio) Upload(file *multipart.FileHeader) (string, string, error) {
+// UploadFile 上传文件
+func (*Minio) UploadFile(file *multipart.FileHeader) (string, string, error) {
 	client, newErr := minio.New(global.GVA_CONFIG.Minio.Endpoint, &minio.Options{ // 初始化minio client对象
 		Creds: credentials.NewStaticV4(global.GVA_CONFIG.Minio.Id, global.GVA_CONFIG.Minio.Secret, global.GVA_CONFIG.Minio.Token),
 		Secure: global.GVA_CONFIG.Minio.UseSsl,
@@ -382,7 +383,7 @@ func (*Minio) DeleteFile(key string) error {
 }
 ```
 
-server/utils/aliyun.go
+## server/utils/aliyun.go
 
 ```go
 package upload
@@ -399,8 +400,8 @@ import (
 
 type AliYun struct{}
 
-// Upload 上传文件
-func (*AliYun) Upload(file *multipart.FileHeader) (string, string, error) {
+// UploadFile 上传文件
+func (*AliYun) UploadFile(file *multipart.FileHeader) (string, string, error) {
 	var storageType oss.Option
 	client, newErr := oss.New(global.GVA_CONFIG.Aliyun.Endpoint, global.GVA_CONFIG.Aliyun.AccessKeyID, global.GVA_CONFIG.Aliyun.SecretAccessKey, oss.Timeout(10, 120))
 	if newErr != nil {

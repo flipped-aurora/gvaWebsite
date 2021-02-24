@@ -137,7 +137,7 @@ func ZapRecovery(stack bool) gin.HandlerFunc {
 }
 ```
 
-- [v2.3.0](https://github.com/flipped-aurora/gin-vue-admin/releases/tag/v2.3.0)版本无需添加此文件代码
+- [v2.3.0](https://github.com/flipped-aurora/gin-vue-admin/releases/tag/v2.3.0)版本以上无需添加此文件代码
 
 > 使用ZapRecovery()中间件
 
