@@ -135,6 +135,29 @@ title: server项目-先启动
 
 ### 请对应版本进行观看初始化数据的方式
 
+#### V2.4.0~master(最新版)
+
+:::danger 注意
+
+mac/linux/windows 都不需要配置 `server/config.yaml` 的 `mysql` 中的 `path` , `db-name`, `username ` ,`password`
+
+:::
+
+##### 1. 启动server项目 与 web项目
+
+![image-20210306215747383](../static/img/image-20210306215747383.png)
+
+2. 在浏览器填写 `host`,`port `,`userName ` ,`password ` ,`dbName` , 点击立即初始化
+
+   ![image-20210306221404478](../static/img/image-20210306221404478.png)
+
+3. 操作成功后会跳转到登录页面, 页面有一个`操作成功`的提示, 这就是初始化数据成功的标志
+
+   ![image-20210306221058462](../static/img/image-20210306221058462.png)
+
+
+### 以下为旧版本
+
 #### V2.0.0~V2.2.0
 
 - 自行新建数据库，并导入server/db的qmPlus.sql
@@ -197,25 +220,6 @@ mysql>=5.7版本的数据库，一定情况下会初始化失败，此时注意�
 - 方便新增数据，而不需要跟以前一样修改 `.sql` 文件
 - gva终端初始化数据是通过代码+gorm的事务进行添加数据，大概率不同版本的mysql之间一些问题的，规避了字符集的问题问题而导致数据的导入失败，或者乱码问题
 
-#### V2.4.0~master
-
-:::danger 注意
-
-mac/linux/windows 都不需要配置 `server/config.yaml` 的 `mysql` 中的 `path` , `db-name`, `username ` ,`password`
-
-:::
-
-##### 1. 启动server项目 与 web项目
-
-![image-20210306215747383](../static/img/image-20210306215747383.png)
-
-3. 在浏览器填写 `host`,`port `,`userName ` ,`password ` ,`dbName` , 点击立即初始化
-
-   ![image-20210306221404478](../static/img/image-20210306221404478.png)
-
-4. 操作成功后会跳转到登录页面, 页面有一个`操作成功`的提示, 这就是初始化数据成功的标志
-
-   ![image-20210306221058462](../static/img/image-20210306221058462.png)
 
 ## 4. 启动server项目
 
