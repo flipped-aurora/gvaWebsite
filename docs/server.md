@@ -1,6 +1,6 @@
 ---
 id: server
-title: server项目
+title: server项目-先启动
 ---
 
 > **server文件夹为Golang后端项目,需要有Golang基础,Gin框架基础**
@@ -129,11 +129,34 @@ title: server项目
 
 ## 2. config.yaml
 
-- 按照 [config的详细说明](./config) 按需修改,
+- 按照 [config的详细说明](./config) 按需修改, `V2.4.0` 版本以后不需要配置mysql相关配置, [点我跳转](#v240master)
 
 ## 3. 数据库初始化
 
 ### 请对应版本进行观看初始化数据的方式
+
+#### V2.4.0~master(最新版)
+
+:::danger 注意
+
+mac/linux/windows 都不需要配置 `server/config.yaml` 的 `mysql` 中的 `path` , `db-name`, `username ` ,`password`
+
+:::
+
+##### 1. 启动server项目 与 web项目
+
+![image-20210306215747383](../static/img/image-20210306215747383.png)
+
+2. 在浏览器填写 `host`,`port `,`userName ` ,`password ` ,`dbName` , 点击立即初始化
+
+   ![image-20210306221404478](../static/img/image-20210306221404478.png)
+
+3. 操作成功后会跳转到登录页面, 页面有一个`操作成功`的提示, 这就是初始化数据成功的标志
+
+   ![image-20210306221058462](../static/img/image-20210306221058462.png)
+
+
+### 以下为旧版本
 
 #### V2.0.0~V2.2.0
 
@@ -150,7 +173,7 @@ title: server项目
 重启项目一定一定一定要记得  `need-init-data: false` 将此参数设定为 false 
 :::
 
-#### V2.3.4~master
+#### V2.3.4~V2.3.9
 
 配置好 `server/config.yaml` 的 `mysql` 中的 `path` , `db-name`, `username ` ,`password`,其他的按需修改,我们 [flipped-aurora](https://github.com/flipped-aurora) 团队为各位使用者准备好了脚本
 
@@ -196,6 +219,7 @@ mysql>=5.7版本的数据库，一定情况下会初始化失败，此时注意�
 - V2.3.0~V2.3.31所使用的方式，有人只会改成 `true` ,第二次启动就忘了改为 `false`, 导致server项目启动失败
 - 方便新增数据，而不需要跟以前一样修改 `.sql` 文件
 - gva终端初始化数据是通过代码+gorm的事务进行添加数据，大概率不同版本的mysql之间一些问题的，规避了字符集的问题问题而导致数据的导入失败，或者乱码问题
+
 
 ## 4. 启动server项目
 
