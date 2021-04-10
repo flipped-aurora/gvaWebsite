@@ -160,7 +160,6 @@ function DocSidebarItem(props) {
       return <DocSidebarItemLink {...props} />;
   }
 }
-
 function DocSidebar({path, sidebar, sidebarCollapsible = true}) {
   const [showResponsiveSidebar, setShowResponsiveSidebar] = useState(false);
   const {
@@ -184,14 +183,16 @@ function DocSidebar({path, sidebar, sidebarCollapsible = true}) {
       className={clsx(styles.sidebar, {
         [styles.sidebarWithHideableNavbar]: hideOnScroll,
       })}>
-      <div className={clsx(
+      <Link className={clsx(
                 styles.ad
-              )}>
+              )}
+              to="/docs/payment"
+              >
                 <div>
                   广告位招租
                 </div>
                 <div>微信：shouzi_1994</div>
-              </div>
+      </Link>
       {hideOnScroll && (
         <Link
           tabIndex="-1"
