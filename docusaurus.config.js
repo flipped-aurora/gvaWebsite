@@ -107,6 +107,9 @@ module.exports = {
                     items: [{
                         label: 'golang 开发工具包，json、sql 转 struct',
                         to: 'http://www.golangs.cn/',
+                    },{
+                        label: 'gin-vue-devops 基于Gin-Vue-Admin开发的DevOps平台',
+                        to: 'https://github.com/openstack-test/gin-vue-devops',
                     }],
                 },
 
