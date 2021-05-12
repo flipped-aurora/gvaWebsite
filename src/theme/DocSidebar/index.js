@@ -15,6 +15,8 @@ import useScrollPosition from '@theme/hooks/useScrollPosition';
 import Link from '@docusaurus/Link';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import styles from './styles.module.css';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 const MOBILE_TOGGLE_SIZE = 24;
 
 function usePrevious(value) {
@@ -183,6 +185,16 @@ function DocSidebar({path, sidebar, sidebarCollapsible = true}) {
       className={clsx(styles.sidebar, {
         [styles.sidebarWithHideableNavbar]: hideOnScroll,
       })}>
+        <Link className={clsx(
+                styles.ad
+              )}
+              to="https://cool-js.com"
+              >
+                <img
+                onClick={()=>{return fasle}}
+                            src={useBaseUrl('guanwang/cool-admin.jpg')}
+                        />
+      </Link>
       <Link className={clsx(
                 styles.ad
               )}

@@ -107,4 +107,5 @@
   align-items: center;
   color: #666;
   cursor: pointer;
+  overflow: hidden;
 }
