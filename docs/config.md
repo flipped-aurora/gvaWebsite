@@ -1,6 +1,6 @@
 ---
 id: config
-title: server/config.yaml
+title: 配置文件 server/config.yaml
 ---
 
 ## JWT
@@ -11,13 +11,17 @@ title: server/config.yaml
 # jwt configuration
 jwt:
   signing-key: 'qmPlus'
+  expires-time: 604800
+  buffer-time: 86400
 ```
 
 ### struct
 
 ```go
 type JWT struct {
-	SigningKey string `mapstructure:"signing-key" json:"signingKey" yaml:"signing-key"`
+	SigningKey  string `mapstructure:"signing-key" json:"signingKey" yaml:"signing-key"`    // jwt签名
+	ExpiresTime int64  `mapstructure:"expires-time" json:"expiresTime" yaml:"expires-time"` // 过期时间
+	BufferTime  int64  `mapstructure:"buffer-time" json:"bufferTime" yaml:"buffer-time"`    // 缓冲时间
 }
 ```
 
@@ -26,6 +30,8 @@ type JWT struct {
 | 配置名      | 类型   | 说明      |
 | :---------- | :----- | :-------- |
 | signing-key | string | jwt的签名 |
+| expires-time | string | 过期时间 |
+| buffer-time | string | 缓冲时间（过期前这段时间内有过请求会刷新jwt续期） |
 
 ## Zap
 
