@@ -185,7 +185,7 @@ function DocSidebar({path, sidebar, sidebarCollapsible = true}) {
       className={clsx(styles.sidebar, {
         [styles.sidebarWithHideableNavbar]: hideOnScroll,
       })}>
-        <Link className={clsx(
+        {/* <Link className={clsx(
                 styles.ad
               )}
               to="https://cool-js.com"
@@ -194,7 +194,7 @@ function DocSidebar({path, sidebar, sidebarCollapsible = true}) {
                 onClick={()=>{return fasle}}
                             src={useBaseUrl('guanwang/cool-admin.jpg')}
                         />
-      </Link>
+      </Link> */}
       <Link className={clsx(
                 styles.ad
               )}
