@@ -302,21 +302,22 @@ function Hello() {
                 <div style={{ display: "inline-block", paddingTop: "20px" }}>
                         <Image
                             width={140}
-                            src={useBaseUrl('guanwang/zbsh.jpg')}
+                            src={useBaseUrl('guanwang/ph.jpg')}
                         />
                     </div>
                     <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
                         <div>
-                            <Title level={5}>**知白守黑**</Title>
+                            <Title level={5}>**胖虎**</Title>
                         </div>
-                        <Text type="secondary">萌新开发•合肥</Text>
+                        <Text type="secondary">前端开发•合肥</Text>
                         <div style={{ paddingTop: "5px" }}>
-                            <Text>个人介绍：00后，安徽大学信息技术英才班学生，热爱计算机学科。爱好广泛，美食、旅行、摄影、游戏、聊天。希望能够成为独挡一面的工程师，也想和志同道合的大佬们交朋友。</Text>
+                            <Text>个人介绍：随叫胖虎，但是也不怎么胖，喜欢前端是因为可以随时可以看到自己所展示的。</Text>
                         </div>
                         <div style={{ paddingTop: "5px" }}>
                             <Text>主要技能：</Text>
-                            <Tag color="#25c2a0">JS</Tag>
-                            <Tag color="#25c2a0">C</Tag>
+                            <Tag color="#25c2a0">VUE</Tag>
+                            <Tag color="#25c2a0">uni-app</Tag>
+                            <Tag color="blue">欺负大雄</Tag>
                         </div>
                     </div>
                 </Row>
@@ -338,7 +339,7 @@ function Hello() {
                     <Title level={3}>广告赞助</Title>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
-                    <Text>目前<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin</span>Github已经拥有<span style={{ color: "#25c2a0", fontWeight: 800 }}>6K+</span>的star，项目官网以及github页面每天都有大量的访问量，您可以成为Gin-Vue-Admin的赞助商，我们会在适当的位置，悬挂您的推广内容</Text>
+                    <Text>目前<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin</span>Github已经拥有<span style={{ color: "#25c2a0", fontWeight: 800 }}>8K+</span>的star，项目官网以及github页面每天都有大量的访问量，您可以成为Gin-Vue-Admin的赞助商，我们会在适当的位置，悬挂您的推广内容</Text>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
                     <Text>赞助请加微信：<span style={{ color: "#25c2a0", fontWeight: 800 }}>shouzi_1994</span>标明<span style={{ color: "#25c2a0", fontWeight: 800 }}>广告赞助</span></Text>
