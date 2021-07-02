@@ -7,7 +7,7 @@ title: docker-compose
 
 - 使用 `nginx` 镜像
 
-`my.conf` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的[my.conf](https://github.com/flipped-aurora/gin-vue-admin/blob/master/.docker-compose/nginx/conf.d/my.conf)
+`my.conf` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的[my.conf](https://github.com/flipped-aurora/gin-vue-admin/blob/master/web/.docker-compose/nginx/conf.d/my.conf)
 
  ```shell
 server {
@@ -29,7 +29,7 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
         rewrite ^/api/(.*)$ /$1 break;  #重写
-        proxy_pass http://127.0.0.1:8888; # 设置代理服务器的协议和地址
+        proxy_pass http://177.7.0.12:8888; # 设置代理服务器的协议和地址
      }
 
     location /api/swagger/index.html {
@@ -38,17 +38,17 @@ server {
  }
  ```
 
-`Dockerfile` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的[dockerfile_web](https://github.com/flipped-aurora/gin-vue-admin/blob/master/dockerfile_web)
+`Dockerfile` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的[Dockerfile](https://github.com/flipped-aurora/gin-vue-admin/blob/master/web/Dockerfile)
 
 ```dockerfile
 # 声明镜像来源为node:12.16.1
 FROM node:12.16.1
 
 # 声明工作目录
-WORKDIR /web/
+WORKDIR /gva_web/
 
-# 拷贝web项目到当前工作目录
-COPY web/ .
+# 拷贝整个web项目到当前工作目录
+COPY . .
 
 # 通过npm下载cnpm
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
@@ -58,8 +58,7 @@ RUN cnpm install || npm install
 
 # 使用npm run build命令打包web项目
 RUN npm run build
-
-# ======= 以下为多阶段构建 =======
+# ===================================================== 以下为多阶段构建 ==========================================================
 
 # 声明镜像来源为nginx:alpine, alpine 镜像小
 FROM nginx:alpine
@@ -71,163 +70,41 @@ LABEL MAINTAINER="SliverHorn@sliver_horn@qq.com"
 COPY .docker-compose/nginx/conf.d/my.conf /etc/nginx/conf.d/my.conf
 
 # 从第一阶段进行拷贝文件
-COPY --from=0 /web/dist /usr/share/nginx/html
+COPY --from=0 /gva_web/dist /usr/share/nginx/html
+
+# 查看/etc/nginx/nginx.conf文件
+RUN cat /etc/nginx/nginx.conf
+
+# 查看 /etc/nginx/conf.d/my.conf
+RUN cat /etc/nginx/conf.d/my.conf
+
+# 查看 文件是否拷贝成功
+RUN ls -al /usr/share/nginx/html
 ```
 
 ## Server使用Docker打包示例
 
-`server-handle.sh` 就是为了移除容器的旧配置文件,新增适配了docker-compose的脚本
-
 - `mysql` -> `path` 的 `mysql` 会自动获取mysql服务的容器内部ip及端口
 - `redis` -> `path` 的 `redis` 会自动获取redis服务的容器内部ip
 
-```shell
-#! /bin/bash
-
-rm -f ./config.yaml
-# 生成config.yaml文件, 用于docker-compose的使用
-touch ./config.yaml
-filename="./config.yaml"
-cat>"${filename}"<<EOF
-# Gin-Vue-Admin Global Configuration
-# jwt configuration
-jwt:
-  signing-key: 'qmPlus'
-# zap logger configuration
-zap:
-  level: 'info'
-  format: 'console'
-  prefix: '[GIN-VUE-ADMIN]'
-  director: 'log'
-  link-name: 'latest_log'
-  show-line: true
-  encode-level: 'LowercaseColorLevelEncoder'
-  stacktrace-key: 'stacktrace'
-  log-in-console: true
-# redis configuration
-redis:
-  db: 0
-  addr: '177.7.0.14:6379'
-  password: ''
-# email configuration
-email:
-  to: 'xxx@qq.com'
-  port: 465
-  from: 'xxx@163.com'
-  host: 'smtp.163.com'
-  is-ssl: true
-  secret: 'xxx'
-  nickname: 'test'
-# casbin configuration
-casbin:
-  model-path: './resource/rbac_model.conf'
-# system configuration
-system:
-  env: 'public'  # Change to "develop" to skip authentication for development mode
-  addr: 8888
-  db-type: 'mysql'
-  oss-type: 'local'
-  config-env: 'GVA_CONFIG'
-  need-init-data: true
-  use-multipoint: false
-# captcha configuration
-captcha:
-  key-long: 6
-  img-width: 240
-  img-height: 80
-# mysql connect configuration
-mysql:
-  path: '177.7.0.13:3306'
-  config: 'charset=utf8mb4&parseTime=True&loc=Local'
-  db-name: 'qmPlus'
-  username: 'root'
-  password: 'Aa@6447985'
-  max-idle-conns: 10
-  max-open-conns: 10
-  log-mode: false
-# sqlite connect configuration (sqlite需要gcc支持 windows用户需要自行安装gcc)
-sqlite:
-  path: 'db.db'
-  max-idle-conns: 10
-  max-open-conns: 10
-  logger: true
-# Sqlserver connect configuration
-sqlserver:
-  path: 'localhost:9930'
-  db-name: 'gorm'
-  username: 'gorm'
-  password: 'LoremIpsum86'
-  max-idle-conns: 10
-  max-open-conns: 10
-  logger: true
-# Postgresql connect configuration
-postgresql:
-  host: '127.0.0.1'
-  port: '9920'
-  config: 'sslmode=disable TimeZone=Asia/Shanghai'
-  db-name: 'gorm'
-  username: 'gorm'
-  password: 'gorm'
-  max-idle-conns: 10
-  max-open-conns: 10
-  prefer-simple-protocol: true
-  logger: false
-# local configuration
-local:
-  path: 'uploads/file'
-# qiniu configuration (请自行七牛申请对应的 公钥 私钥 bucket 和 域名地址)
-qiniu:
-  zone: 'ZoneHuadong'
-  bucket: 'qm-plus-img'
-  img-path: 'http://qmplusimg.henrongyi.top'
-  use-https: false
-  access-key: '25j8dYBZ2wuiy0yhwShytjZDTX662b8xiFguwxzZ'
-  secret-key: 'pgdbqEsf7ooZh7W3xokP833h3dZ_VecFXPDeG5JY'
-  use-cdn-domains: false
-EOF
-```
-
-`Dockerfile` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的 [dockerfile_server](https://github.com/flipped-aurora/gin-vue-admin/blob/master/dockerfile_server)
+`Dockerfile` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的 [Dockerfile](https://github.com/flipped-aurora/gin-vue-admin/blob/master/server/Dockerfile)
 
 ```dockerfile
 # 声明镜像来源为golang:alpine
 FROM golang:alpine
 
-# 设置环境变量GO111MODULE为on
-ENV GO111MODULE=on
-
-# 设置环境变量GOPROXY为https://goproxy.io,direct
-ENV GOPROXY=https://goproxy.io,direct
-
 # 声明工作目录
 WORKDIR /go/src/gin-vue-admin
 
-# 拷贝server项目到工作目录
-COPY server/ ./
+# 拷贝整个server项目到工作目录
+COPY . .
 
-# 查看config.yaml配置文件
-RUN cat ./config.yaml
+# go generate 编译前自动执行代码
+# go env 查看go的环境变量
+# go build -o server . 打包项目生成文件名为server的二进制文件
+RUN go generate && go env && go build -o server .
 
-# 拷贝.docker-compose/shell/server-handle.sh脚本文件到工作目录
-COPY .docker-compose/shell/server-handle.sh .
-
-# ls -al命令的作用是查看工作目录的所有文件, 这步目的是检验脚本文件是否拷贝成功
-RUN ls -al
-
-# 执行server-handle.sh脚本
-RUN sh ./server-handle.sh
-
-# 删除server-handle.sh脚本
-RUN rm -f server-handle.sh
-
-# 查看config.yaml配置文件,查看通过脚本文件替换config.yaml配置文件
-RUN cat ./config.yaml
-
-# go env为查看go的环境变量, go build -o server . 为打包项目,二进制
-RUN go env && go build -o server .
-
-
-# ======= 以下为多阶段构建 =======
+# ==================================================== 以下为多阶段构建 ==========================================================
 
 # 声明镜像来源为alpine:latest
 FROM alpine:latest
@@ -238,23 +115,21 @@ LABEL MAINTAINER="SliverHorn@sliver_horn@qq.com"
 # 声明工作目录
 WORKDIR /go/src/gin-vue-admin
 
-# 拷贝打包好的server二进制文件到当前工作目录
-COPY --from=0 /go/src/gin-vue-admin/server ./
+# 把/go/src/gin-vue-admin整个文件夹的文件到当前工作目录
+COPY --from=0 /go/src/gin-vue-admin ./
 
-# 拷贝config.yaml配置文件到当前工作目录
-COPY --from=0 /go/src/gin-vue-admin/config.yaml ./
+EXPOSE 8888
 
-# 拷贝resource静态文件夹到当前工作目录
-COPY --from=0 /go/src/gin-vue-admin/resource ./resource
-
-# 运行打包好的二进制
-ENTRYPOINT ./server
+# 运行打包好的二进制 并用-c 指定config.docker.yaml配置文件
+ENTRYPOINT ./server -c config.docker.yaml
 ```
 
 ## docker-compose.yaml详解
 
+`dockerfile-compose.yaml` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的 [dockerfile-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml)
+
 ```yaml
-version: "3.8"
+version: "3"
 
 # 声明一个名为network的networks,subnet为network的子网地址,默认网关是177.7.0.1
 networks:
@@ -268,9 +143,9 @@ services:
   # web服务
   web:
     build:
-      context: ./
+      context: ./web
       # 指定dockerfile启动容器
-      dockerfile: ./dockerfile_web
+      dockerfile: ./Dockerfile
     # 自定义容器名
     container_name: gva-web
     # 容器启动失败是否重启
@@ -290,9 +165,9 @@ services:
   # server服务
   server:
     build:
-      context: ./
+      context: ./server
       # 指定dockerfile启动容器
-      dockerfile: ./dockerfile_server
+      dockerfile: ./Dockerfile
     # 自定义容器名
     container_name: gva-server
     # 容器启动失败是否重启
@@ -359,7 +234,8 @@ docker-compose up
 docker-compose up --build
 # 使用docker-compose 后台启动
 docker-compose up -d
-
+# 使用docker-compose 重新打包镜像并后台启动
+docker-compose up --build -d
 # 服务都启动成功后,使用此命令行可清除none镜像
 docker system prune
 ```

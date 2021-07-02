@@ -31,17 +31,11 @@ GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的后台管�
 
 
 
-#### 测试环境
-
-在线测试地址:[http://demo.gin-vue-admin.com/](http://demo.gin-vue-admin.com/)-- 若环境崩溃请联系微信：shouzi_1994
-
-账号：admin  密码：123456
-
 #### 联系我们
 
-qq群：622360840(gin-vue-admin交流群)
+qq群：622360840([gin-vue-admin交流群](https://github.com/flipped-aurora/gin-vue-admin/tree/gva_gormv2_dev#qq%E4%BA%A4%E6%B5%81%E7%BE%A4622360840))
 
-微信：shouzi_1994 添加后拉你进微信群
+微信：`shouzi_1994`  (备注 " [gin-vue-admin交流群](https://github.com/flipped-aurora/gin-vue-admin/tree/gva_gormv2_dev#%E5%BE%AE%E4%BF%A1%E4%BA%A4%E6%B5%81%E7%BE%A4) ") 通过验证后会拉你进微信群
 
 :::danger 提示
 
