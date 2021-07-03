@@ -62,13 +62,17 @@ docker system prune
 
 ## 使用docker-compose进行体验本项目需注意的问题
 
+- 在初始化数据页面中
+  - ip 请填写 [docker-compose56.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml#L56) 的 第56行的ip
+  - 端口为 `3306`
+  - 用户名为 `root`
+  - 密码为 [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml#L53) 的 52行定义的数据库密码
+
 - 如果server的177.7.0.12这个容器内部ip被占用了,需要修改地方为
   - [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml#L42)的第42行的177.7.0.12更换为你想要的ip
   - [web/.docker-compose/nginx/conf.d/my.conf](https://github.com/flipped-aurora/gin-vue-admin/blob/master/web/.docker-compose/nginx/conf.d/my.conf#L20)的第20行的177.7.0.12更换为你想要的ip
 
 ## 使用docker-compose进行部署本项目需注意的问题
-
-- - 
 
 - docker-compose使用自定义的一个docker网络
 
