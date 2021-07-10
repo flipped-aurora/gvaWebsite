@@ -122,9 +122,6 @@ module.exports = {
             copyright: `Copyright © ${new Date().getFullYear()} flipped-aurora`,
         },
     },
-    plugins:[
-        '@docusaurus/plugin-content-pages',
-    ],
     presets: [
         [
             '@docusaurus/preset-classic',
