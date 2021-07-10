@@ -15,6 +15,8 @@
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
+  --ifm-color-info: #2ea0fd;
+  --ifm-color-danger : #ff4d4f;
 }
 
 .docusaurus-highlight-code-line {
@@ -22,4 +24,24 @@
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+.menu__link--sublist::after{
+  background: var(--ifm-menu-link-sublist-icon) 50% / 18px 18px;
+}
+.menu__link.menu__link--active.active{
+  border-right: 3px solid var(--ifm-color-primary);
+  background-color: rgb(230, 255, 247);
+  color: var(--ifm-color-primary);
+  border-radius: 4px 0 0 4px;
+}
+blockquote{
+  box-shadow: 3px 2px 7px 0 rgba(0 ,0 ,0 , 8%);
+}
+
+.markdown img:active{
+  position: relative;
+  float: contour;
+  z-index: 9999;
+  transform: scale(1.5);
+  box-shadow: 3px 2px 7px 0 rgba(0 ,0 ,0 , 0.8);
 }

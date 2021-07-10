@@ -311,7 +311,7 @@ function Hello() {
                         </div>
                         <Text type="secondary">前端开发•合肥</Text>
                         <div style={{ paddingTop: "5px" }}>
-                            <Text>个人介绍：随叫胖虎，但是也不怎么胖，喜欢前端是因为可以随时可以看到自己所展示的。</Text>
+                            <Text>个人介绍：虽叫胖虎，但是也不怎么胖，喜欢前端是因为可以随时可以看到自己所展示的。</Text>
                         </div>
                         <div style={{ paddingTop: "5px" }}>
                             <Text>主要技能：</Text>

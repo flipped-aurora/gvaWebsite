@@ -45,7 +45,7 @@
   }
 
   .menu::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    /*background: #f1f1f1;*/
     border-radius: 10px;
   }
 
@@ -96,9 +96,8 @@
   width: 250px;
   height: 80px;
   margin-left: 20px;
-  border: 1px solid #ccc;
-  background: #ccc;
-  border-radius: 10px;
+  background: rgba(0,0,0,0.04);
+  border-radius: 5px;
   text-align: center;
   font-size: 14px;
   font-weight: 600;
@@ -108,4 +107,9 @@
   color: #666;
   cursor: pointer;
   overflow: hidden;
+
+}
+.ad:hover{
+  background: rgba(0,0,0,0.08);
+  color: var(--ifm-color-primary);
 }
