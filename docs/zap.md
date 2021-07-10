@@ -158,7 +158,7 @@ Router.Use(middleware.ZapLogger(), middleware.GinRecovery())
 
 > Zap日志库使用指南&&配置指南
 
-Zap日志库的配置选择在[config.yaml](./server/config.yaml)下的zap
+Zap日志库的配置选择在 config.yaml (./server/config.yaml)下的zap
 
 ```yaml
 # zap logger configuration

@@ -78,7 +78,7 @@ title: server
 
 - 按照 [config的详细说明](./config) 按需修改, `V2.4.0` 版本以后不需要配置mysql相关配置, [点我跳转](#v240master)
 
-## 3. [数据库初始化](./first)
+## 3. [数据库初始化](./first_master)
 
 
 ## 4. 启动server项目
