@@ -3,7 +3,7 @@ id: server_video
 title: server项目学习资料
 ---
 
-### Golang教学
+## Golang教学
 
 [【golang教学】第一章：golang的安装和编辑工具安装（1010工作室出品）](https://www.bilibili.com/video/BV1Q7411K7ij)
 
@@ -29,7 +29,7 @@ title: server项目学习资料
 
 [【golang教学】第十二章：golang的断言 Assertion 和 反射 reflect （1010工作室出品）](https://www.bilibili.com/video/BV1S5411x7Bz)
 
-### Gin教学
+## Gin教学
 
 [【gin教学】第一章：gin的学习前准备工作 hello gin（1010工作室出品）](https://www.bilibili.com/video/BV12i4y1x7AG)
 
@@ -53,26 +53,12 @@ title: server项目学习资料
 
 [【gin教学】第十一章：Casbin的代码使用、api调用、自定义比较方法（1010工作室出品）](https://www.bilibili.com/video/BV13r4y1M7AC)
 
-### gin-vue-admin版本更新说明
+## Gorm教学 (手模手带你吃透) --持续更新ing
 
-[【开源项目教学】gin-vue-admin 2.0目录介绍和自动化开发模式（1010工作室出品）](https://www.bilibili.com/video/BV1aV411d7Gm)
+1. [GORM介绍以及如何看文档](https://www.bilibili.com/video/BV1E64y1472a?p=1)
 
-[【gin-vue-admin】06/07更新：UI美化，插件功能，自动化代码增加搜索条件 字段描述 结构体中文描述（1010工作室出品）](https://www.bilibili.com/video/BV1wa4y1Y7oX)
-
-[【gin-vue-admin】V2.1.0大更新：增加字典管理，用户操作日志，从数据库一键创建CURD让自动化更加完善（1010工作室出品）](https://www.bilibili.com/video/BV1hC4y1h7PT)
-
-[【gin-vue-admin】V2.2.0更新：增加日志功能,增加v-auth指令,增加一键打包二进制，增加菜单参数，增加令牌续期（1010工作室出品）](https://www.bilibili.com/video/BV1jk4y127yg)
-
-[【gin-vue-admin】09/20更新：大版本2.3.1发布，gorm更新为v2，项目初始化更加便捷，更多通用功能加入（1010工作室出品）](https://www.bilibili.com/video/BV1Jy4y1k75Z)
-
-[【gin-vue-admin】10/25更新：增加更多便于新手使用的工具，初始化更加简单，工作流预告（1010工作室出品）](https://www.bilibili.com/video/BV1Ca4y1L7JM)
-
-[【gin-vue-admin】11/28更新：工作流介绍以及简单使用教学（1010工作室出品）](https://www.bilibili.com/video/BV1Ka411F7Ji)
-
-## 一步到位
-
-- [【gin-vue-admin】从部署到发布：手把手带你使用GIN-VUE-ADMIN《2.3.5版本》（1010工作室出品）](https://www.bilibili.com/video/BV1fV411y7dT)
-
-
-- [【gin-vue-admin】最新大版本2.4.0(2021/03/07)--从0开始到部署教学--新版本遵循测视频请勿食用旧版视频（1010工作室出品）](https://www.bilibili.com/video/BV1Mb4y197RR)
+2. [【GORM教学】第一章：如何建立一个GORM链接以及表基础操作（1010工作室出品）](https://www.bilibili.com/video/BV1E64y1472a?p=2)
+   1. [【GORM教学】GORM连接到数据库（补：连接池部分）](https://www.bilibili.com/video/BV1E64y1472a?p=3)
+4. [【GORM教学】第二章：如何建立一个GORM链接以及表基础操作（1010工作室出品）](https://www.bilibili.com/video/BV1C44y127Yn)
+5. [【GORM教学】第三章：GORM模型的创建和关键标签（1010工作室出品）](https://www.bilibili.com/video/BV1BL411W7XN)
 
