@@ -11,6 +11,12 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    background-image: linear-gradient( 345deg, #4cf0cc 1%, #25c2a0 100%);
+}
+
+.heroBannerTitleAnmaite{
+    -webkit-animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+	        animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
 
 @media screen and (max-width: 966px) {
@@ -32,13 +38,32 @@
     width: 100%;
 }
 
+.featureImageALeft{
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: 360px;
+    height: 360px;
+    animation: slide-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.featureImageARight{
+    position: absolute;
+    right: 60px;
+    top: 0;
+    width: 360px;
+    height: 360px;
+    animation: slide-in-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
 .featureImage {
     height: 200px;
     width: 200px;
 }
 
 @media (max-width: 870px) {
-    .featureImageA {
+    .featureImageALeft,
+    .featureImageARight
+     {
         display: none;
     }
 }
@@ -62,3 +87,48 @@
     *zoom: 1;
     /* 这是专门给IE6-7做的清除浮动 */
 }
+.ant-typography{
+    text-align: center;
+}
+
+  @keyframes puff-in-center {
+    0% {
+      -webkit-transform: scale(2);
+              transform: scale(2);
+      -webkit-filter: blur(4px);
+              filter: blur(4px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-left {
+    0% {
+      -webkit-transform: translateX(-1000px);
+              transform: translateX(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
