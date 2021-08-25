@@ -14,7 +14,7 @@ function Plugin() {
             title={`gva 插件市场`}
             description="gin-vue-admin gva 插件市场 golang插件 golang"
         >
-            <div>
+            <div >
                 <div className={`plugin`}>
                     <PluginLeft />
                     <PluginMain />
