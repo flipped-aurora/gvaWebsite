@@ -64,6 +64,11 @@ module.exports = {
                     label: '捐赠入口',
                     position: 'right',
                 },
+                {
+                    to: 'plugin/',
+                    label: '插件市场',
+                    position: 'right',
+                },
             ],
 
         },
