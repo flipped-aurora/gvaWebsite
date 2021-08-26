@@ -129,7 +129,7 @@ function Home() {
       <main>
         {features && features.length > 0 && (
           <section className={styles.features}>
-            <div className="container slide-in-top">
+            <div className="container">
               <div className="row">
                 {features.map((props, idx) => (
                   <Feature key={idx} {...props} />
@@ -140,7 +140,7 @@ function Home() {
         )}
         {features2 && features2.length > 0 && (
           <section className={styles.features}>
-            <div className="container  slide-in-bottom">
+            <div className="container">
               <div className="row">
                 {features2.map((props, idx) => (
                   <Feature key={idx} {...props} />
