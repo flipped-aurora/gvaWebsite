@@ -1,65 +1,26 @@
 .plugin {
-  position: relative;
   width: 100%;
   height: 100%;
-}
-
-.plugin-left {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 280px;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-.plugin-left-search {
-  padding: 10px 5px;
-  margin-bottom: 40px;
-  margin-top: 20px;
-}
-.plugin-left-item {
-  list-style: none;
-  height: 50px;
-  margin: 10px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  background-color: #fff;
-  width: calc(100% - 20px);
-  padding: 10px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  font-size: 16px;
+  background-image: url('http://demo.gin-vue-admin.com/static/img/login_background.5bc6055a.svg');
+  background-size: cover;
 }
-.plugin-left-item.active {
-  background-color: var(--ifm-color-primary);
-  color: #fff;
-}
+
 
 .plugin-main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px;
-  margin-left: 300px;
-  width: calc(100vw - 380px);
+  padding: 20px;
   display: flex;
   justify-content: center;
+  width: calc(74vw + 40px);
+  background-color: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
 }
 .plugin-main-banner {
   display: inline-block;
-  width: calc(100vw - 400px);
+  width: calc(74vw );
   height: 260px;
+  overflow-y: hidden;
   border-radius: 8px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -90,10 +51,7 @@ ul {
 
 
 .plugin-item{
-    width: 45%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    width: 250px;
     background-color: #fff;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -102,40 +60,68 @@ ul {
     -o-border-radius: 5px;
     box-shadow: 0 0 5px 2px rgba(0,0,0,.2);
     margin: 8px 30px;
-    height: 100px;
-    padding: 10px;
+    height: 340px;
+    overflow: hidden;
+    position: relative;
 }
 .plugin-item-img{
-    width: 80px;
-    height: 80px;
+    width: 250px;
+    height: 180px;
     overflow: hidden;
+    background-color: #222;
+}
+.plugin-item:hover,
+.plugin-item:hover .plugin-item-img{
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
 }
 
 .plugin-item-title{
   font-size: 17px;
   font-weight: 500;
   margin-bottom: 10px;
-  max-width: 500px;
+  max-width: 220px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .plugin-item-con{
-  color: #222;
-  max-width: 500px;
+  color: #555;
+  max-width: 220px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 20px;
+  height: 40px;
+  /* white-space: nowrap; */
+}
+.plugin-item-fotter{
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .ml-20{
   margin-left: 20px;
 }
-
-.footer{
-  display: none;
+.mt-10{
+  margin-top: 10px;
 }
+.mt-20{
+  margin-top: 10px;
+  padding: 10px;
+}
+
+/* .footer{
+  display: none;
+} */
 
 .slide-in-left {
 	-webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -207,4 +193,50 @@ ul {
     opacity: 1;
   }
 }
+.plugin-choose{
+  margin: 20px 0;
+  /* background-color: #fff; */
+}
+.flex-center{
+  display: flex;
+  align-items: center;
+}
+.flex-space{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
 
+.chooseItem{
+  width: auto;
+  padding: 1px 8px ;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.chooseItem.active{
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.plugin-search{
+  height: 24px;
+  float: right;
+}
+
+.gva{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url('../../../static/img/tags_corner.png') no-repeat 0 0;
+  z-index: 999;
+    width: 68px;
+    height: 68px;
+    overflow: hidden;
+}
+.gva.recommend{
+  background-position: 0 -272px;
+}
+.gva.hot{
+  background-position: 0 -68px;
+}

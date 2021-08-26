@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./plugin.css";
 import PluginBanner from "./pluginBanner";
-import PluginItems from  './pluginItems'
+import PluginItems from './pluginItems'
+import PluginChoose from './pluginChoose'
 
 
 class PluginMain extends Component {
@@ -10,6 +11,7 @@ class PluginMain extends Component {
       <div className="plugin-main">
         <div>
           <PluginBanner />
+          <PluginChoose></PluginChoose>
           <div>
             <PluginItems title={`推荐`} ></PluginItems>
             <PluginItems title={`排行`}></PluginItems>
