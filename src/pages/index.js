@@ -1,13 +1,14 @@
-import React from 'react';
-import clsx from 'clsx';
+import React, { Component } from 'react';
 import Layout from '@theme/Layout';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import styles from './styles.module.css';
-import { Typography } from 'antd';
-const { Title, Text } = Typography;
-const features = [
+import { Button, Row, Col } from 'antd';
+import { ArrowRightOutlined, GithubOutlined, OrderedListOutlined } from '@ant-design/icons';
+import "animate.css"
+import '../css/index.css'
+import axios from 'axios'
+import CountUp from 'react-countup';
+import wow from 'wowjs'
+
+const list = [
   {
     title: <>简单易用</>,
     imageUrl: 'img/coding__isometric.svg',
@@ -35,9 +36,6 @@ const features = [
       </>
     ),
   },
-];
-
-const features2 = [
   {
     title: <>开箱即用</>,
     imageUrl: 'img/pie_chart_isometric.svg',
@@ -65,93 +63,139 @@ const features2 = [
       </>
     ),
   },
-];
+]
 
-function Feature({ imageUrl, title, description }) {
-  const imgUrl = useBaseUrl(imageUrl);
-  return (
-    <div className={clsx('col col--4', styles.feature)}>
-      {imgUrl && (
-        <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
-        </div>
-      )}
-      <Title level={3}>{title}</Title>
-      <Text>{description}</Text>
-    </div>
-  );
-}
+class Home extends Component {
+  constructor() {
+    super()
+    this.state = {
+      star: 0,
+      forks: 0,
+      subscribers_count: 0
+    }
+  }
+  componentDidMount() {
+    axios.get('https://api.github.com/repos/flipped-aurora/gin-vue-admin', {})
+      .then((response) => {
+        if (response.status == 200) {
+          this.setState({
+            star: Number(response.data.stargazers_count),
+            forks: response.data.forks_count,
+            subscribers_count: response.data.subscribers_count
+          })
 
-function Home() {
-  const context = useDocusaurusContext();
-  const { siteConfig = {} } = context;
-  const urlLeft = useBaseUrl("/img/left.svg");
-  const urlright = useBaseUrl("/img/right.svg");
- return (
-    <Layout
-      title={`自动化全栈后台管理系统`}
-      description="gin+vue编写的自动化代码开发脚手架，是gin+vue全栈学习最好的项目，腾讯阿里开发均有采用gin-vue-admin为模型进行相关业务开发，代码自动化，加快开发速度，权限系统齐全，减少重复工作">
-      <header className={clsx('hero hero--primary', styles.heroBanner)}>
-        <div className="container">
-          <div className={styles.featureImageA} style={{ float: "left" }}>
-            <img className={styles.featureImage} src={urlLeft} />
-          </div>
 
-          <div className={styles.featureImageA} style={{ float: "right" }}>
-            <img className={styles.featureImage} src={urlright} />
-          </div>
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    
+   
+  }
+  goTo(e) {
+    //获取 当前路由
+    const url = window.location.href
+    if (e == 'https://github.com/flipped-aurora/gin-vue-admin') {
+      window.open(e)
+    } else {
+      window.open(url + e,'_self')
+    }
+  }
+  render() {
+    const wowUtil = new wow.WOW({
+      live: false,
+      boxClass:     'wow',      // animated element css class (default is wow)
+      animateClass: 'animate__animated',
+    })
+    wowUtil.init()
 
-          <div className="hero__title" style={{ zIndex: "9999", fontWeight: 700, marginBottom: "20px" }}>{siteConfig.title}</div>
-          <p className="hero__subtitle" style={{ zIndex: "9999" }}>{siteConfig.tagline}</p>
-          <div className={styles.buttons} style={{ zIndex: "9999" }}>
-            <Link
-              style={{ border: "2px solid #fff" }}
-              className={clsx(
-                'button button--outline button--lg',
-                styles.getStarted,
-              )}
-              to={useBaseUrl('docs/')}>
-              快速开始
-            </Link>
-            <Link
-              style={{ border: "2px solid #fff",marginLeft: "30px" }}
-              className={clsx(
-                'button button--outline button--lg',
-                styles.getStarted,
-              )}
-              to={useBaseUrl('docs/coffee')}>
-              捐赠列表
-            </Link>
-          </div>
-
-        </div>
-      </header>
-      <main>
-        {features && features.length > 0 && (
-          <section className={styles.features}>
-            <div className="container">
-              <div className="row">
-                {features.map((props, idx) => (
-                  <Feature key={idx} {...props} />
-                ))}
+    return (
+      <Layout
+        title={`自动化全栈后台管理系统`}
+        description="gin+vue编写的自动化代码开发脚手架，是gin+vue全栈学习最好的项目，腾讯阿里开发均有采用gin-vue-admin为模型进行相关业务开发，代码自动化，加快开发速度，权限系统齐全，减少重复工作">
+        <section className='wow animate__animated animate__fadeInUp' data-wow-duration="1s" data-wow-delay="0.3s">
+          <div className='card'>
+            <div className='dashbord '>
+              <div className='pt-20 flex-around'>
+                <div>
+                  <h1 className='dashbord-title animate__animated animate__zoomIn'>Gin-Vue-admin</h1>
+                  <div className='dashbord-dot animate__animated animate__lightSpeedInLeft'>使用gin+vue进行极速开发的全栈后台管理系统</div>
+                  <div className='flex-center mt-10'>
+                    <Button type="primary" shape="round" onClick={this.goTo.bind(this,'docs')} icon={<ArrowRightOutlined />} size='large'>
+                      快速开始
+                    </Button>
+                    <Button type="dashed" className='ml-10' shape="round" onClick={this.goTo.bind(this,'https://github.com/flipped-aurora/gin-vue-admin')} icon={<GithubOutlined />} size='middle'>
+                      Github
+                    </Button>
+                    <Button type="dashed" className='ml-10' shape="round" onClick={this.goTo.bind(this,'docs/coffee')} icon={<OrderedListOutlined />} size='middle'>
+                      捐赠列表
+                    </Button>
+                  </div>
+                </div>
+                <div>
+                  <img className='dashbord-img' src='../../static/img/left.svg'></img>
+                </div>
               </div>
             </div>
-          </section>
-        )}
-        {features2 && features2.length > 0 && (
-          <section className={styles.features}>
-            <div className="container">
-              <div className="row">
-                {features2.map((props, idx) => (
-                  <Feature key={idx} {...props} />
-                ))}
+          </div>
+        </section>
+        <section className="wow animate__animated animate__zoomIn" data-wow-duration="1s" data-wow-delay="0.3s">
+          <div >
+            <div className='card'>
+              <div>
+                <Row gutter={[16, 16]}>
+
+                  {
+                    list.map((item, index) => {
+                      return <Col xs={12} md={8} key={index} className='flex-center-center' span={8} >
+                        <div className='postCard'>
+                          <img className='postCard-img' src={item.imageUrl}></img>
+                          <div className='postCard-body'>
+                            <div className='postCard-title'>{item.title}</div>
+                            <div className='postCard-des'>{item.description}</div>
+                          </div>
+                        </div>
+                      </Col>
+                    })
+                  }
+
+                </Row>
               </div>
             </div>
-          </section>
-        )}
-      </main>
-    </Layout>
-  );
+          </div>
+        </section>
+        <section className="wow animate__animated animate__zoomIn" data-wow-duration="1s" data-wow-delay="0.3s">
+          <div  className='num'>
+            <div className='num-body'>
+              <div className='card-title'>GVA 服务数据</div>
+              <div className='numcardList' >
+                    <div className='numCard'>
+                      <div className='numCard-num'>
+                        <CountUp start={0} end={this.state.star} duration={4} />
+                      </div>
+                      <div className='numCard-title'>Star数</div>
+                    </div>
+
+                    <div className='numCard'>
+                      <div className='numCard-num'>
+                        <CountUp start={0} end={this.state.forks} duration={4} />
+                      </div>
+                      <div className='numCard-title'>Forks数</div>
+                    </div>
+                    <div className='numCard'>
+                      <div className='numCard-num'>
+                        <CountUp start={0} end={this.state.subscribers_count} duration={4} />
+                      </div>
+                      <div className='numCard-title'>Subscribers数</div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </Layout>
+    )
+  }
 }
 
 export default Home;
