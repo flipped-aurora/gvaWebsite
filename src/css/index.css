@@ -1,11 +1,25 @@
 .card{
     width: 100%;
-    min-height: calc(100vh - var(--ifm-navbar-height) );
     padding: 0 10% ;
     font-family: Avenir,-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
     display: flex;
     align-items: center;
+    justify-content: center;
+    background-color: aquamarine;
 }
+.swiper{
+    width: 100%;
+    height:  calc(100vh - var(--ifm-navbar-height) - 244px );
+    overflow: hidden;
+}
+.swiperdemo{
+    width: 100%;
+    height:  calc(100vh - var(--ifm-navbar-height) - 244px );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .dashbord{
     padding-top: var(--ifm-navbar-height);
     width: 100%;
