@@ -321,7 +321,33 @@ function Hello() {
                         </div>
                     </div>
                 </Row>
-
+                
+                <Row align="left" justify="start" style={{ background: "#f2f2f2", marginTop: "10px", borderRadius: "10px", paddingLeft: "10px" }}>
+                <div style={{ display: "inline-block", paddingTop: "20px" }}>
+                        <Image
+                            width={140}
+                            src={useBaseUrl('guanwang/hongyi.jpg')}
+                        />
+                    </div>
+                    <div style={{ display: "inline-block", padding: "20px", width: "calc(100% - 140px)" }}>
+                        <div>
+                            <Title level={5}>**弘一**</Title>
+                        </div>
+                        <Text type="secondary">UE设计师•长沙</Text>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>个人介绍：行走在路上的UE，PM学习者，佛学爱好者。</Text>
+                        </div>
+                        <div style={{ paddingTop: "5px" }}>
+                            <Text>主要技能：</Text>
+                            <Tag color="#25c2a0">PS</Tag>
+                            <Tag color="#25c2a0">AI</Tag>
+                            <Tag color="#25c2a0">Figma</Tag>
+                            <Tag color="#25c2a0">Sketch</Tag>
+                            <Tag color="#25c2a0">Axure</Tag>
+                            <Tag color="yellow">如来神掌</Tag>
+                        </div>
+                    </div>
+                </Row>
                 
                 <Row gutter={16} style={{ marginTop: "30px" }}>
                     <Title level={3}>未来展望</Title>
