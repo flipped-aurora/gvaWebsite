@@ -5,7 +5,7 @@ title: 快速了解
 
 ## 项目介绍
 
-GIN-VUE-ADMIN 是一款基于GIN+VUE+ElementUI开发的后台管理系统快速开发脚手架
+GIN-VUE-ADMIN 是一款基于GIN+VUE+ElementUI开发的全栈基础开发平台
 
 * GitHub地址:[https://github.com/flipped-aurora/gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin)
 
@@ -15,7 +15,7 @@ GIN-VUE-ADMIN 是一款基于GIN+VUE+ElementUI开发的后台管理系统快速�
 
 * 密码：123456
 
-GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的后台管理系统，拥有jwt鉴权，动态路由，动态菜单，casbin鉴权，表单生成器，代码生成器等功能，提供了多种示例文件，让大家把更多时间专注在业务开发上。
+GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的开发基础平台，拥有jwt鉴权，动态路由，动态菜单，casbin鉴权，表单生成器，代码生成器等功能，提供了多种示例文件，让大家把更多时间专注在业务开发上。
 
 ## 视频教程
 
