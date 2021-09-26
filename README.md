@@ -33,4 +33,4 @@ $ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
 
 
-<meta name="keywords" content="gin-vue-admin ,gin ,vue ,后台管理系统 ,全栈开发 ,golang ,前端开发 ,go语言开发 ,自动化开发, 低代码开发 ,gin-vue-admin管理系统 ,go-admin ,vue-admin">
+<meta name="keywords" content="gin-vue-admin ,gin ,vue ,基础平台,后台管理系统 ,全栈开发 ,golang ,前端开发 ,go语言开发 ,自动化开发, 低代码开发 ,gin-vue-admin管理系统 ,go-admin ,vue-admin">

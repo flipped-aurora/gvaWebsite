@@ -179,6 +179,6 @@ go: github.com/360EntSecGroup-Skylar/excelize/v2@v2.3.2: missing go.sum entry; t
 - [【gin-vue-admin】V2.1.0大更新：增加字典管理，用户操作日志，从数据库一键创建CURD让自动化更加完善（1010工作室出品）](https://www.bilibili.com/video/BV1hC4y1h7PT)
 - [【gin-vue-admin】部署教程：gin-vue-admin本地环境线上环境部署配置教学（1010工作室出品）](https://www.bilibili.com/video/BV1y5411s75A)
 - [【开源项目教学】gin-vue-admin 2.0目录介绍和自动化开发模式（1010工作室出品）](https://www.bilibili.com/video/BV1aV411d7Gm)
-- [【gin-vue-admin】开发示例：后台管理系统脚手架gin-vue-admin简介及开发示例（1010工作室出品）](https://www.bilibili.com/video/BV16K4y1r7BD)
-- [【gin-vue-admin】环境搭建：后台管理系统脚手架gin-vue-admin环境搭建视频（1010工作室出品）](https://www.bilibili.com/video/BV1Fg4y187Bw)
+- [【gin-vue-admin】开发示例：基础开发平台gin-vue-admin简介及开发示例（1010工作室出品）](https://www.bilibili.com/video/BV16K4y1r7BD)
+- [【gin-vue-admin】环境搭建：基础开发平台gin-vue-admin环境搭建视频（1010工作室出品）](https://www.bilibili.com/video/BV1Fg4y187Bw)
 

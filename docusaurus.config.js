@@ -1,6 +1,6 @@
 module.exports = {
     title: 'Gin-Vue-Admin',
-    tagline: '使用gin+vue进行极速开发的全栈后台管理系统',
+    tagline: '使用gin+vue进行极速开发的全栈开发基础平台',
     url: 'http://demo.henrongyi.com',
     baseUrl: '/',
     onBrokenLinks: 'throw',
@@ -18,23 +18,6 @@ module.exports = {
                 src: 'img/logo.png',
             },
             items: [{
-                    to: 'docs/',
-                    activeBasePath: 'docs',
-                    label: '在线文档',
-                    position: 'right',
-                },
-                {
-                    to: 'about/',
-                    label: '关于我们',
-                    position: 'right',
-                },
-
-                {
-                    href: 'https://www.yuque.com/flipped-aurora/',
-                    label: '知识库',
-                    position: 'right',
-                },
-                {
                     href: 'https://space.bilibili.com/322210472',
                     label: '教学视频',
                     position: 'right',
@@ -45,13 +28,13 @@ module.exports = {
                     position: 'right',
                 },
                 {
-                    href: 'https://github.com/flipped-aurora/gin-vue-admin',
-                    label: 'GitHub',
+                    href: 'https://www.yuque.com/flipped-aurora/',
+                    label: '知识库',
                     position: 'right',
                 },
                 {
-                    href: 'https://gitee.com/pixelmax/gin-vue-admin',
-                    label: 'Gitee',
+                    to: 'about/',
+                    label: '关于我们',
                     position: 'right',
                 },
                 {
@@ -62,6 +45,16 @@ module.exports = {
                 {
                     to: 'docs/coffee',
                     label: '捐赠入口',
+                    position: 'right',
+                },
+                {
+                    href: 'https://github.com/flipped-aurora/gin-vue-admin',
+                    label: 'GitHub',
+                    position: 'right',
+                },
+                {
+                    href: 'https://gitee.com/pixelmax/gin-vue-admin',
+                    label: 'Gitee',
                     position: 'right',
                 },
             ],
@@ -107,7 +100,7 @@ module.exports = {
                     items: [{
                         label: 'golang 开发工具包，json、sql 转 struct',
                         to: 'http://www.golangs.cn/',
-                    },{
+                    }, {
                         label: 'gin-vue-devops 基于Gin-Vue-Admin开发的DevOps平台',
                         to: 'https://github.com/openstack-test/gin-vue-devops',
                     }],
