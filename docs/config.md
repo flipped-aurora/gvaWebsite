@@ -493,3 +493,44 @@ type Qiniu struct {
 | access-key      | string | 秘钥AK                                                       |
 | secret-key      | string | 秘钥SK                                                       |
 | use-cdn-domains | bool   | 上传是否使用CDN上传加速                                      |
+
+
+## AutoCode
+
+### autocode configuration
+
+```yaml
+autocode:
+  transfer-restart: true
+  # root 自动适配项目根目录
+  # 请不要手动配置,他会在项目加载的时候识别出根路径
+  # 除root外请使用相对路径配置
+  root: ""
+  server: /server      #服务端所在位置
+  server-api: /api/v1/autocode  #服务端api所在位置
+  server-initialize: /initialize  #服务端initialize所在位置
+  server-model: /model/autocode  #服务端model所在位置
+  server-request: /model/autocode/request/  #服务端request所在位置
+  server-router: /router/autocode  #服务端router所在位置
+  server-service: /service/autocode  #服务端service所在位置
+  web: /web/src     
+  web-api: /api
+  web-form: /view
+  web-table: /view
+```
+
+
+| 配置名          | 类型   | 说明                                                         |
+| --------------- | ------ | ------------------------------------------------------------ |
+| root            | string | root 自动适配项目根目录 请不要手动配置,他会在项目加载的时候识别出根路径 除root外请使用相对路径配置 |
+| server          | string | 服务端所在位置                                                     |
+| server-api        | string | 服务端api文件所在位置                                            |
+| server-initialize       | bool   | 服务端initialize文件所在位置                                                |
+| server-model      | string | 服务端model文件所在位置                                                       |
+| server-request      | string | 服务端requset文件所在位置                                                       |
+| server-router | bool   | 服务端router件所在位置                                      |
+| server-service | bool   | 服务端service文件所在位置                                      |
+| web | bool   | 前端src文件夹位置                                      |
+| web-api | bool   | 前端自动生成的api所在位置                                      |
+| web-form | bool   | 前端自动生成的表单所在位置                                      |
+| web-table | bool   | 前端自动生成的表格所在位置                                      |

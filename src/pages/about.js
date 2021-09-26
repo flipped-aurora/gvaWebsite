@@ -356,7 +356,7 @@ function Hello() {
                     <Text><span style={{ color: "#25c2a0", fontWeight: 800 }}>gin-vue-admin单体版</span>将会秉持开源精神，免费到底，一群活跃的小伙伴也会不断进行日常维护，目前项目可以稳定进入生产环境，日后还会根据用户需求增加更多的便于开发的基础功能,将Gin-Vue-Admin做得更加完善，更加强大，非常期待有更多的小伙伴们加入我们Gin-Vue-Admin的团队。</Text>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
-                    <Text>目前项目组急缺<span style={{ color: "#25c2a0", fontWeight: 800 }}>UI工程师</span>如果您想加入我们团队，可以联系微信：shouzi_1994</Text>
+                    <Text>项目需要遵循Apache License不要拿掉我们的版权信息，如需摘除信息请联系微信:shouzi_1994</Text>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
                     <Text>团队所有成员均可在<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin官网</span>增加个人简介并且附带<span style={{ color: "#25c2a0", fontWeight: 800 }}>专属技能</span></Text>
@@ -365,7 +365,7 @@ function Hello() {
                     <Title level={3}>广告赞助</Title>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
-                    <Text>目前<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin</span>Github已经拥有<span style={{ color: "#25c2a0", fontWeight: 800 }}>8K+</span>的star，项目官网以及github页面每天都有大量的访问量，您可以成为Gin-Vue-Admin的赞助商，我们会在适当的位置，悬挂您的推广内容</Text>
+                    <Text>目前<span style={{ color: "#25c2a0", fontWeight: 800 }}>Gin-Vue-Admin</span>Github已经拥有<span style={{ color: "#25c2a0", fontWeight: 800 }}>9K+</span>的star，项目官网以及github页面每天都有大量的访问量，您可以成为Gin-Vue-Admin的赞助商，我们会在适当的位置，悬挂您的推广内容</Text>
                 </Row>
                 <Row gutter={16} style={{ marginTop: "10px" }}>
                     <Text>赞助请加微信：<span style={{ color: "#25c2a0", fontWeight: 800 }}>shouzi_1994</span>标明<span style={{ color: "#25c2a0", fontWeight: 800 }}>广告赞助</span></Text>
