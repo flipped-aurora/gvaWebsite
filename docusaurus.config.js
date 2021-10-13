@@ -38,11 +38,6 @@ module.exports = {
                     position: 'right',
                 },
                 {
-                    href: 'https://www.aliyun.com/minisite/goods?userCode=xqe01uob',
-                    label: '特惠服务器',
-                    position: 'right',
-                },
-                {
                     to: 'docs/coffee',
                     label: '捐赠入口',
                     position: 'right',
@@ -56,6 +51,20 @@ module.exports = {
                     href: 'https://gitee.com/pixelmax/gin-vue-admin',
                     label: 'Gitee',
                     position: 'right',
+                },
+                {
+                    href: 'https://www.aliyun.com/minisite/goods?userCode=xqe01uob',
+                    label: '特惠服务器',
+                    position: 'right',
+                    items:[{
+                        href: 'https://www.aliyun.com/minisite/goods?userCode=xqe01uob',
+                        label: '阿里服务器',
+                        position: 'right',
+                    },{
+                        href: 'https://cloud.tencent.com/act/new?fromSource=gwzcw.4325959.4325959.4325959&utm_medium=cps&utm_id=gwzcw.4325959.4325959.4325959&cps_key=962a7fdaa930cda1c06e36a7608e95cc',
+                        label: '腾讯服务器',
+                        position: 'right',
+                    }]
                 },
             ],
 
