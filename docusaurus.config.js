@@ -63,11 +63,11 @@ module.exports = {
                     position: 'right',
                     items:[{
                         href: 'https://www.aliyun.com/minisite/goods?userCode=xqe01uob',
-                        label: '特惠阿里云',
+                        label: '阿里服务器',
                         position: 'right',
                     },{
                         href: 'https://cloud.tencent.com/act/new?fromSource=gwzcw.4325959.4325959.4325959&utm_medium=cps&utm_id=gwzcw.4325959.4325959.4325959&cps_key=962a7fdaa930cda1c06e36a7608e95cc',
-                        label: '特惠腾讯云',
+                        label: '腾讯服务器',
                         position: 'right',
                     }]
                 },
