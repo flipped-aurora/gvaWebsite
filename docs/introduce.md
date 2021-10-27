@@ -8,15 +8,15 @@ title: 项目介绍
 
 </div>
 <div align="center">
-<img src="https://img.shields.io/badge/vue-2.6.10-brightgreen"/>
+<img src="https://img.shields.io/badge/vue-3.2.0-brightgreen"/>
 &nbsp;
-<img src="https://img.shields.io/badge/element--ui-2.12.0-green"/>
+<img src="https://img.shields.io/badge/element-plus--2.12.0-green"/>
 &nbsp;
-<img src="https://img.shields.io/badge/golang-1.12-blue"/>
+<img src="https://img.shields.io/badge/golang-1.16-blue"/>
 &nbsp;
 <img src="https://img.shields.io/badge/gin-1.4.0-lightBlue"/>
 &nbsp;
-<img src="https://img.shields.io/badge/gorm-1.9.10-red"/>
+<img src="https://img.shields.io/badge/gorm-1.20.0-red"/>
 </div>
 
 <p></p>
@@ -33,9 +33,9 @@ GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的开发基�
 
 #### 联系我们
 
-qq群：622360840([gin-vue-admin交流群](https://github.com/flipped-aurora/gin-vue-admin/tree/gva_gormv2_dev#qq%E4%BA%A4%E6%B5%81%E7%BE%A4622360840))
+qq群：650421081([gin-vue-admin交流群](https://jq.qq.com/?_wv=1027&k=5cRp2f1R))
 
-微信：`shouzi_1994`  (备注 " [gin-vue-admin交流群](https://github.com/flipped-aurora/gin-vue-admin/tree/gva_gormv2_dev#%E5%BE%AE%E4%BF%A1%E4%BA%A4%E6%B5%81%E7%BE%A4) ") 通过验证后会拉你进微信群
+微信：`shouzi_1994`  (备注 gin-vue-admin交流群) 通过验证后会拉你进微信群
 
 :::danger 提示
 

@@ -19,11 +19,14 @@ title: 开发介绍
     │  ├─resource       （资源）
     │  ├─router         （路由）
     │  ├─service         (服务)
+    │  ├─source         (初始化需要的数据)
+    │  ├─plugin         (插件)
     │  └─utils	        （公共功能）
     └─web            （前端文件）
         ├─public        （发布模板）
         └─src           （源码包）
             ├─api       （向后台发送ajax的封装层）
+            ├─core       （用来修改系统基础可运行配置）
             ├─assets	（静态文件）
             ├─components（组件）
             ├─router	（前端路由）
@@ -38,62 +41,147 @@ title: 开发介绍
 ## 配置文件(2.0)
 
 ```yaml
-# Gin-Vue-Admin Global Configuration
-
-# casbin configuration
-casbin:
-    model-path: './resource/rbac_model.conf'
+# github.com/flipped-aurora/gin-vue-admin/server Global Configuration
 
 # jwt configuration
 jwt:
-    signing-key: 'qmPlus'
-
-# mysql connect configuration
-mysql:
-    username: root
-    password: 'Aa@6447985'
-    path: '127.0.0.1:3306'
-    db-name: 'qmPlus'
-    config: 'charset=utf8&parseTime=True&loc=Local'
-    max-idle-conns: 10
-    max-open-conns: 10
-    log-mode: true
-#sqlite 配置
-sqlite:
-    path: db.db
-    log-mode: true
-    config: 'loc=Asia/Shanghai'
-# oss configuration
-qiniu:
-    access-key: '25j8dYBZ2wuiy0yhwShytjZDTX662b8xiFguwxzZ'
-    secret-key: 'pgdbqEsf7ooZh7W3xokP833h3dZ_VecFXPDeG5JY'
+  signing-key: 'qmPlus'
+  expires-time: 604800
+  buffer-time: 86400
+  issuer: 'qmPlus'
+# zap logger configuration
+zap:
+  level: 'info'
+  format: 'console'
+  prefix: '[github.com/flipped-aurora/gin-vue-admin/server]'
+  director: 'log'
+  show-line: true
+  encode-level: 'LowercaseColorLevelEncoder'
+  stacktrace-key: 'stacktrace'
+  log-in-console: true
 
 # redis configuration
 redis:
-    addr: '127.0.0.1:6379'
-    password: ''
-    db: 0
+  db: 0
+  addr: '127.0.0.1:6379'
+  password: ''
+
+# email configuration
+email:
+  to: 'xxx@qq.com'
+  port: 465
+  from: 'xxx@163.com'
+  host: 'smtp.163.com'
+  is-ssl: true
+  secret: 'xxx'
+  nickname: 'test'
+
+# casbin configuration
+casbin:
+  model-path: './resource/rbac_model.conf'
 
 # system configuration
 system:
-    use-multipoint: false
-    env: 'public'  # Change to "develop" to skip authentication for development mode
-    addr: 8888
-    db-type: "mysql"  # support mysql/sqlite
-    need-init-data: false # 是否初始化项目
+  env: 'public'  # Change to "develop" to skip authentication for development mode
+  addr: 8888
+  db-type: 'mysql'
+  oss-type: 'local'    # 控制oss选择走本期还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
+  use-multipoint: false
+  # IP限制次数 一个小时15000次
+  iplimit-count: 15000
+  #  IP限制一个小时
+  iplimit-time: 3600
 
 # captcha configuration
 captcha:
-    key-long: 4
-    img-width: 120
-    img-height: 40
+  key-long: 6
+  img-width: 240
+  img-height: 80
 
-# logger configuration
-log:
-    prefix: '[GIN-VUE-ADMIN]'
-    log-file: true
-    stdout: 'DEBUG'
-    file: 'DEBUG'
+# mysql connect configuration
+# 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://www.github.com/flipped-aurora/gin-vue-admin/server.com/docs/first）
+mysql:
+  path: ''
+  config: ''
+  db-name: ''
+  username: ''
+  password: ''
+  max-idle-conns: 10
+  max-open-conns: 100
+  log-mode: ""
+  log-zap: false
+
+# local configuration
+local:
+  path: 'uploads/file'
+
+# autocode configuration
+autocode:
+  transfer-restart: true
+  # root 自动适配项目根目录
+  # 请不要手动配置,他会在项目加载的时候识别出根路径
+  root: ""
+  server: /server
+  server-api: /api/v1/autocode
+  server-initialize: /initialize
+  server-model: /model/autocode
+  server-request: /model/autocode/request/
+  server-router: /router/autocode
+  server-service: /service/autocode
+  web: /web/src
+  web-api: /api
+  web-form: /view
+  web-table: /view
+
+# qiniu configuration (请自行七牛申请对应的 公钥 私钥 bucket 和 域名地址)
+qiniu:
+  zone: 'ZoneHuaDong'
+  bucket: ''
+  img-path: ''
+  use-https: false
+  access-key: ''
+  secret-key: ''
+  use-cdn-domains: false
+
+
+# aliyun oss configuration
+aliyun-oss:
+  endpoint: 'yourEndpoint'
+  access-key-id: 'yourAccessKeyId'
+  access-key-secret: 'yourAccessKeySecret'
+  bucket-name: 'yourBucketName'
+  bucket-url: 'yourBucketUrl'
+  base-path: 'yourBasePath'
+
+# tencent cos configuration
+tencent-cos:
+  bucket: 'xxxxx-10005608'
+  region: 'ap-shanghai'
+  secret-id: 'xxxxxxxx'
+  secret-key: 'xxxxxxxx'
+  base-url: 'https://gin.vue.admin'
+  path-prefix: 'github.com/flipped-aurora/gin-vue-admin/server'
+
+# excel configuration
+excel:
+  dir: './resource/excel/'
+
+
+# timer task db clear table
+Timer:
+  start: true
+  spec: "@daily"  # 定时任务详细配置参考 https://pkg.go.dev/github.com/robfig/cron/v3
+  detail: [
+    # tableName: 需要清理的表名
+    # compareField: 需要比较时间的字段
+    # interval: 时间间隔, 具体配置详看 time.ParseDuration() 中字符串表示 且不能为负数
+    # 2160h = 24 * 30 * 3 -> 三个月
+    { tableName: "sys_operation_records" , compareField: "created_at", interval: "2160h" },
+    { tableName: "jwt_blacklists" , compareField: "created_at", interval: "168h" }
+    #{ tableName: "log2" , compareField: "created_at", interval: "2160h" }
+  ]
+
+
 
 ```
 

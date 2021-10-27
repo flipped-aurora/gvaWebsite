@@ -22,6 +22,7 @@ type JWT struct {
 	SigningKey  string `mapstructure:"signing-key" json:"signingKey" yaml:"signing-key"`    // jwt签名
 	ExpiresTime int64  `mapstructure:"expires-time" json:"expiresTime" yaml:"expires-time"` // 过期时间
 	BufferTime  int64  `mapstructure:"buffer-time" json:"bufferTime" yaml:"buffer-time"`    // 缓冲时间
+	Issuer  string  `mapstructure:"issuer" json:"issuer" yaml:"issuer"`                     // jwt签发者 
 }
 ```
 
@@ -30,8 +31,9 @@ type JWT struct {
 | 配置名      | 类型   | 说明      |
 | :---------- | :----- | :-------- |
 | signing-key | string | jwt的签名 |
-| expires-time | string | 过期时间 |
-| buffer-time | string | 缓冲时间（过期前这段时间内有过请求会刷新jwt续期） |
+| expires-time | int64 | 过期时间 |
+| buffer-time | int64 | 缓冲时间（过期前这段时间内有过请求会刷新jwt续期） |
+| issuer | string | jwt签发者 |
 
 ## Zap
 
@@ -199,7 +201,6 @@ system:
   addr: 8888
   db-type: 'mysql'
   oss-type: 'local'
-  need-init-data: false
   use-multipoint: false
 ```
 
@@ -211,7 +212,6 @@ type System struct {
 	Addr          int    `mapstructure:"addr" json:"addr" yaml:"addr"`
 	DbType        string `mapstructure:"db-type" json:"dbType" yaml:"db-type"`
 	OssType       string `mapstructure:"oss-type" json:"ossType" yaml:"oss-type"`
-	NeedInitData  bool   `mapstructure:"need-init-data" json:"needInitData" yaml:"need-init-data"`
 	UseMultipoint bool   `mapstructure:"use-multipoint" json:"useMultipoint" yaml:"use-multipoint"`
 }
 ```
@@ -222,9 +222,8 @@ type System struct {
 | -------------- | ------ | ------------------------------------------------------------ |
 | env            | string | 更改为“develop”以跳过开发模式的身份验证                      |
 | addr           | int    | 后端端口,默认8888                                            |
-| db-type        | string | 可以使用mysql/postgresql/sqlite/sqlserver,<br />mysql: 完美支持<br />postgresql:可以自行配置,但有代码不兼容,需自行测试并修改<br />sqlite:sqlite需要gcc支持 windows用户需要自行安装gcc,<br />还需要在server/core/gorm.go把注册的初始化sqlite的方法<br />sqlserver:可以自行配置,可能有代码不兼容,需自行测试并修改 |
+| db-type        | string | 可以使用mysql 后续支持pgsql |
 | oss-type       | string | 可以指定上传头像的oss为local/qiniu/aliyun/minio<br />local:本地的 `local.path` 目录<br />qiniu:七牛云<br />aliyun与minio可能框架不会集成,需自己添加,或者参考 [额外功能](oss) |
-| need-init-data | bool   | 是否需要初始化数据,v2.3.1版本起支持 [gva](https://github.com/flipped-aurora/gva-ctl) 终端进行数据的初始化 |
 | use-multipoint | bool   | 单点登录,默认为关闭                                          |
 
 ## captcha
@@ -264,14 +263,15 @@ type Captcha struct {
 ```yaml
 # mysql connect configuration
 mysql:
-  username: root
-  password: 'Aa@6447985'
-  path: '127.0.0.1:3306'
-  db-name: 'qmPlus'
-  config: 'charset=utf8mb4&parseTime=True&loc=Local'
+  path: ''
+  config: ''
+  db-name: ''
+  username: ''
+  password: ''
   max-idle-conns: 10
-  max-open-conns: 10
+  max-open-conns: 100
   log-mode: false
+  log-zap: ""
 ```
 
 ### struct
@@ -285,7 +285,8 @@ type Mysql struct {
 	Password     string `mapstructure:"password" json:"password" yaml:"password"`
 	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"`
 	MaxOpenConns int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"`
-	LogMode      bool   `mapstructure:"log-mode" json:"logMode" yaml:"log-mode"`
+	LogMode      string `mapstructure:"log-mode" json:"logMode" yaml:"log-mode"`                  // 开启Gorm全局日志等级
+	LogZap       bool   `mapstructure:"log-zap" json:"logZap" yaml:"log-zap"`                    // 是否通过zap写入日志文件
 }
 ```
 
@@ -300,84 +301,10 @@ type Mysql struct {
 | config         | string | 高级配置                     |
 | max-idle-conns | int    | 设置空闲中的最大连接数       |
 | max-open-conns | int    | 设置打开到数据库的最大连接数 |
-| log-mode       | bool   | 是否开启Gorm全局日志         |
+| log-mode       | string   | 开启Gorm全局日志等级         |
+| log-zap       | bool   | 是否写入zap         |
 
-## Sqlite
-
-### yaml
-
-```yaml
-# sqlite connect configuration (sqlite需要gcc支持 windows用户需要自行安装gcc)
-sqlite:
-  path: 'db.db'
-  max-idle-conns: 10
-  max-open-conns: 10
-  logger: true
-```
-
-### struct
-
-```go
-type Sqlite struct {
-	Path         string `mapstructure:"path" json:"path" yaml:"path"`
-	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"`
-	MaxOpenConns int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"`
-	Logger       bool   `mapstructure:"logger" json:"logger" yaml:"logger"`
-}
-```
-
-### description
-
-| 配置名         | 类型   | 说明                                                         |
-| -------------- | ------ | ------------------------------------------------------------ |
-| path           | string | 文件名<br />path: 'file::memory:?cache=shared' 这样配置为内存模式 |
-| max-idle-conns | int    | 设置空闲中的最大连接数                                       |
-| max-open-conns | int    | 设置打开到数据库的最大连接数                                 |
-| logger         | bool   | 是否开启Gorm全局日志                                         |
-
-## SqlServer
-
-### yaml
-
-```yaml
-# Sqlserver connect configuration
-sqlserver:
-  path: 'localhost:9930'
-  db-name: 'gorm'
-  username: 'gorm'
-  password: 'LoremIpsum86'
-  max-idle-conns: 10
-  max-open-conns: 10
-  logger: true
-```
-
-### struct
-
-```go
-type Sqlserver struct {
-	Path         string `mapstructure:"path" json:"path" yaml:"path"`
-	Dbname       string `mapstructure:"db-name" json:"dbname" yaml:"db-name"`
-	Username     string `mapstructure:"username" json:"username" yaml:"username"`
-	Password     string `mapstructure:"password" json:"password" yaml:"password"`
-	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"`
-	MaxOpenConns int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"`
-	Logger       bool   `mapstructure:"logger" json:"logger" yaml:"logger"`
-}
-```
-
-### description
-
-| 配置名         | 类型   | 说明                         |
-| -------------- | ------ | ---------------------------- |
-| path           | string | sqlserver的连接地址及端口    |
-| db-name        | string | 数据库名                     |
-| username       | string | 用户名                       |
-| password       | string | 密码                         |
-| max-idle-conns | int    | 设置空闲中的最大连接数       |
-| max-open-conns | int    | 设置打开到数据库的最大连接数 |
-| logger         | bool   | 是否开启Gorm全局日志         |
-
-## Postgresql
+## Postgresql （研发中）
 
 ### yaml
 

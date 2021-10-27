@@ -103,7 +103,6 @@ title: 使用指南
 | `autoCode/server/sysUsers/request/sysUsers.go`   | `server/model/request/sysUsers.go`                           |
 | `autoCode/server/sysUsers/model/sysUsers.go`     | `server/model/sysUsers.go`                                   |
 | `autoCode/server/sysUsers/api/sysUsers.go`       | `server/api/sysUsers.go`                                     |
-| `autoCode/web/sysUsers/workflowForm/sysUsers.vue` | `web/src/view/sysUsers/sysUsersWorkflowForm.vue`<br /> (文件需要重命名, 此文件服务于工作流模板) |
 | `autoCode/web/sysUsers/table/sysUsers.vue`        | `web/src/view/sysUsers/sysUsers.vue`                          |
 | `autoCode/web/sysUsers/form/sysUsers.vue`         | `web/src/view/sysUsers/sysUsersForm.vue` (文件需要重命名)     |
 | `autoCode/web/sysUsers/api/sysUsers.js`          | `web/src/api/sysUsers.js`                                    |
@@ -135,7 +134,7 @@ title: 使用指南
 
 ## 2. 注册路由和数据库表
 
-### 2.1 注册路由
+### 2.1 注册路由 (目前版本已可自动添加)
 
 [server/initialize/router.go](https://github.com/flipped-aurora/gin-vue-admin/blob/master/server/initialize/router.go)
 
@@ -201,7 +200,7 @@ func Routers() *gin.Engine {
 }
 ```
 
-### 2.2 注册数据库表
+### 2.2 注册数据库表 (目前版本已可自动添加)
 
 [server/initialize/gorm.go](https://github.com/flipped-aurora/gin-vue-admin/blob/master/server/initialize/gorm.go)
 
