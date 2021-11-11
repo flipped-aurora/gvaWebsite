@@ -53,7 +53,7 @@ function Footer() {
   return (
     <footer
       className={clsx('footer', {
-        'footer--dark': footer.style === 'dark',
+        'footer--light': footer.style === 'dark',
       })}>
       <div className="container">
         {links && links.length > 0 && (

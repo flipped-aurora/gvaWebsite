@@ -17,6 +17,7 @@ import useWindowSize, {windowSizes} from '@theme/hooks/useWindowSize';
 import useLogo from '@theme/hooks/useLogo';
 import styles from './styles.module.css';
 import NavbarItem from '@theme/NavbarItem'; // retrocompatible with v1
+import './index.css'
 
 const DefaultNavItemPosition = 'right'; // If split links by left/right
 // if position is unspecified, fallback to right (as v1)
@@ -70,12 +71,15 @@ function Navbar() {
   return (
     <nav
       ref={navbarRef}
-      className={clsx('navbar', 'navbar--light', 'navbar--fixed-top', {
+      id={'navbar'}
+      className={clsx('navbar my_navbar', 'navbar--light', 'navbar--fixed-top', {
         'navbar-sidebar--show': sidebarShown,
         [styles.navbarHideable]: hideOnScroll,
         [styles.navbarHidden]: !isNavbarVisible,
       })}>
-      <div className="navbar__inner">
+      <div className={'head_color1'}></div>
+      <div className={'head_color2'}></div>
+      <div className="my_navbar_container">
         <div className="navbar__items">
           {items != null && items.length !== 0 && (
             <div
@@ -179,7 +183,7 @@ function Navbar() {
           <div className="menu">
             <ul className="menu__list">
               {items.map((item, i) => (
-                <NavbarItem mobile {...item} onClick={hideSidebar} key={i} />
+                  <NavbarItem mobile {...item} onClick={hideSidebar} key={i} />
               ))}
             </ul>
           </div>

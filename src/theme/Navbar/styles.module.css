@@ -24,4 +24,3 @@
 .navbarHidden {
   top: calc(var(--ifm-navbar-height) * -1) !important;
 }
-
