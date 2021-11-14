@@ -181,7 +181,7 @@ function Navbar() {
         </div>
         <div className="navbar-sidebar__items">
           <div className="menu">
-            <ul className="menu__list">
+            <ul className="menu__list" style={{width:"8rem",textAlign:"center"}}>
               {items.map((item, i) => (
                   <NavbarItem mobile {...item} onClick={hideSidebar} key={i} />
               ))}
