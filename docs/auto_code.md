@@ -92,17 +92,17 @@ title: 使用指南
 
 :::info 注意
 
-[PackageName](#packagename) (文件夹自建）--> 代表图片上的sysUsers
+[PackageName](#packagename) (文件夹自建）--> 代表图片上的sysUsers 新版自动迁移会在autocode下每个功能的enter下自动注册生成的新的代码模块 如果不使用自动迁移功能 还需要自动注册
 
 :::
 
-| 图片路径                                         | 移动到对应路径 (web/view/sysUsers目录下的sysUsers文件夹需要自己新建) |
+| 示例路径                                         | 移动到对应路径 (web/view/sysUsers目录下的sysUsers文件夹需要自己新建) |
 | ------------------------------------------------ | ------------------------------------------------------------ |
-| `autoCode/server/sysUsers/service/sysUsers.go`   | `server/service/sysUsers.go`                                 |
-| `autoCode/server/sysUsers/router/sysUsers.go`    | `server/router/sysUsers.go`                                  |
-| `autoCode/server/sysUsers/request/sysUsers.go`   | `server/model/request/sysUsers.go`                           |
-| `autoCode/server/sysUsers/model/sysUsers.go`     | `server/model/sysUsers.go`                                   |
-| `autoCode/server/sysUsers/api/sysUsers.go`       | `server/api/sysUsers.go`                                     |
+| `autoCode/server/sysUsers/service/sysUsers.go`   | `server/service/autocode/sysUsers.go`                                 |
+| `autoCode/server/sysUsers/router/sysUsers.go`    | `server/router/autocode/sysUsers.go`                                  |
+| `autoCode/server/sysUsers/request/sysUsers.go`   | `server/model/autocode/request/sysUsers.go`                           |
+| `autoCode/server/sysUsers/model/sysUsers.go`     | `server/model/autocode/sysUsers.go`                                   |
+| `autoCode/server/sysUsers/api/sysUsers.go`       | `server/api/autocode/sysUsers.go`                                     |
 | `autoCode/web/sysUsers/table/sysUsers.vue`        | `web/src/view/sysUsers/sysUsers.vue`                          |
 | `autoCode/web/sysUsers/form/sysUsers.vue`         | `web/src/view/sysUsers/sysUsersForm.vue` (文件需要重命名)     |
 | `autoCode/web/sysUsers/api/sysUsers.js`          | `web/src/api/sysUsers.js`                                    |
