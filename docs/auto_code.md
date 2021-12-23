@@ -31,8 +31,8 @@ title: 使用指南
 | `数据库字段名`   | `ColumnName`             | 数据库字段名             | 对应数据库中的字段名称                                       |
 | `数据库字段描述` | `Comment`                | 数据库备注               | 对应数据库中的列Comment值                                    |
 | `Field数据类型`  | `FieldType`              | 字段对应golang数据类型   | 对应struct结构体中的字段类型                                 |
-| `数据库字段类型` | `DataType`               | 字段数据类型             | 对应生成的数据表中的字段类型                                 |
-| `数据库字段长度` | `DataTypeLong`           | 字段数据类型长度         | 对应生成的数据表中的字段长度                                 |
+| `数据库字段类型(2.4.6废弃)` | `DataType`               | 字段数据类型             | 对应生成的数据表中的字段类型                                 |
+| `数据库字段长度(2.4.6废弃)` | `DataTypeLong`           | 字段数据类型长度         | 对应生成的数据表中的字段长度                                 |
 | `Field查询条件`  | `FieldSearchType`        | 搜索类型                 | 用于实现该对象数据列表的条件查询                             |
 | `关联字典`       | `DictType`               | 关联字典标记             |                                                              |
 
@@ -92,7 +92,7 @@ title: 使用指南
 
 :::info 注意
 
-[PackageName](#packagename) (文件夹自建）--> 代表图片上的sysUsers 新版自动迁移会在autocode下每个功能的enter下自动注册生成的新的代码模块 如果不使用自动迁移功能 还需要自动注册
+[PackageName](#packagename) (文件夹自建）--> 代表图片上的sysUsers 新版自动迁移会在autocode下每个功能的enter下自动注册生成的新的代码模块 如果不使用自动迁移功能 还需要自行注册
 
 :::
 
@@ -106,6 +106,108 @@ title: 使用指南
 | `autoCode/web/sysUsers/table/sysUsers.vue`        | `web/src/view/sysUsers/sysUsers.vue`                          |
 | `autoCode/web/sysUsers/form/sysUsers.vue`         | `web/src/view/sysUsers/sysUsersForm.vue` (文件需要重命名)     |
 | `autoCode/web/sysUsers/api/sysUsers.js`          | `web/src/api/sysUsers.js`                                    |
+
+
+
+代码迁移完成后，go代码如果需要做模块化，则需要创建enter.go
+
+enter.go内部将所有的相关功能模块下的结构统一为一个总结构体，然后将可以通过new这个总结构体实现对本模块的所有结构统一实例化使用 我们此处仅以api下的system分类为例（其他模块操作类似 model模块无enter.go）
+
+system下目录结构如下
+
+ enter.go
+    sys_api.go
+    sys_authority.go
+    sys_auto_code.go
+    sys_auto_code_history.go
+    sys_captcha.go
+    sys_casbin.go
+    sys_dictionary.go
+    sys_dictionary_detail.go
+    sys_initdb.go
+    sys_jwt_blacklist.go
+    sys_menu.go
+    sys_operation_record.go
+    sys_system.go
+    sys_user.go
+
+enter.go
+文件中存在如下结构
+
+```go
+
+package system
+
+import "github.com/flipped-aurora/gin-vue-admin/server/service"
+
+
+// 此处为功能模块的分组 表示我们这边是API模块 我们总结了当前目录下的所有结构体
+type ApiGroup struct {
+	DBApi	//这是当前分组下存在的模块 DBApi模块 就来自于 sys_initdb.go 下的 type DBApi struct{} 下方同理
+	JwtApi
+	BaseApi
+	SystemApi
+	CasbinApi
+	AutoCodeApi
+	SystemApiApi
+	AuthorityApi
+	DictionaryApi
+	AuthorityMenuApi
+	OperationRecordApi
+	AutoCodeHistoryApi
+	DictionaryDetailApi
+}
+
+
+// 此处是为了统一方便使用Service下的功能 因此统一获取做了拆解 方便api模块下所有的功能都可以通过调用此处的变量获取到对应的Service实例从而调用其方法
+var (
+	apiService              = service.ServiceGroupApp.SystemServiceGroup.ApiService 
+	// apiService： 例如此处描述的就是 service包下的ServiceGroup示例下的SystemServiceGroup功能组的ApiService相关功能
+	jwtService              = service.ServiceGroupApp.SystemServiceGroup.JwtService
+	menuService             = service.ServiceGroupApp.SystemServiceGroup.MenuService
+	userService             = service.ServiceGroupApp.SystemServiceGroup.UserService
+	initDBService           = service.ServiceGroupApp.SystemServiceGroup.InitDBService
+	casbinService           = service.ServiceGroupApp.SystemServiceGroup.CasbinService
+	autoCodeService         = service.ServiceGroupApp.SystemServiceGroup.AutoCodeService
+	baseMenuService         = service.ServiceGroupApp.SystemServiceGroup.BaseMenuService
+	authorityService        = service.ServiceGroupApp.SystemServiceGroup.AuthorityService
+	dictionaryService       = service.ServiceGroupApp.SystemServiceGroup.DictionaryService
+	systemConfigService     = service.ServiceGroupApp.SystemServiceGroup.SystemConfigService
+	operationRecordService  = service.ServiceGroupApp.SystemServiceGroup.OperationRecordService
+	autoCodeHistoryService  = service.ServiceGroupApp.SystemServiceGroup.AutoCodeHistoryService
+	dictionaryDetailService = service.ServiceGroupApp.SystemServiceGroup.DictionaryDetailService
+)
+
+
+
+```
+
+这里我们介绍完了声明enter的过程 和使用其他包下enter的过程  然后我们找到实例化enter的过程
+
+查看/server/api/v1/enter.go 这个文件
+
+```go
+
+package v1
+
+import (
+	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/autocode"
+	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/example"
+	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/system"
+)
+
+type ApiGroup struct {
+	SystemApiGroup   system.ApiGroup
+	ExampleApiGroup  example.ApiGroup
+	AutoCodeApiGroup autocode.ApiGroup
+}
+
+// 我们在此处对上方前面做过的所有声明进行了总结并且实例化为App 其他包我们通过调用 v1.ApiGroupApp.xxxx组.xxx功能.xxx方法即可
+var ApiGroupApp = new(ApiGroup)
+
+
+```
+手动添加自动化生成代码的方式也介绍完了，此模式方便大家模块化使用，看起来比较长，但是其便于对单一分类统一管理，创建同意方法等，同样也便于项目后期拓展维护。在后续迭代中不再痛苦。
 
 ### 1.4 预览代码
 
@@ -155,46 +257,71 @@ import (
 // 初始化总路由
 
 func Routers() *gin.Engine {
-	var Router = gin.Default()
+	Router := gin.Default()
+
+	// 如果想要不使用nginx代理前端网页，可以修改 web/.env.production 下的
+	// VUE_APP_BASE_API = /
+	// VUE_APP_BASE_PATH = http://localhost
+	// 然后执行打包命令 npm run build。在打开下面4行注释
+	// Router.LoadHTMLGlob("./dist/*.html") // npm打包成dist的路径
+	// Router.Static("/favicon.ico", "./dist/favicon.ico")
+	// Router.Static("/static", "./dist/assets")   // dist里面的静态资源
+	// Router.StaticFile("/", "./dist/index.html") // 前端网页入口页面
+
 	Router.StaticFS(global.GVA_CONFIG.Local.Path, http.Dir(global.GVA_CONFIG.Local.Path)) // 为用户头像和文件提供静态地址
 	// Router.Use(middleware.LoadTls())  // 打开就能玩https了
 	global.GVA_LOG.Info("use middleware logger")
-	// 跨域
-	Router.Use(middleware.Cors())
+	// 跨域，如需跨域可以打开下面的注释
+	// Router.Use(middleware.Cors()) // 直接放行全部跨域请求
+	//Router.Use(middleware.CorsByRules()) // 按照配置的规则放行跨域请求
 	global.GVA_LOG.Info("use middleware cors")
 	Router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	global.GVA_LOG.Info("register swagger handler")
 	// 方便统一添加路由组前缀 多服务器上线使用
+
+	// 获取路由组实例
+	systemRouter := router.RouterGroupApp.System
+	exampleRouter := router.RouterGroupApp.Example
+	autocodeRouter := router.RouterGroupApp.Autocode
+	// 来自router的enter.go
 	PublicGroup := Router.Group("")
 	{
-		router.InitBaseRouter(PublicGroup) // 注册基础功能路由 不做鉴权
-		// 不需要鉴权的路由在这里行代码下面写
-		router.InitSysUsersRouter(PublicGroup) // 此代码为示范
+		// 健康监测
+		PublicGroup.GET("/health", func(c *gin.Context) {
+			c.JSON(200, "ok")
+		})
+	}
+	{
+		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由 不做鉴权
+		systemRouter.InitInitRouter(PublicGroup) // 自动初始化相关
 	}
 	PrivateGroup := Router.Group("")
 	PrivateGroup.Use(middleware.JWTAuth()).Use(middleware.CasbinHandler())
 	{
-		router.InitApiRouter(PrivateGroup)                   // 注册功能api路由
-		router.InitJwtRouter(PrivateGroup)                   // jwt相关路由
-		router.InitUserRouter(PrivateGroup)                  // 注册用户路由
-		router.InitMenuRouter(PrivateGroup)                  // 注册menu路由
-		router.InitEmailRouter(PrivateGroup)                 // 邮件相关路由
-		router.InitSystemRouter(PrivateGroup)                // system相关路由
-		router.InitCasbinRouter(PrivateGroup)                // 权限相关路由
-		router.InitCustomerRouter(PrivateGroup)              // 客户路由
-		router.InitAutoCodeRouter(PrivateGroup)              // 创建自动化代码
-		router.InitAuthorityRouter(PrivateGroup)             // 注册角色路由
-		router.InitSimpleUploaderRouter(PrivateGroup)        // 断点续传（插件版）
-		router.InitSysDictionaryRouter(PrivateGroup)         // 字典管理
-		router.InitSysOperationRecordRouter(PrivateGroup)    // 操作记录
-		router.InitSysDictionaryDetailRouter(PrivateGroup)   // 字典详情管理
-		router.InitFileUploadAndDownloadRouter(PrivateGroup) // 文件上传下载功能路由
-		router.InitWorkflowProcessRouter(PrivateGroup)       // 工作流相关接口
-		router.InitExcelRouter(PrivateGroup)                 // 表格导入导出
-		
-		// 需要鉴权的路由在这里行代码下面写
-		router.InitSysUsersRouter(PrivateGroup) // 此代码为示范
+		systemRouter.InitApiRouter(PrivateGroup)                 // 注册功能api路由
+		systemRouter.InitJwtRouter(PrivateGroup)                 // jwt相关路由
+		systemRouter.InitUserRouter(PrivateGroup)                // 注册用户路由
+		systemRouter.InitMenuRouter(PrivateGroup)                // 注册menu路由
+		systemRouter.InitSystemRouter(PrivateGroup)              // system相关路由
+		systemRouter.InitCasbinRouter(PrivateGroup)              // 权限相关路由
+		systemRouter.InitAutoCodeRouter(PrivateGroup)            // 创建自动化代码
+		systemRouter.InitAuthorityRouter(PrivateGroup)           // 注册角色路由
+		systemRouter.InitSysDictionaryRouter(PrivateGroup)       // 字典管理
+		systemRouter.InitAutoCodeHistoryRouter(PrivateGroup)     // 自动化代码历史
+		systemRouter.InitSysOperationRecordRouter(PrivateGroup)  // 操作记录
+		systemRouter.InitSysDictionaryDetailRouter(PrivateGroup) // 字典详情管理
+
+		exampleRouter.InitExcelRouter(PrivateGroup)                 // 表格导入导出
+		exampleRouter.InitCustomerRouter(PrivateGroup)              // 客户路由
+		exampleRouter.InitFileUploadAndDownloadRouter(PrivateGroup) // 文件上传下载功能路由
+
+		// Code generated by github.com/flipped-aurora/gin-vue-admin/server Begin; DO NOT EDIT.
+		autocodeRouter.InitSysAutoCodeExampleRouter(PrivateGroup)
+		// Code generated by github.com/flipped-aurora/gin-vue-admin/server End; DO NOT EDIT.
 	}
+
+	InstallPlugin(PublicGroup, PrivateGroup) // 安装插件
+
 	global.GVA_LOG.Info("router register success")
 	return Router
 }
@@ -204,75 +331,70 @@ func Routers() *gin.Engine {
 
 [server/initialize/gorm.go](https://github.com/flipped-aurora/gin-vue-admin/blob/master/server/initialize/gorm.go)
 
+将你的model结构配置进入 db.AutoMigrate()内部即可
+
 ```go
 package initialize
 
 import (
-	"gin-vue-admin/global"
-	"gin-vue-admin/initialize/internal"
-	"gin-vue-admin/model"
-	"go.uber.org/zap"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 	"os"
+
+	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/autocode"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/example"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
+
+	"go.uber.org/zap"
+	"gorm.io/gorm"
 )
 
-//@author: SliverHorn
-//@function: Gorm
-//@description: 初始化数据库并产生数据库全局变量
-//@return: *gorm.DB
-
+// Gorm 初始化数据库并产生数据库全局变量
+// Author SliverHorn
 func Gorm() *gorm.DB {
 	switch global.GVA_CONFIG.System.DbType {
 	case "mysql":
 		return GormMysql()
+	case "pgsql":
+		return GormPgSql()
 	default:
 		return GormMysql()
 	}
 }
 
-// MysqlTables
-//@author: SliverHorn
-//@function: MysqlTables
-//@description: 注册数据库表专用
-//@param: db *gorm.DB
-
-func MysqlTables(db *gorm.DB) {
+// RegisterTables 注册数据库表专用
+// Author SliverHorn
+func RegisterTables(db *gorm.DB) {
 	err := db.AutoMigrate(
-		model.SysUser{},
-		model.SysAuthority{},
-		model.SysApi{},
-		model.SysBaseMenu{},
-		model.SysBaseMenuParameter{},
-		model.JwtBlacklist{},
-		model.SysDictionary{},
-		model.SysDictionaryDetail{},
-		model.ExaFileUploadAndDownload{},
-		model.ExaFile{},
-		model.ExaFileChunk{},
-		model.ExaSimpleUploader{},
-		model.ExaCustomer{},
-		model.SysOperationRecord{},
-		model.WorkflowProcess{},
-		model.WorkflowNode{},
-		model.WorkflowEdge{},
-		model.WorkflowStartPoint{},
-		model.WorkflowEndPoint{},
-		model.WorkflowMove{},
-		model.ExaWfLeave{},
-    
-		// 在这里写模型的代码, 
-		model.SysUsers{}, // 此代码为示范
-		// 或者这样写, 根据自己的喜欢进行选择
-		new(model.SysUser), // 此代码为示范
+		// 系统模块表
+		system.SysApi{},
+		system.SysUser{},
+		system.SysBaseMenu{},
+		system.JwtBlacklist{},
+		system.SysAuthority{},
+		system.SysDictionary{},
+		system.SysOperationRecord{},
+		system.SysAutoCodeHistory{},
+		system.SysDictionaryDetail{},
+		system.SysBaseMenuParameter{},
+
+		// 示例模块表
+		example.ExaFile{},
+		example.ExaCustomer{},
+		example.ExaFileChunk{},
+		example.ExaFileUploadAndDownload{},
+
+		// 自动化模块表
+		// Code generated by github.com/flipped-aurora/gin-vue-admin/server Begin; DO NOT EDIT.
+		autocode.AutoCodeExample{},
+		// Code generated by github.com/flipped-aurora/gin-vue-admin/server End; DO NOT EDIT.
 	)
 	if err != nil {
-		global.GVA_LOG.Error("register table failed", zap.Any("err", err))
+		global.GVA_LOG.Error("register table failed", zap.Error(err))
 		os.Exit(0)
 	}
 	global.GVA_LOG.Info("register table success")
 }
+
 ```
 
 ## 3.配置目录菜单
