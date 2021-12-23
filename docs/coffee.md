@@ -11,11 +11,7 @@ gin-vue-admin是一款非商业性的可快速开发基础架构，开箱即用�
 
 |  支付宝   | 微信  |
 |  :---:  | :---: |
-| 
-
-![markdown](../static/guanwang/zfb.png "支付宝") |  ![markdown](../static/guanwang/wxzf.png "微信")
-
- |
+| ![markdown](../static/guanwang/zfb.png "支付宝") |  ![markdown](../static/guanwang/wxzf.png "微信")|
 
 :::info 鸣谢
 

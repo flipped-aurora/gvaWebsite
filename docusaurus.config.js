@@ -28,6 +28,11 @@ module.exports = {
                     position: 'right',
                 },
                 {
+                    href: 'https://support.qq.com/products/371961',
+                    label: '官方社区',
+                    position: 'right',
+                },
+                {
                     href: 'https://www.yuque.com/flipped-aurora/',
                     label: '知识库',
                     position: 'right',
