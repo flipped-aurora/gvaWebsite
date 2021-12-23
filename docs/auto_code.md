@@ -116,19 +116,33 @@ enter.go内部将所有的相关功能模块下的结构统一为一个总结构
 system下目录结构如下
 
  enter.go
+
     sys_api.go
+
     sys_authority.go
+
     sys_auto_code.go
+
     sys_auto_code_history.go
+
     sys_captcha.go
+
     sys_casbin.go
+
     sys_dictionary.go
+
     sys_dictionary_detail.go
+
     sys_initdb.go
+
     sys_jwt_blacklist.go
+
     sys_menu.go
+
     sys_operation_record.go
+
     sys_system.go
+	
     sys_user.go
 
 enter.go
