@@ -17,13 +17,12 @@ module.exports = {
                 alt: 'Gin-Vue-Admin',
                 src: 'img/logo.png',
             },
-            items: [
-                {
+            items: [{
                     href: 'http://demo.gin-vue-admin.com/',
                     label: '在线体验',
                     position: 'right',
                 },
-                
+
                 {
                     to: 'about/',
                     label: '关于我们',
@@ -37,8 +36,7 @@ module.exports = {
                 {
                     label: '官方社区',
                     position: 'right',
-                    items: [
-                        {
+                    items: [{
                             href: 'https://space.bilibili.com/322210472',
                             label: '教学视频',
                             position: 'right',
@@ -58,8 +56,7 @@ module.exports = {
                 {
                     label: "下载地址",
                     position: "right",
-                    items: [
-                        {
+                    items: [{
                             href: 'https://github.com/flipped-aurora/gin-vue-admin',
                             label: 'GitHub',
                             position: 'right',
@@ -72,7 +69,6 @@ module.exports = {
                     ]
                 },
                 {
-                    href: 'https://www.aliyun.com/minisite/goods?userCode=xqe01uob',
                     label: '特惠服务器',
                     position: 'right',
                     items: [{
@@ -91,48 +87,48 @@ module.exports = {
         footer: {
             style: 'dark',
             links: [{
-                title: '团队项目',
-                items: [{
-                    label: 'gf-vue-admin',
-                    to: 'https://github.com/flipped-aurora/gf-vue-admin',
-                },
-                {
-                    label: 'gin-vue-admin',
-                    to: 'https://github.com/flipped-aurora/gin-vue-admin',
-                },
-                {
-                    label: 'melody',
-                    to: 'https://github.com/flipped-aurora/melody',
-                },
+                    title: '团队项目',
+                    items: [{
+                            label: 'gf-vue-admin',
+                            to: 'https://github.com/flipped-aurora/gf-vue-admin',
+                        },
+                        {
+                            label: 'gin-vue-admin',
+                            to: 'https://github.com/flipped-aurora/gin-vue-admin',
+                        },
+                        {
+                            label: 'melody',
+                            to: 'https://github.com/flipped-aurora/melody',
+                        },
 
-                ],
-            },
-            {
-                title: '社区',
-                items: [{
-                    label: '语雀博客',
-                    href: 'https://www.yuque.com/flipped-aurora/gqbcfk',
+                    ],
                 },
                 {
-                    label: '视频教程',
-                    href: 'https://space.bilibili.com/322210472',
+                    title: '社区',
+                    items: [{
+                            label: '语雀博客',
+                            href: 'https://www.yuque.com/flipped-aurora/gqbcfk',
+                        },
+                        {
+                            label: '视频教程',
+                            href: 'https://space.bilibili.com/322210472',
+                        },
+                        {
+                            label: '问题反馈',
+                            href: 'https://github.com/flipped-aurora/gin-vue-admin/issues',
+                        },
+                    ],
                 },
                 {
-                    label: '问题反馈',
-                    href: 'https://github.com/flipped-aurora/gin-vue-admin/issues',
+                    title: '友情链接',
+                    items: [{
+                        label: 'golang 开发工具包，json、sql 转 struct',
+                        to: 'http://www.golangs.cn/',
+                    }, {
+                        label: 'gin-vue-devops 基于Gin-Vue-Admin开发的DevOps平台',
+                        to: 'https://github.com/openstack-test/gin-vue-devops',
+                    }],
                 },
-                ],
-            },
-            {
-                title: '友情链接',
-                items: [{
-                    label: 'golang 开发工具包，json、sql 转 struct',
-                    to: 'http://www.golangs.cn/',
-                }, {
-                    label: 'gin-vue-devops 基于Gin-Vue-Admin开发的DevOps平台',
-                    to: 'https://github.com/openstack-test/gin-vue-devops',
-                }],
-            },
 
             ],
             // logo: {
