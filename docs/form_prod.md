@@ -43,7 +43,7 @@ title: 生产使用表单生成器
 
   
 
-- 同时`web/.env.production`配置为
+- 3.同时`web/.env.production`配置为
 
   ```
   ENV = 'production'
