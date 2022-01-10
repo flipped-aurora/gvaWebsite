@@ -31,8 +31,8 @@ jobs:
           HOST: ${{ secrets.HOST }}
           USER: ${{ secrets.USER }}
           PROT: ${{ secrets.PROT }}
-          MKDIRTEST: ${{ secrets.MKDIRTEST }}
+          MKDIR: ${{ secrets.MKDIR }}
         run: |
           mkdir -p ~/.ssh/ && echo "$KEY" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
-          scp -P ${PROT} -o StrictHostKeyChecking=no -r build/* ${USER}@${HOST}:${MKDIRTEST}build/
+          scp -P ${PROT} -o StrictHostKeyChecking=no -r build/* ${USER}@${HOST}:${MKDIR}build/
