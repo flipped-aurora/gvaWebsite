@@ -43,9 +43,9 @@ qq群：650421081([gin-vue-admin交流群](https://jq.qq.com/?_wv=1027&k=5cRp2f1
 
 script部分
 
-"serve": "start https://www.gin-vue-admin.com && vue-cli-service serve"
+"serve": "node openDocument.js && vite --host --mode development"
 
 替换为
 
-"serve": "vue-cli-service serve"
+"serve": "vite --host --mode development"
 :::
