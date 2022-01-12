@@ -301,7 +301,7 @@ type Mysql struct {
 | config         | string | 高级配置                     |
 | max-idle-conns | int    | 设置空闲中的最大连接数       |
 | max-open-conns | int    | 设置打开到数据库的最大连接数 |
-| log-mode       | string   | 开启Gorm全局日志等级         |
+| log-mode       | string   | 开启Gorm全局日志等级  "silent"、"error"、"warn"、"info" 不填默认info  填入silent可以关闭控制台日志       |
 | log-zap       | bool   | 是否写入zap         |
 
 ## Postgresql （研发中）
@@ -310,50 +310,49 @@ type Mysql struct {
 
 ```yaml
 # Postgresql connect configuration
-postgresql:
-  host: '127.0.0.1'
-  port: '9920'
-  config: 'sslmode=disable TimeZone=Asia/Shanghai'
-  db-name: 'gorm'
-  username: 'gorm'
-  password: 'gorm'
+pgsql:
+  path: ''
+  port: ''
+  config: ''
+  db-name: ''
+  username: ''
+  password: ''
   max-idle-conns: 10
-  max-open-conns: 10
-  prefer-simple-protocol: true
-  logger: false
+  max-open-conns: 100
+  log-mode: ""
+  log-zap: false
+
 ```
 
 ### struct
 
 ```go
-type Postgresql struct {
-	Host                 string `mapstructure:"host" json:"host" yaml:"host"`
-	Port                 string `mapstructure:"port" json:"port" yaml:"port"`
-	Config               string `mapstructure:"config" json:"config" yaml:"config"`
-	Dbname               string `mapstructure:"db-name" json:"dbname" yaml:"db-name"`
-	Username             string `mapstructure:"username" json:"username" yaml:"username"`
-	Password             string `mapstructure:"password" json:"password" yaml:"password"`
-	MaxIdleConns         int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"`
-	MaxOpenConns         int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"`
-	PreferSimpleProtocol bool   `mapstructure:"prefer-simple-protocol" json:"preferSimpleProtocol" yaml:"prefer-simple-protocol"`
-	Logger               bool   `mapstructure:"logger" json:"logger" yaml:"logger"`
+type Pgsql struct {
+	Path         string `mapstructure:"path" json:"path" yaml:"path"`
+	Config       string `mapstructure:"config" json:"config" yaml:"config"`
+	Dbname       string `mapstructure:"db-name" json:"dbname" yaml:"db-name"`
+	Username     string `mapstructure:"username" json:"username" yaml:"username"`
+	Password     string `mapstructure:"password" json:"password" yaml:"password"`
+	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"`
+	MaxOpenConns int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"`
+	LogMode      string `mapstructure:"log-mode" json:"logMode" yaml:"log-mode"`                  // 开启Gorm全局日志等级
+	LogZap       bool   `mapstructure:"log-zap" json:"logZap" yaml:"log-zap"`                    // 是否通过zap写入日志文件
 }
 ```
 
 ### description
 
-| 配置名                 | 类型   | 说明                                                         |
-| ---------------------- | ------ | ------------------------------------------------------------ |
-| host                   | string | host地址                                                     |
-| port                   | string | 端口                                                         |
-| config                 | string | 高级配置                                                     |
-| db-name                | string | 数据库名                                                     |
-| username               | string | 用户名                                                       |
-| password               | string | 密码                                                         |
-| max-idle-conns         | int    | 设置空闲中的最大连接数                                       |
-| max-open-conns         | int    | 设置打开到数据库的最大连接数                                 |
-| prefer-simple-protocol | bool   | true:禁用 prepared statement 缓存<br />false启用 prepared statement 缓存 |
-| logger                 | bool   | 是否开启Gorm全局日志                                         |
+| 配置名         | 类型   | 说明                         |
+| -------------- | ------ | ---------------------------- |
+| username       | string | 用户名                       |
+| password       | string | 密码                         |
+| path           | string | mysql的连接地址及端口        |
+| db-name        | string | 数据库名                     |
+| config         | string | 高级配置                     |
+| max-idle-conns | int    | 设置空闲中的最大连接数       |
+| max-open-conns | int    | 设置打开到数据库的最大连接数 |
+| log-mode       | string   | 开启Gorm全局日志等级  "silent"、"error"、"warn"、"info" 不填默认info  填入silent可以关闭控制台日志       |
+| log-zap       | bool   | 是否写入zap         |
 
 ## Local
 
@@ -386,12 +385,12 @@ type Local struct {
 ```yaml
 # qiniu configuration (请自行七牛申请对应的 公钥 私钥 bucket 和 域名地址)
 qiniu:
-  zone: 'ZoneHuadong'
-  bucket: 'qm-plus-img'
-  img-path: 'http://qmplusimg.henrongyi.top'
+  zone: '你的空间区域'
+  bucket: '你的空间名'
+  img-path: '你的oss域名'
   use-https: false
-  access-key: '25j8dYBZ2wuiy0yhwShytjZDTX662b8xiFguwxzZ'
-  secret-key: 'pgdbqEsf7ooZh7W3xokP833h3dZ_VecFXPDeG5JY'
+  access-key: 'xxxxxxxxxxxxxxxxxxxxxxxxx'
+  secret-key: 'xxxxxxxxxxxxxxxxxxxxxxxxx'
   use-cdn-domains: false
 ```
 

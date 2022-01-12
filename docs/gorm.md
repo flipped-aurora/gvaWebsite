@@ -3,350 +3,80 @@ id: gorm
 title: Gorm
 ---
 
-# Gorm连接PostgreSql、Sqlite、Sqlserver的代码+配置指南
+# Gorm连接mysql和pgsql的配置和指南
 
-## PostgreSql
+## mysql
 
-### server/config/gorm.go
+### server/config/gorm_mysql.go
 
-- 添加Postgresql结构体
+- gorm-mysql
 
 ```go
 package config
 
-type Postgresql struct {
-	Host                 string `mapstructure:"host" json:"host" yaml:"host"`
-	Port                 string `mapstructure:"port" json:"port" yaml:"port"`
-	Config               string `mapstructure:"config" json:"config" yaml:"config"`
-	Dbname               string `mapstructure:"db-name" json:"dbname" yaml:"db-name"`
-	Username             string `mapstructure:"username" json:"username" yaml:"username"`
-	Password             string `mapstructure:"password" json:"password" yaml:"password"`
-	MaxIdleConns         int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"`
-	MaxOpenConns         int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"`
-	PreferSimpleProtocol bool   `mapstructure:"prefer-simple-protocol" json:"preferSimpleProtocol" yaml:"prefer-simple-protocol"`
-	Logger               bool   `mapstructure:"logger" json:"logger" yaml:"logger"`
+type Mysql struct {
+	Path         string `mapstructure:"path" json:"path" yaml:"path"`                             // 服务器地址
+	Port         string `mapstructure:"port" json:"port" yaml:"port"`                             // 端口
+	Config       string `mapstructure:"config" json:"config" yaml:"config"`                       // 高级配置
+	Dbname       string `mapstructure:"db-name" json:"dbname" yaml:"db-name"`                     // 数据库名
+	Username     string `mapstructure:"username" json:"username" yaml:"username"`                 // 数据库用户名
+	Password     string `mapstructure:"password" json:"password" yaml:"password"`                 // 数据库密码
+	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"` // 空闲中的最大连接数
+	MaxOpenConns int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"` // 打开到数据库的最大连接数
+	LogMode      string `mapstructure:"log-mode" json:"logMode" yaml:"log-mode"`                  // 是否开启Gorm全局日志
+	LogZap       bool   `mapstructure:"log-zap" json:"logZap" yaml:"log-zap"`                     // 是否通过zap写入日志文件
+}
+```
+
+## pgsql
+
+### server/config/gorm_mysql.go
+
+- gorm-pgsql
+
+```go
+package config
+
+type Pgsql struct {
+	Path         string `mapstructure:"path" json:"path" yaml:"path"`                             // 服务器地址:端口
+	Port         string `mapstructure:"port" json:"port" yaml:"port"`                             //:端口
+	Config       string `mapstructure:"config" json:"config" yaml:"config"`                       // 高级配置
+	Dbname       string `mapstructure:"db-name" json:"dbname" yaml:"db-name"`                     // 数据库名
+	Username     string `mapstructure:"username" json:"username" yaml:"username"`                 // 数据库用户名
+	Password     string `mapstructure:"password" json:"password" yaml:"password"`                 // 数据库密码
+	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"` // 空闲中的最大连接数
+	MaxOpenConns int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"` // 打开到数据库的最大连接数
+	LogMode      string `mapstructure:"log-mode" json:"logMode" yaml:"log-mode"`                  // 是否开启Gorm全局日志
+	LogZap       bool   `mapstructure:"log-zap" json:"logZap" yaml:"log-zap"`                     // 是否通过zap写入日志文件
 }
 ```
 
 ### server/config/config.go
 
-- 在Server结构体添加Postgresql结构体
+### 在system选项下 选择db-type为mysql或者qgsql
 
-```go
-package config
+system:
+  env: 'public'  # Change to "develop" to skip authentication for development mode
+  addr: 8888
+  db-type: 'mysql'
+  oss-type: 'local'    # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
+  use-multipoint: false
+  # IP限制次数 一个小时15000次
+  iplimit-count: 15000
+  #  IP限制一个小时
+  iplimit-time: 3600
 
-type Server struct {
-	JWT     JWT     `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
-	Zap     Zap     `mapstructure:"zap" json:"zap" yaml:"zap"`
-	Redis   Redis   `mapstructure:"redis" json:"redis" yaml:"redis"`
-	Email   Email   `mapstructure:"email" json:"email" yaml:"email"`
-	Casbin  Casbin  `mapstructure:"casbin" json:"casbin" yaml:"casbin"`
-	System  System  `mapstructure:"system" json:"system" yaml:"system"`
-	Captcha Captcha `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
-	// gorm
-	Mysql      Mysql      `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
-	Postgresql Postgresql `mapstructure:"postgresql" json:"postgresql" yaml:"postgresql"`
-	// oss
-	Local Local `mapstructure:"local" json:"local" yaml:"local"`
-	Qiniu Qiniu `mapstructure:"qiniu" json:"qiniu" yaml:"qiniu"`
-}
-```
 
-### server/config.yaml
+### config.yaml 配置字段详解
 
-- 在server/config.yaml添加对应Postgresql结构体的配置信息
-
-```yaml
-# Postgresql connect configuration
-postgresql:
-  host: '127.0.0.1'
-  port: '9920'
-  config: 'sslmode=disable TimeZone=Asia/Shanghai'
-  db-name: 'gorm'
-  username: 'gorm'
-  password: 'gorm'
-  max-idle-conns: 10
-  max-open-conns: 10
-  prefer-simple-protocol: true
-  logger: false
-```
-
-### server/initialize/gorm_postgresql.go
-
-:::tip 注意
-1. gorm_postgresql.go文件需要自己新建
-2. 函数GormPostgreSql()为Gorm连接PostgreSql的函数方法
-:::
-
-```go
-package initialize
-
-import (
-	"gin-vue-admin/global"
-	"go.uber.org/zap"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
-	"os"
-)
-
-// GormPostgreSql 初始化PostgreSql数据库
-func GormPostgreSql() *gorm.DB {
-	p := global.GVA_CONFIG.Postgresql
-	dsn := "host="+ p.Host + " user=" + p.Username + " password=" + p.Password + " dbname=" + p.Dbname + " port=" + p.Port + " " + p.Config
-	postgresConfig := postgres.Config{
-		DSN:                  dsn,                    // DSN data source name
-		PreferSimpleProtocol: p.PreferSimpleProtocol, // 禁用隐式 prepared statement
-	}
-	gormConfig := gormConfig(p.Logger)
-	if db, err := gorm.Open(postgres.New(postgresConfig), gormConfig); err != nil {
-		global.GVA_LOG.Error("PostgreSql启动异常", zap.Any("err", err))
-		os.Exit(0)
-		return nil
-	} else {
-		sqlDB, _ := db.DB()
-		sqlDB.SetMaxIdleConns(p.MaxIdleConns)
-		sqlDB.SetMaxOpenConns(p.MaxOpenConns)
-		return db
-	}
-}
-```
-
-### server/initialize/gorm.go
-
-```go
-// Gorm 初始化数据库并产生数据库全局变量
-func Gorm() *gorm.DB {
-	switch global.GVA_CONFIG.System.DbType {
-	case "mysql":
-		return GormMysql()
-	case "postgresql":
-		return GormPostgreSql()
-	default:
-		return GormMysql()
-	}
-}
-```
-
-## Sqlite
-
-:::danger windows用户需要注意
-1. 初始化Sqlite数据库 sqlite需要gcc支持 windows用户需要自行安装gcc
-:::
-
-### server/config/gorm.go
-
-- 添加Sqlite结构体
-
-```go
-package config
-
-type Sqlite struct {
-	Path         string `mapstructure:"path" json:"path" yaml:"path"`
-	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"`
-	MaxOpenConns int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"`
-	Logger       bool   `mapstructure:"logger" json:"logger" yaml:"logger"`
-}
-```
-
-### server/config/config.go
-
-- 在Server结构体添加Sqlite结构体
-
-```go
-package config
-
-type Server struct {
-	JWT     JWT     `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
-	Zap     Zap     `mapstructure:"zap" json:"zap" yaml:"zap"`
-	Redis   Redis   `mapstructure:"redis" json:"redis" yaml:"redis"`
-	Email   Email   `mapstructure:"email" json:"email" yaml:"email"`
-	Casbin  Casbin  `mapstructure:"casbin" json:"casbin" yaml:"casbin"`
-	System  System  `mapstructure:"system" json:"system" yaml:"system"`
-	Captcha Captcha `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
-	// gorm
-	Mysql      Mysql      `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
-	Sqlite     Sqlite     `mapstructure:"sqlite" json:"sqlite" yaml:"sqlite"`
-	// oss
-	Local Local `mapstructure:"local" json:"local" yaml:"local"`
-	Qiniu Qiniu `mapstructure:"qiniu" json:"qiniu" yaml:"qiniu"`
-}
-```
-
-### server/config.yaml
-
-- 在server/config.yaml中添加Sqlite结构体的配置信息
-
-```yaml
-# sqlite connect configuration (sqlite需要gcc支持 windows用户需要自行安装gcc)
-sqlite:
-  path: 'db.db'
-  max-idle-conns: 10
-  max-open-conns: 10
-  logger: true
-```
-
-### server/initialize/gorm_sqlite.go
-
-:::tip windows用户需要注意
-1. gorm_sqlite.go文件需要自己新建
-2. 函数GormSqlite()为Gorm连接Sqlite的函数方法
-:::
-
-```go
-package initialize
-
-import (
-	"gorm.io/driver/sqlite"
-
-	"gin-vue-admin/global"
-	"go.uber.org/zap"
-	"gorm.io/gorm"
-	"os"
-)
-
-// GormSqlite 初始化Sqlite数据库 sqlite需要gcc支持 windows用户需要自行安装gcc 如需使用打开注释即可
-func GormSqlite() *gorm.DB {
-	s := global.GVA_CONFIG.Sqlite
-	if db, err := gorm.Open(sqlite.Open(s.Path), gormConfig(s.Logger)); err != nil {
-		global.GVA_LOG.Error("Sqlite启动异常", zap.Any("err", err))
-		os.Exit(0)
-		return nil
-	} else {
-		sqlDB, _ := db.DB()
-		sqlDB.SetMaxIdleConns(s.MaxIdleConns)
-		sqlDB.SetMaxOpenConns(s.MaxOpenConns)
-		return db
-	}
-}
-```
-
-### server/initialize/gorm.go
-
-```go
-// Gorm 初始化数据库并产生数据库全局变量
-func Gorm() *gorm.DB {
-	switch global.GVA_CONFIG.System.DbType {
-	case "mysql":
-		return GormMysql()
-	case "sqlite": // sqlite需要gcc支持 windows用户需要自行安装gcc
-    	return GormSqlite()
-	default:
-		return GormMysql()
-	}
-}
-```
-
-## Sqlserver
-
-### server/config/gorm.go
-
-- 添加Sqlserver结构体
-
-```go
-package config
-
-type Sqlserver struct {
-	Path         string `mapstructure:"path" json:"path" yaml:"path"`
-	Dbname       string `mapstructure:"db-name" json:"dbname" yaml:"db-name"`
-	Username     string `mapstructure:"username" json:"username" yaml:"username"`
-	Password     string `mapstructure:"password" json:"password" yaml:"password"`
-	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"`
-	MaxOpenConns int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"`
-	Logger       bool   `mapstructure:"logger" json:"logger" yaml:"logger"`
-}
-```
-
-### server/config/config.go
-
-- 在Server结构体添加Sqlserver结构体
-
-```go
-package config
-
-type Server struct {
-	JWT     JWT     `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
-	Zap     Zap     `mapstructure:"zap" json:"zap" yaml:"zap"`
-	Redis   Redis   `mapstructure:"redis" json:"redis" yaml:"redis"`
-	Email   Email   `mapstructure:"email" json:"email" yaml:"email"`
-	Casbin  Casbin  `mapstructure:"casbin" json:"casbin" yaml:"casbin"`
-	System  System  `mapstructure:"system" json:"system" yaml:"system"`
-	Captcha Captcha `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
-	// gorm
-	Mysql      Mysql      `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
-    Sqlserver  Sqlserver  `mapstructure:"sqlserver" json:"sqlserver" yaml:"sqlserver"`
-	// oss
-	Local Local `mapstructure:"local" json:"local" yaml:"local"`
-	Qiniu Qiniu `mapstructure:"qiniu" json:"qiniu" yaml:"qiniu"`
-}
-```
-
-### server/config.yaml
-
-- 在server/config.yaml中添加Sqlserver结构体的配置信息
-
-```yaml
-# Sqlserver connect configuration
-sqlserver:
-  path: 'localhost:9930'
-  db-name: 'gorm'
-  username: 'gorm'
-  password: 'LoremIpsum86'
-  max-idle-conns: 10
-  max-open-conns: 10
-  logger: true
-
-```
-
-### server/initialize/gorm_sqlserver.go
-
-:::tip 您可能遇到的问题
-1. gorm_sqlserver.go文件需要自己新建
-2. 函数GormSqlServer()为Gorm连接Sqlite的函数方法
-:::
-
-```go
-package initialize
-
-import (
-	"gin-vue-admin/global"
-	"os"
-
-	"go.uber.org/zap"
-	"gorm.io/driver/sqlserver"
-	"gorm.io/gorm"
-)
-
-// GormSqlServer 初始化SqlServer数据库
-func GormSqlServer() *gorm.DB {
-	ss := global.GVA_CONFIG.Sqlserver
-	dsn := "sqlserver://" + ss.Username + ":" + ss.Password + "@" + ss.Path + "?database=" + ss.Dbname
-	if db, err := gorm.Open(sqlserver.Open(dsn), &gorm.Config{}); err != nil {
-		global.GVA_LOG.Error("SqlServer启动异常", zap.Any("err", err))
-		os.Exit(0)
-		return nil
-	} else {
-		sqlDB, _ := db.DB()
-		sqlDB.SetMaxIdleConns(ss.MaxIdleConns)
-		sqlDB.SetMaxOpenConns(ss.MaxOpenConns)
-		return db
-	}
-}
-
-```
-
-### server/initialize/gorm.go
-
-```go
-// Gorm 初始化数据库并产生数据库全局变量
-func Gorm() *gorm.DB {
-	switch global.GVA_CONFIG.System.DbType {
-	case "mysql":
-		return GormMysql()
-	case "sqlserver":
-    		return GormSqlServer()
-	default:
-		return GormMysql()
-	}
-}
-```
-
+mysql:
+  path: ''   # 链接地址
+  port: ''   # 链接端口
+  config: ''  # 其他配置 例如时区
+  db-name: ''  # 数据库名称
+  username: '' # 数据库用户名
+  password: '' # 数据库密码
+  max-idle-conns: 10 # 连接池相关
+  max-open-conns: 100 # 连接池相关
+  log-mode: "" # 是控制台打印日志级别 "silent"、"error"、"warn"、"info" 不填默认info  填入silent可以关闭控制台日志
+  log-zap: false # 日志是否用zap保存到本地
