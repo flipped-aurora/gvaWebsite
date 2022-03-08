@@ -186,6 +186,7 @@ services:
 
   mysql:
     # 指定mysql镜像版本
+    # 如果您是 arm64 架构：如 MacOS 的 M1，请修改镜像为 image: mysql/mysql-server:8.0.21
     image: mysql:8.0.21
     # 自定义容器名
     container_name: gva-mysql

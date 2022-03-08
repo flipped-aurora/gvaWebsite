@@ -3,7 +3,7 @@ module.exports = {
         '捐赠': ['coffee', 'payment'],
         '简介': ['introduce', 'experience'],
         '初始化': ['first_master', 'first_old'],
-        '基础使用': ['base', 'env', 'server', 'server_video', 'web', 'web_video', 'config', 'develop', 'public','multiple_databases'],
+        '基础使用': ['base', 'env', 'server', 'server_video', 'web', 'web_video', 'config', 'develop', 'public','multiple_databases','btn_auth'],
         'K8s': ['deployment'],
         '代码生成器': ['auto_code'],
         '表单生成器': ['form_code','form_prod'],
