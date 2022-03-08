@@ -121,7 +121,11 @@ module.exports = {
                 },
                 {
                     title: '友情链接',
-                    items: [{
+                    items: [
+                        {
+                            label: '秒点远控,让距离不再有距离',
+                            to: 'https://www.geelevel.com/',
+                        } ,{
                         label: 'golang 开发工具包，json、sql 转 struct',
                         to: 'http://www.golangs.cn/',
                     }, {
