@@ -40,13 +40,13 @@ title: Docker 快速开发
 #####       进入项目目录，指定 docker-compose 开发配置文件 docker-compose-dev.yaml 启动
 
 ```
-//启动
+// 启动, 第一次启动可能会稍微慢一点
 docker-compose -f docker-compose-dev.yaml  up
 
-//后台启动
+// 后台启动
 docker-compose -f docker-compose-dev.yaml  up  -d
 
-//停止
+// 停止
 docker-compose -f docker-compose-dev.yaml  stop
 ```
 
