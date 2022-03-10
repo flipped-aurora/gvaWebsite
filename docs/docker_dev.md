@@ -50,7 +50,15 @@ docker-compose -f docker-compose-dev.yaml  up  -d
 docker-compose -f docker-compose-dev.yaml  stop
 ```
 
+### 启动完成请打开浏览器访问
 
+```
+http://127.0.0.1:8080
+```
 
+### 初始化
 
+请使用下面的数据进行初始化，具体配置参考 docker-compose-dev.yaml ，若要直接使用请修改 server/config.yaml
+
+![image-20220310173721432](docker_dev.assets/image-20220310173721432.png)
 
