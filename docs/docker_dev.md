@@ -3,12 +3,14 @@ id: docker_dev
 title: Docker 快速开发
 ---
 
-## Docker   &   Docker-compose 环境
+### Docker   &   Docker-compose 环境
 
 1. 前往[https://hub.docker.com]([Docker Desktop for Windows by Docker | Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/))下载最新版本 Docker
 2. 前往[https://github.com]([Release v2.3.3 · docker/compose (github.com)](https://github.com/docker/compose/releases/tag/v2.3.3))下载最新版本 Docker-Compose
 
-## 要使用docker快速开发，需要进行两处项目文件修改
+
+
+### 一、要使用docker快速开发，需要进行两处项目文件修改
 
 1. 打开前端目录下的文件  web/vite.config.js，大约第57行。
 
@@ -35,30 +37,34 @@ title: Docker 快速开发
 
    
 
-## 一键启动
 
-#####       进入项目目录，指定 docker-compose 开发配置文件 docker-compose-dev.yaml 启动
+### 二、一键启动
 
-```
-// 启动, 第一次启动可能会稍微慢一点
-docker-compose -f docker-compose-dev.yaml  up
+1. 进入项目目录，指定 docker-compose 开发配置文件 docker-compose-dev.yaml 启动
 
-// 后台启动
-docker-compose -f docker-compose-dev.yaml  up  -d
+   ```
+   // 启动, 第一次启动可能会稍微慢一点
+   docker-compose -f docker-compose-dev.yaml  up
+   
+   // 后台启动
+   docker-compose -f docker-compose-dev.yaml  up  -d
+   
+   // 停止
+   docker-compose -f docker-compose-dev.yaml  stop
+   ```
 
-// 停止
-docker-compose -f docker-compose-dev.yaml  stop
-```
+2. 启动完成请打开浏览器访问
 
-### 启动完成请打开浏览器访问
+   ```
+   http://127.0.0.1:8080
+   ```
 
-```
-http://127.0.0.1:8080
-```
 
-### 初始化
 
-请使用下面的数据进行初始化，具体配置参考 docker-compose-dev.yaml ，若要直接使用请修改 server/config.yaml
+
+### 三、初始化
+
+1.  请使用下面的数据进行初始化，具体配置参考 docker-compose-dev.yaml ，若要直接使用请修改 server/config.yaml
 
 ![image-20220310173721432](docker_dev.assets/image-20220310173721432.png)
 
