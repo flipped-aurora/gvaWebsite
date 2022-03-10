@@ -37,7 +37,7 @@ title: Docker 快速开发
 
 ## 一键启动
 
-#####       指定 docker-compose 开发配置文件 docker-compose-dev.yaml 启动
+#####       进入项目目录，指定 docker-compose 开发配置文件 docker-compose-dev.yaml 启动
 
 ```
 //启动
