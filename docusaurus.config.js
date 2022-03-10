@@ -123,6 +123,10 @@ module.exports = {
                     title: '友情链接',
                     items: [
                         {
+                            label:'H5-Dooring ｜ H5页面制作神器',
+                            to:'http://h5.dooring.cn',
+                        },
+                        {
                             label: '秒点远控,让距离不再有距离',
                             to: 'https://www.geelevel.com/',
                         } ,{
