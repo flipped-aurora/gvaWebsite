@@ -198,12 +198,12 @@ function DocSidebar({path, sidebar, sidebarCollapsible = true}) {
       <Link className={clsx(
                 styles.ad
               )}
-              to="/docs/payment"
+              to="https://www.geelevel.com/"
               >
-                <div>
-                  广告位招租
-                </div>
-                <div>微信：shouzi_1994</div>
+                <img
+                onClick={()=>{return fasle}}
+                            src={useBaseUrl('guanwang/miaodian2.png')}
+                        />
       </Link>
       {hideOnScroll && (
         <Link

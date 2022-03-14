@@ -151,6 +151,19 @@ function Home() {
           </div>
         </div>{" "}
       </header>{" "}
+      <div className={styles.jinpai}>合作企业</div>
+      <div className={styles.adbox}>
+      <Link className={clsx(
+                styles.ad
+              )}
+              to="https://www.geelevel.com/"
+              >
+                <img
+                onClick={()=>{return fasle}}
+                            src={useBaseUrl('guanwang/miaodian2.png')}
+                        />
+      </Link>
+      </div>
       <main>
         {" "}
         {features && features.length > 0 && (
@@ -178,6 +191,7 @@ function Home() {
           </section>
         )}{" "}
       </main>{" "}
+      
     </Layout>
   );
 }
