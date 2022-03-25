@@ -36,7 +36,7 @@ mac/linux/windows 都不需要配置 `server/config.yaml` 的 `mysql` 中的 `pa
 - ```go
   // 开启 Go Modules模式并设置代理
   go env -w GO111MODULE=on
-  go env -w GOPROXY=https://goproxy.io,direct
+  go env -w GOPROXY=https://goproxy.cn,direct
   ```
 
 - 直接运行 `server` 目录下的 `initdb.bat` (双击)
@@ -54,7 +54,7 @@ initdb.bat
 ```shell
 # 开启 Go Modules模式并设置代理, 已经设置的用户可跳过
 go env -w GO111MODULE=on
-go env -w GOPROXY=https://goproxy.io,direct
+go env -w GOPROXY=https://goproxy.cn,direct
 
 # 在server项目下,先构建gva终端工具
 make gva

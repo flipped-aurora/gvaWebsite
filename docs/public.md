@@ -27,3 +27,19 @@ title: 部署教学
     ├── config.ymal
     
 ```
+
+
+## [Tips.] Nginx的配置（如果用的话）
+
+代码参考如下
+
+```nginx
+location  /api {
+  		proxy_set_header Host $http_host;
+			proxy_set_header  X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+    	rewrite ^/api/(.*)$ /$1 break;  #重写
+    	proxy_pass 后端地址; # 设置代理服务器的协议和地址
+    }
+```
