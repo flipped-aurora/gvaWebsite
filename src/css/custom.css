@@ -45,3 +45,13 @@ blockquote{
   transform: scale(1.5);
   box-shadow: 3px 2px 7px 0 rgba(0 ,0 ,0 , 0.8);
 }
+.navbar__item span svg {
+  color: #999;
+  width: 10px;
+  top: -2px;
+}
+.navbar__link::after{
+  color: #999;
+  font-size: 12px;
+  /* top: -14px; */
+}
