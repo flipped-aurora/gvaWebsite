@@ -22,7 +22,11 @@ module.exports = {
                     label: '在线体验',
                     position: 'right',
                 },
-
+                {
+                    href: 'https://plugin.gin-vue-admin.com/',
+                    label: '插件广场(测试版)',
+                    position: 'right',
+                },
                 {
                     to: 'about/',
                     label: '关于我们',
