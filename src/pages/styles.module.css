@@ -5,7 +5,17 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
-
+.jinpai{
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+    color: #273849;
+    padding-top: 40px;
+}
+.adbox{
+    text-align: center;
+    padding: 20px;
+}
 .heroBanner {
     padding: 4rem 0;
     text-align: center;

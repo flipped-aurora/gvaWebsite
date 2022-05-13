@@ -125,12 +125,22 @@ module.exports = {
                 },
                 {
                     title: '友情链接',
-                    items: [{
+                    items: [
+                        {
+                            label: '秒点远控|让距离不再有距离的远控系统',
+                            to: 'https://www.geelevel.com/',
+                        },
+                         {
+                            label: 'go-zero｜缩短从需求到上线的距离的微服务框架		',
+                            to: 'https://go-zero.dev/cn/',
+                        },
+                        {
+                            label:'H5-Dooring ｜ H5页面制作神器',
+                            to:'http://h5.dooring.cn',
+                        },
+                         {
                         label: 'golang 开发工具包，json、sql 转 struct',
                         to: 'http://www.golangs.cn/',
-                    }, {
-                        label: 'gin-vue-devops 基于Gin-Vue-Admin开发的DevOps平台',
-                        to: 'https://github.com/openstack-test/gin-vue-devops',
                     }],
                 },
 

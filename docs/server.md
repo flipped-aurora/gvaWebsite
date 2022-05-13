@@ -69,8 +69,8 @@ title: server
 
 - Goland打开server文件夹
 - 设置GOPROXY
-	- windows:打开File → settings → Go → Go Modules，将 Environment 项的值设置为`GOPROXY=https://goproxy.io,direct`
-	- Mac: 打开Goland→Preferences...→Go → Go Modules,将Environment项的值设置为`GOPROXY=https://goproxy.io,direct`
+	- windows:打开File → settings → Go → Go Modules，将 Environment 项的值设置为`GOPROXY=https://goproxy.cn,direct`
+	- Mac: 打开Goland→Preferences...→Go → Go Modules,将Environment项的值设置为`GOPROXY=https://goproxy.cn,direct`
 - 打开go.mod文件,在文件空白处鼠标右键点击`Go Mod Tidy`
 - ![](../static/img/GoModTidy.png)
 
@@ -96,14 +96,14 @@ go get -u github.com/swaggo/swag/cmd/swag
 ````
 
 - 无法翻墙
-由于国内没法安装 go.org/x 包下面的东西，推荐使用 [goproxy.io](https://goproxy.io/zh/) 或者 [goproxy.cn/](https://goproxy.cn/)
+由于国内没法安装 go.org/x 包下面的东西，推荐使用 [goproxy.cn](https://goproxy.cn/zh/) 或者 [goproxy.cn/](https://goproxy.cn/)
 
 ```bash
 # 如果您使用的 Go 版本是 1.13 - 1.15 需要手动设置GO111MODULE=on, 开启方式如下命令, 如果你的 Go 版本 是 1.16 ~ 最新版 可以忽略以下步骤一
 # 步骤一、启用 Go Modules 功能
 go env -w GO111MODULE=on 
 # 步骤二、配置 GOPROXY 环境变量
-go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
+go env -w GOPROXY=https://goproxy.cn,https://goproxy.cn,direct
 
 # 如果嫌弃麻烦,可以使用go generate 编译前自动执行代码, 不过这个不能使用 `Goland` 或者 Vscode 的 命令行终端
 cd server
