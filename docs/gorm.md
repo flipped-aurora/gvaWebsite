@@ -55,6 +55,7 @@ type Pgsql struct {
 
 ### 在system选项下 选择db-type为mysql或者qgsql
 
+```yaml
 system:
   env: 'public'  # Change to "develop" to skip authentication for development mode
   addr: 8888
@@ -65,10 +66,11 @@ system:
   iplimit-count: 15000
   #  IP限制一个小时
   iplimit-time: 3600
+```
 
 
 ### config.yaml 配置字段详解
-
+```yaml
 mysql:
   path: ''   # 链接地址
   port: ''   # 链接端口
@@ -80,3 +82,4 @@ mysql:
   max-open-conns: 100 # 连接池相关
   log-mode: "" # 是控制台打印日志级别 "silent"、"error"、"warn"、"info" 不填默认info  填入silent可以关闭控制台日志
   log-zap: false # 日志是否用zap保存到本地
+```

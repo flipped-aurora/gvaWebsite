@@ -130,10 +130,6 @@ module.exports = {
                             label: '秒点远控|让距离不再有距离的远控系统',
                             to: 'https://www.geelevel.com/',
                         },
-                         {
-                            label: 'go-zero｜缩短从需求到上线的距离的微服务框架		',
-                            to: 'https://go-zero.dev/cn/',
-                        },
                         {
                             label:'H5-Dooring ｜ H5页面制作神器',
                             to:'http://h5.dooring.cn',

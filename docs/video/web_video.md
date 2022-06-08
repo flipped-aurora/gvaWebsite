@@ -1,5 +1,5 @@
 ---
-id: web_video
+id: web-video
 title: web项目学习资料
 ---
 

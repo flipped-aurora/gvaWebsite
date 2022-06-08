@@ -1,5 +1,5 @@
 ---
-id: deployment
+id: k8s
 title: k8s资源配置
 ---
 
