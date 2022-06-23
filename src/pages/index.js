@@ -163,6 +163,16 @@ function Home() {
                             src={useBaseUrl('guanwang/miaodian2.png')}
                         />
       </Link>
+      <Link className={clsx(
+                styles.ad
+              )}
+              to="https://www.geelevel.com/"
+              >
+                <img
+                onClick={()=>{return fasle}}
+                            src={useBaseUrl('guanwang/smartide.png')}
+                        />
+      </Link>
       </div>
       <main>
         {" "}

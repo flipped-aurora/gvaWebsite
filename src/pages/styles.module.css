@@ -5,6 +5,10 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
+ .ad+.ad{
+     margin-left:12px;
+ }
+
 .jinpai{
     font-size: 24px;
     text-align: center;
