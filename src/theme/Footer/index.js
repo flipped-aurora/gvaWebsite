@@ -116,7 +116,7 @@ function Footer() {
         )}
       </div>
       <div onClick={() => { window.open("https://beian.miit.gov.cn/") }} style={{ textAlign: "center", cursor: "pointer" }}>鲁ICP备17040210号-2</div>
-      <script type="text/javascript" src="https://s4.cnzz.com/z_stat.php?id=1279266757&web_id=1279266757"></script>
+      <script type="text/javascript" src="https://hm.baidu.com/hm.js?40635ef25e31fa2a58ed58f935d0a1a0"></script>
      
     </footer>
   );

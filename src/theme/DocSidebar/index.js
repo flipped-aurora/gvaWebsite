@@ -275,6 +275,7 @@ function DocSidebar({path, sidebar, sidebarCollapsible = true}) {
           ))}
         </ul>
       </div>
+      <script type="text/javascript" src="https://hm.baidu.com/hm.js?40635ef25e31fa2a58ed58f935d0a1a0"></script>
     </div>
   );
 }
