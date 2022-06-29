@@ -11,7 +11,13 @@ title: 部署教学
 
 ### 后端
 
-在 server下 go build 得到一个可执行文件 然后将可执行文件和config.ymal 以及 resource 文件夹上传至服务器 三者最好放在同一路径下 最终服务器目录结构可能如下 
+在 server下 go build 得到一个可执行文件 
+
+*版本<2.5.3*
+然后将可执行文件和config.ymal 以及 resource 文件夹上传至服务器 三者最好放在同一路径下 最终服务器目录结构可能如下 
+
+*版本>=2.5.3*
+将可执行文件直接丢到服务器 和 前端dist同目录即可 设置的embed机制会自动产生应该携带的静态文件（依然需要手动修改config.yaml的数据库等相关配置）
 
 ```shell
 
@@ -19,12 +25,12 @@ title: 部署教学
     ├── chunk   // 后续断点续传自动生成
     ├── fileDir   // 后续断点续传自动生成
     ├── finish   // 后续断点续传自动生成
-    ├── resource
-    │   └── 子目录文件					
+    ├── resource  // embed自动产生
+    │   └── 子目录文件 // embed自动产生			 		
     ├── dist
     │   └── 子目录文件
-    ├── gin-vue-admin
-    ├── config.ymal
+    ├── gin-vue-admin // embed自动产生
+    ├── config.ymal  // embed自动产生
     
 ```
 
